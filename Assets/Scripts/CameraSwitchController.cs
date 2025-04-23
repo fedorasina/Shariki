@@ -1,21 +1,33 @@
 using UnityEngine;
 
+/**
+ * @brief Manages switching between different cameras and control systems
+ * 
+ * This component allows toggling between a main camera/controller and 
+ * an alternate camera/controller when the player enters a trigger zone
+ * and presses a designated key
+ */
 public class CameraSwitchTrigger : MonoBehaviour
 {
     [Header("References")]
-    public GameObject playerObject; // Объект игрока (меш/модель)
-    public GameObject mainCamera; // Основная камера
-    public GameObject alternateCamera; // Альтернативная камера
-    public MonoBehaviour mainPlayerController; // Основной контроллер игрока
-    public MonoBehaviour alternateController; // Альтернативный контроллер
+    public GameObject playerObject; // Player object (mesh/model)
+    public GameObject mainCamera; // Main camera
+    public GameObject alternateCamera; // Alternate camera
+    public MonoBehaviour mainPlayerController; // Main player controller
+    public MonoBehaviour alternateController; // Alternate controller
 
     [Header("Settings")]
-    public KeyCode switchKey = KeyCode.F; // Клавиша переключения
-    public bool hidePlayer = true; // Скрывать ли игрока при переключении
+    public KeyCode switchKey = KeyCode.F; // Switch key
+    public bool hidePlayer = true; // Whether to hide the player when switching
 
     private bool isInsideTrigger = false;
-    private bool isUsingAlternate = false; // Флаг текущего состояния
+    private bool isUsingAlternate = false; // Current state flag
 
+    /**
+     * @brief Checks for key input to toggle camera/controller when player is in trigger zone
+     * 
+     * Called every frame to detect when the player presses the switch key
+     */
     private void Update()
     {
         if (isInsideTrigger && Input.GetKeyDown(switchKey))
@@ -24,15 +36,21 @@ public class CameraSwitchTrigger : MonoBehaviour
         }
     }
 
+    /**
+     * @brief Toggles between main and alternate camera/controller setups
+     * 
+     * Activates/deactivates the appropriate camera and enables/disables
+     * the corresponding controller components. Can also hide/show the player model.
+     */
     private void ToggleCameraAndController()
     {
         isUsingAlternate = !isUsingAlternate;
 
-        // Переключаем камеры
+        // Switch cameras
         mainCamera.SetActive(!isUsingAlternate);
         alternateCamera.SetActive(isUsingAlternate);
 
-        // Переключаем контроллеры
+        // Switch controllers
         mainPlayerController.enabled = !isUsingAlternate;
         
         if (alternateController != null)
@@ -40,30 +58,45 @@ public class CameraSwitchTrigger : MonoBehaviour
             alternateController.enabled = isUsingAlternate;
         }
 
-        // Скрываем/показываем игрока если нужно
+        // Hide/show player if needed
         if (hidePlayer && playerObject != null)
         {
             playerObject.SetActive(!isUsingAlternate);
         }
     }
 
+    /**
+     * @brief Handles player entering the trigger zone
+     * 
+     * @param other The collider that entered the trigger
+     * 
+     * Sets the inside trigger flag when a player enters the zone
+     */
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             isInsideTrigger = true;
-            // Можно добавить UI подсказку здесь
+            // Can add UI hint here
         }
     }
 
+    /**
+     * @brief Handles player exiting the trigger zone
+     * 
+     * @param other The collider that exited the trigger
+     * 
+     * Resets the inside trigger flag and automatically switches
+     * back to the main camera/controller setup if using the alternate
+     */
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             isInsideTrigger = false;
-            // Можно убрать UI подсказку здесь
+            // Can remove UI hint here
             
-            // Автоматически возвращаем к основному управлению при выходе
+            // Automatically return to main control when exiting
             if (isUsingAlternate)
             {
                 ResetToMain();
@@ -71,7 +104,12 @@ public class CameraSwitchTrigger : MonoBehaviour
         }
     }
 
-    // Возврат к основному управлению
+    /**
+     * @brief Resets to the main camera and controller setup
+     * 
+     * Forces a return to the main camera and controller regardless
+     * of the current state, and shows the player model if it was hidden
+     */
     private void ResetToMain()
     {
         isUsingAlternate = false;

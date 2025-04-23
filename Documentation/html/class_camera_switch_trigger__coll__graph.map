@@ -1,0 +1,5 @@
+<map id="CameraSwitchTrigger" name="CameraSwitchTrigger">
+<area shape="rect" id="Node000001" title="Manages switching between different cameras and control systems." alt="" coords="5,80,150,107"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="23,5,132,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,48,80,80,75,80,75,48"/>
+</map>

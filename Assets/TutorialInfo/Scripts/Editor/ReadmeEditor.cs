@@ -6,6 +6,12 @@ using System;
 using System.IO;
 using System.Reflection;
 
+/**
+ * @brief Custom editor for the Readme ScriptableObject
+ * 
+ * This editor automatically displays the readme when the project is opened
+ * and provides a custom inspector UI for displaying the readme content
+ */
 [CustomEditor(typeof(Readme))]
 [InitializeOnLoad]
 public class ReadmeEditor : Editor
@@ -16,11 +22,21 @@ public class ReadmeEditor : Editor
 
     const float k_Space = 16f;
 
+    /**
+     * @brief Static constructor that registers the automatic readme selection
+     * 
+     * Called when Unity loads due to the InitializeOnLoad attribute
+     */
     static ReadmeEditor()
     {
         EditorApplication.delayCall += SelectReadmeAutomatically;
     }
 
+    /**
+     * @brief Removes all tutorial assets from the project
+     * 
+     * Confirms with the user before deleting the tutorial directory and readme asset
+     */
     static void RemoveTutorial()
     {
         if (EditorUtility.DisplayDialog("Remove Readme Assets",
@@ -51,6 +67,12 @@ public class ReadmeEditor : Editor
         }
     }
 
+    /**
+     * @brief Automatically selects the readme asset when the project is opened
+     * 
+     * Checks if the readme has been shown in this session and loads the editor layout
+     * if it hasn't been loaded yet
+     */
     static void SelectReadmeAutomatically()
     {
         if (!SessionState.GetBool(s_ShowedReadmeSessionStateName, false))
@@ -66,6 +88,11 @@ public class ReadmeEditor : Editor
         }
     }
 
+    /**
+     * @brief Loads the custom window layout for the tutorial
+     * 
+     * Uses reflection to access Unity's internal window layout system
+     */
     static void LoadLayout()
     {
         var assembly = typeof(EditorApplication).Assembly;
@@ -74,6 +101,11 @@ public class ReadmeEditor : Editor
         method.Invoke(null, new object[] { Path.Combine(Application.dataPath, "TutorialInfo/Layout.wlt"), false });
     }
 
+    /**
+     * @brief Finds and selects the Readme asset in the project
+     * 
+     * @return The Readme object if found, null otherwise
+     */
     static Readme SelectReadme()
     {
         var ids = AssetDatabase.FindAssets("Readme t:Readme");
@@ -92,6 +124,11 @@ public class ReadmeEditor : Editor
         }
     }
 
+    /**
+     * @brief Customizes the header section of the inspector
+     * 
+     * Displays the readme icon and title
+     */
     protected override void OnHeaderGUI()
     {
         var readme = (Readme)target;
@@ -120,6 +157,11 @@ public class ReadmeEditor : Editor
         GUILayout.EndHorizontal();
     }
 
+    /**
+     * @brief Renders the main inspector GUI
+     * 
+     * Displays all sections of the readme with their headings, text, and links
+     */
     public override void OnInspectorGUI()
     {
         var readme = (Readme)target;
@@ -196,6 +238,11 @@ public class ReadmeEditor : Editor
     [SerializeField]
     GUIStyle m_ButtonStyle;
 
+    /**
+     * @brief Initializes the GUI styles used in the editor
+     * 
+     * Sets up various text styles for different parts of the readme display
+     */
     void Init()
     {
         if (m_Initialized)
@@ -225,6 +272,13 @@ public class ReadmeEditor : Editor
         m_Initialized = true;
     }
 
+    /**
+     * @brief Creates a clickable hyperlink-style label
+     * 
+     * @param label The text content of the link
+     * @param options Layout options for the link
+     * @return True if the link was clicked
+     */
     bool LinkLabel(GUIContent label, params GUILayoutOption[] options)
     {
         var position = GUILayoutUtility.GetRect(label, LinkStyle, options);

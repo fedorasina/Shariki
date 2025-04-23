@@ -1,0 +1,5 @@
+<map id="ShowTMPTextOnTrigger" name="ShowTMPTextOnTrigger">
+<area shape="rect" id="Node000001" title="Controls the visibility of TextMeshPro text based on player position and view angle." alt="" coords="5,80,167,107"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="31,5,141,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,48,89,80,83,80,83,48"/>
+</map>
