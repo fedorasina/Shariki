@@ -7,7 +7,7 @@ using UnityEngine;
  */
 public class FPSController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float moveSpeed = 3f;
     public float mouseSensitivity = 2f;
     public Transform cameraTransform;
 
