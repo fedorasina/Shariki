@@ -1416,7 +1416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44d35fe6e8fbca4db6872f16565b5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: test
+  sceneToLoad: 2
   playerTag: GameController
 --- !u!65 &1664982788
 BoxCollider:
@@ -1597,7 +1597,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 330585545}
-  m_PlaneDistance: 0.5
+  m_PlaneDistance: 0.1
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
