@@ -402,7 +402,7 @@ Transform:
   m_GameObject: {fileID: 725501479}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 3.93, z: 10.05}
+  m_LocalPosition: {x: -0.08, y: 5.76, z: 10.05}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1022,6 +1022,7 @@ GameObject:
   - component: {fileID: 2029634522}
   - component: {fileID: 2029634525}
   - component: {fileID: 2029634524}
+  - component: {fileID: 2029634526}
   - component: {fileID: 2029634523}
   m_Layer: 0
   m_Name: Sci_fi_Pistol1
@@ -1060,11 +1061,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7502348396161114905, guid: 9980e0d11ad37ce41809447dc09fc687, type: 3}
   spawnPoint: {fileID: 2029634522}
-  shootForce: 20
-  fireRate: 0.5
-  maxProjectiles: 100
+  shootForce: 30
+  fireRate: 0.7
+  maxProjectiles: 10
   mainCamera: {fileID: 330585545}
-  aimUpdateRate: 0.01
+  raycastLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  rotationSpeed: 10
 --- !u!23 &2029634524
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1117,6 +1121,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029634521}
+  m_Mesh: {fileID: 4300000, guid: 3777ca3e6d1d47e439354a39ed5ba939, type: 2}
+--- !u!64 &2029634526
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029634521}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 3777ca3e6d1d47e439354a39ed5ba939, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -9,23 +9,26 @@ public class ShootPrefab : MonoBehaviour
     [SerializeField] private float fireRate = 0.5f; // Скорострельность (секунды между выстрелами)
     [SerializeField] private int maxProjectiles = 100; // Максимальное количество снарядов
     [SerializeField] private Camera mainCamera; // Главная камера
-    [SerializeField] private float aimUpdateRate = 0.1f; // Частота обновления прицеливания (секунды)
+    [SerializeField] private LayerMask raycastLayerMask; // Маска слоев для Raycast
+    [SerializeField] private float rotationSpeed = 10f; // Скорость поворота оружия (градусов/сек)
 
     private float nextFireTime; // Время следующего выстрела
     private Queue<GameObject> projectilePool = new Queue<GameObject>(); // Очередь для отслеживания снарядов
-    private float nextAimUpdateTime; // Время следующего обновления прицеливания
+    private Vector3 screenCenter; // Кэшированный центр экрана
+
+    void Start()
+    {
+        // Кэшируем центр экрана при старте
+        screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
+    }
 
     void Update()
     {
-        // Обновление прицеливания с заданной частотой
-        if (Time.time >= nextAimUpdateTime)
-        {
-            AimAtScreenCenter();
-            nextAimUpdateTime = Time.time + aimUpdateRate;
-        }
+        // Обновление прицеливания каждый кадр с оптимизацией
+        AimAtScreenCenter();
 
         // Проверка нажатия левой кнопки мыши и времени между выстрелами
-        if (Input.GetMouseButtonDown(0) && Time.time >= nextFireTime)
+        if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
         {
             Shoot();
             nextFireTime = Time.time + fireRate;
@@ -36,28 +39,26 @@ public class ShootPrefab : MonoBehaviour
     {
         if (mainCamera == null) return;
 
-        // Центр экрана в экранных координатах
-        Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
-
         // Создаем луч из камеры через центр экрана
         Ray ray = mainCamera.ScreenPointToRay(screenCenter);
         Vector3 targetPoint;
 
-        // Проверяем, пересекает ли луч что-либо в сцене
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+        // Проверяем, пересекает ли луч что-либо в сцене, используя маску слоев
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f, raycastLayerMask))
         {
             // Если луч попал в объект, используем точку попадания
             targetPoint = hit.point;
         }
         else
         {
-            // Если луч не попал, используем точку на расстоянии 100 единиц от камеры
+            // Если луч не попал, используем точку на расстоянии 100 единиц
             targetPoint = ray.origin + ray.direction * 100f;
         }
 
-        // Поворачиваем только оружие в сторону целевой точки
+        // Вычисляем направление и плавно поворачиваем оружие
         Vector3 direction = (targetPoint - transform.position).normalized;
-        transform.rotation = Quaternion.LookRotation(direction);
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
     void Shoot()
