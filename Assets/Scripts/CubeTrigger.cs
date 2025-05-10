@@ -101,7 +101,7 @@ public class CubeTrigger : MonoBehaviour
     private void Update()
     {
         if (!isActivated) return;
-
+	
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
