@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballTag: GameController
-  activationTime: 4
+  activationTime: 10
   objectPool:
     prefab: {fileID: 4977412155451470188, guid: 2830d141952225642b1c576865c437b0, type: 3}
     initialSize: 1
