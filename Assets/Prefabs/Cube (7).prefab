@@ -121,5 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44d35fe6e8fbca4db6872f16565b5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: 3
+  sceneToLoad: 1
   playerTag: GameController

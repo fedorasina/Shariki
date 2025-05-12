@@ -46,12 +46,29 @@ public class PuzzleSystem : MonoBehaviour
         currentSequence.Clear();
         playerSequence.Clear();
 
-        // Генерация случайной последовательности
+        // Создаём список доступных индексов
+        List<int> availableIndices = new List<int>();
+        for (int i = 0; i < puzzleColliders.Length; i++)
+        {
+            availableIndices.Add(i);
+        }
+
+        // Генерация последовательности без повторений
         for (int i = 0; i < currentSequenceLength; i++)
         {
-            int randomIndex = Random.Range(0, puzzleColliders.Length);
-            currentSequence.Add(randomIndex);
-            if (enableLogs) Debug.Log($"[Puzzle] Added cube {randomIndex} to sequence");
+            if (availableIndices.Count == 0)
+            {
+                Debug.LogWarning("Not enough unique cubes! Using repeats.");
+                availableIndices = new List<int>();
+                for (int j = 0; j < puzzleColliders.Length; j++) availableIndices.Add(j);
+            }
+
+            int randomIndex = Random.Range(0, availableIndices.Count);
+            int selectedCube = availableIndices[randomIndex];
+            currentSequence.Add(selectedCube);
+            availableIndices.RemoveAt(randomIndex);
+
+            if (enableLogs) Debug.Log($"[Puzzle] Added cube {selectedCube} to sequence");
         }
 
         StartCoroutine(DisplaySequence());
