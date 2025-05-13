@@ -27,5 +27,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Platformers/PlatformerLevel2.unity
     guid: 9accac459a0bfbd4f9ce6e8043482392
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 31ded462e2dbde1429e59f0573f7c838, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 6f5aee4006145ce408d76ed2f3f372a0, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: b84af223ff78b4d4aba3f949a7dc4164, type: 2}
   m_UseUCBPForAssetBundles: 0
