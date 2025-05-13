@@ -1,0 +1,30 @@
+\doxysection{Rotate\+On\+XZWith\+Keys.\+cs}
+\hypertarget{_rotate_on_x_z_with_keys_8cs_source}{}\label{_rotate_on_x_z_with_keys_8cs_source}\index{Assets/Scripts/RotateOnXZWithKeys.cs@{Assets/Scripts/RotateOnXZWithKeys.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00008}\mbox{\hyperlink{class_rotate_on_x_z_with_keys}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_rotate_on_x_z_with_keys}{RotateOnXZWithKeys}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ rotationSpeed\ =\ 100f;\ \textcolor{comment}{//\ Rotation\ speed}}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ rotationX\ =\ Input.GetAxis(\textcolor{stringliteral}{"{}Vertical"{}})\ *\ rotationSpeed\ *\ Time.deltaTime;\ \ \ \ \textcolor{comment}{//\ W/S}}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ rotationZ\ =\ -\/Input.GetAxis(\textcolor{stringliteral}{"{}Horizontal"{}})\ *\ rotationSpeed\ *\ Time.deltaTime;\ \textcolor{comment}{//\ A/D}}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ rotationY\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Input.GetKey(KeyCode.Q))}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ rotationY\ =\ -\/rotationSpeed\ *\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (Input.GetKey(KeyCode.E))}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ rotationY\ =\ rotationSpeed\ *\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ transform.Rotate(rotationX,\ rotationY,\ rotationZ,\ Space.World);}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rotate_on_x_z_with_keys_8cs_source_l00038}00038\ \}}
+
+\end{DoxyCode}

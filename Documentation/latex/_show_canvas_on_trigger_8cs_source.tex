@@ -1,0 +1,106 @@
+\doxysection{Show\+Canvas\+On\+Trigger.\+cs}
+\hypertarget{_show_canvas_on_trigger_8cs_source}{}\label{_show_canvas_on_trigger_8cs_source}\index{Assets/Scripts/ShowCanvasOnTrigger.cs@{Assets/Scripts/ShowCanvasOnTrigger.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }TMPro;}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00010}\mbox{\hyperlink{class_show_t_m_p_text_on_trigger}{00010}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_show_t_m_p_text_on_trigger}{ShowTMPTextOnTrigger}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00012}00012\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ TMP\_Text\ tmpText;}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00013}00013\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ fadeDuration\ =\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00014}00014\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ playerTag\ =\ \textcolor{stringliteral}{"{}Player"{}};}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00015}00015\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ viewAngleThreshold\ =\ 45f;}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00016}00016\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Camera\ playerCamera;}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{private}\ CanvasGroup\ textCanvasGroup;}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ isPlayerInside\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00020}00020\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ isTextVisible\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00028}00028\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tmpText\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ textCanvasGroup\ =\ tmpText.GetComponent<CanvasGroup>();}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (textCanvasGroup\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ textCanvasGroup\ =\ tmpText.gameObject.AddComponent<CanvasGroup>();}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ textCanvasGroup.alpha\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogWarning(\textcolor{stringliteral}{"{}TMP\_Text\ not\ assigned\ in\ the\ inspector!"{}});}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerCamera\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ playerCamera\ =\ Camera.main;}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnTriggerEnter(Collider\ other)}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00058}00058\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.CompareTag(playerTag))}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ isPlayerInside\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnTriggerExit(Collider\ other)}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00073}00073\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.CompareTag(playerTag))}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ isPlayerInside\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ isTextVisible\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ StopAllCoroutines();}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ StartCoroutine(FadeText(0f));}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00089}00089\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00090}00090\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isPlayerInside\ \&\&\ textCanvasGroup\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ looking\ =\ IsLookingAtObject();}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (looking\ \&\&\ !isTextVisible)}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ isTextVisible\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ StopAllCoroutines();}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ StartCoroutine(FadeText(1f));}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!looking\ \&\&\ isTextVisible)}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ isTextVisible\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ StopAllCoroutines();}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ StartCoroutine(FadeText(0f));}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00108}00108\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00116}00116\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ IsLookingAtObject()}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00117}00117\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ Vector3\ toObject\ =\ transform.position\ -\/\ playerCamera.transform.position;}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angle\ =\ Vector3.Angle(playerCamera.transform.forward,\ toObject);}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ angle\ <=\ viewAngleThreshold;}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00122}00122\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00131}00131\ \ \ \ \ \textcolor{keyword}{private}\ System.Collections.IEnumerator\ FadeText(\textcolor{keywordtype}{float}\ targetAlpha)}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00132}00132\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ startAlpha\ =\ textCanvasGroup.alpha;}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ time\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (time\ <\ fadeDuration)}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ time\ +=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ textCanvasGroup.alpha\ =\ Mathf.Lerp(startAlpha,\ targetAlpha,\ time\ /\ fadeDuration);}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ textCanvasGroup.alpha\ =\ targetAlpha;}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00144}00144\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_show_canvas_on_trigger_8cs_source_l00145}00145\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,99 @@
+\doxysection{Camera\+Switch\+Controller.\+cs}
+\hypertarget{_camera_switch_controller_8cs_source}{}\label{_camera_switch_controller_8cs_source}\index{Assets/Scripts/CameraSwitchController.cs@{Assets/Scripts/CameraSwitchController.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00010}\mbox{\hyperlink{class_camera_switch_trigger}{00010}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_camera_switch_trigger}{CameraSwitchTrigger}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00012}00012\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}References"{}})]}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ playerObject;\ \textcolor{comment}{//\ Player\ object\ (mesh/model)}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ mainCamera;\ \textcolor{comment}{//\ Main\ camera}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}\ GameObject\ alternateCamera;\ \textcolor{comment}{//\ Alternate\ camera}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00016}00016\ \ \ \ \ \textcolor{keyword}{public}\ MonoBehaviour\ mainPlayerController;\ \textcolor{comment}{//\ Main\ player\ controller}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{public}\ MonoBehaviour\ alternateController;\ \textcolor{comment}{//\ Alternate\ controller}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00019}00019\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Settings"{}})]}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00020}00020\ \ \ \ \ \textcolor{keyword}{public}\ KeyCode\ switchKey\ =\ KeyCode.F;\ \textcolor{comment}{//\ Switch\ key}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ hidePlayer\ =\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ Whether\ to\ hide\ the\ player\ when\ switching}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ isInsideTrigger\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ isUsingAlternate\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Current\ state\ flag}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00031}00031\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00032}00032\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isInsideTrigger\ \&\&\ Input.GetKeyDown(switchKey))}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ ToggleCameraAndController();}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ ToggleCameraAndController()}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00046}00046\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ isUsingAlternate\ =\ !isUsingAlternate;}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Switch\ cameras}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ mainCamera.SetActive(!isUsingAlternate);}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ alternateCamera.SetActive(isUsingAlternate);}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Switch\ controllers}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ mainPlayerController.enabled\ =\ !isUsingAlternate;}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (alternateController\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ alternateController.enabled\ =\ isUsingAlternate;}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Hide/show\ player\ if\ needed}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hidePlayer\ \&\&\ playerObject\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ playerObject.SetActive(!isUsingAlternate);}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00075}00075\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnTriggerEnter(Collider\ other)}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00076}00076\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.CompareTag(\textcolor{stringliteral}{"{}Player"{}}))}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ isInsideTrigger\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Can\ add\ UI\ hint\ here}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00092}00092\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnTriggerExit(Collider\ other)}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00093}00093\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.CompareTag(\textcolor{stringliteral}{"{}Player"{}}))}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ isInsideTrigger\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Can\ remove\ UI\ hint\ here}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Automatically\ return\ to\ main\ control\ when\ exiting}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isUsingAlternate)}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ResetToMain();}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00105}00105\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00113}00113\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ ResetToMain()}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00114}00114\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ isUsingAlternate\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ mainCamera.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ alternateCamera.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ mainPlayerController.enabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (alternateController\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ alternateController.enabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hidePlayer\ \&\&\ playerObject\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ playerObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00131}00131\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_switch_controller_8cs_source_l00132}00132\ \}}
+
+\end{DoxyCode}
