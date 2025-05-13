@@ -1417,7 +1417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 4
-  playerTag: GameController
+  ballTag: GameController
 --- !u!65 &1664982788
 BoxCollider:
   m_ObjectHideFlags: 0
