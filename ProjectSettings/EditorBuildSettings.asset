@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/2.unity
     guid: e9c2682a3d418474c86a9f26c139dc3c
+  - enabled: 1
+    path: Assets/Scenes/Platformers/PlatformerLevel1.unity
+    guid: f95619681b0b727488896ac8c645aed4
+  - enabled: 1
+    path: Assets/Scenes/Platformers/PlatformerLevel2.unity
+    guid: 9accac459a0bfbd4f9ce6e8043482392
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

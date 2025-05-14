@@ -1,0 +1,119 @@
+\begin{theindex}
+
+  \item {alternateCamera}
+    \subitem {CameraSwitchTrigger}, \hyperpage{8}
+  \item {alternateController}
+    \subitem {CameraSwitchTrigger}, \hyperpage{8}
+  \item {Assets/Scripts/CameraSwitchController.cs}, \hyperpage{19}
+  \item {Assets/Scripts/FPSController.cs}, \hyperpage{20}
+  \item {Assets/Scripts/LoadSceneOnTrigger.cs}, \hyperpage{21}
+  \item {Assets/Scripts/RotateOnXZWithKeys.cs}, \hyperpage{21}
+  \item {Assets/Scripts/ShowCanvasOnTrigger.cs}, \hyperpage{21}
+  \item {Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs}, 
+		\hyperpage{22}
+  \item {Assets/TutorialInfo/Scripts/Readme.cs}, \hyperpage{25}
+
+  \indexspace
+
+  \item {CameraSwitchTrigger}, \hyperpage{7}
+    \subitem {alternateCamera}, \hyperpage{8}
+    \subitem {alternateController}, \hyperpage{8}
+    \subitem {hidePlayer}, \hyperpage{8}
+    \subitem {mainCamera}, \hyperpage{8}
+    \subitem {mainPlayerController}, \hyperpage{8}
+    \subitem {playerObject}, \hyperpage{9}
+    \subitem {switchKey}, \hyperpage{9}
+  \item {cameraTransform}
+    \subitem {FPSController}, \hyperpage{10}
+
+  \indexspace
+
+  \item {FPSController}, \hyperpage{9}
+    \subitem {cameraTransform}, \hyperpage{10}
+    \subitem {mouseSensitivity}, \hyperpage{10}
+    \subitem {moveSpeed}, \hyperpage{10}
+
+  \indexspace
+
+  \item {heading}
+    \subitem {Readme.Section}, \hyperpage{17}
+  \item {hidePlayer}
+    \subitem {CameraSwitchTrigger}, \hyperpage{8}
+
+  \indexspace
+
+  \item {icon}
+    \subitem {Readme}, \hyperpage{13}
+
+  \indexspace
+
+  \item {linkText}
+    \subitem {Readme.Section}, \hyperpage{17}
+  \item {loadedLayout}
+    \subitem {Readme}, \hyperpage{13}
+  \item {LoadSceneOnTrigger}, \hyperpage{11}
+
+  \indexspace
+
+  \item {mainCamera}
+    \subitem {CameraSwitchTrigger}, \hyperpage{8}
+  \item {mainPlayerController}
+    \subitem {CameraSwitchTrigger}, \hyperpage{8}
+  \item {mouseSensitivity}
+    \subitem {FPSController}, \hyperpage{10}
+  \item {moveSpeed}
+    \subitem {FPSController}, \hyperpage{10}
+
+  \indexspace
+
+  \item {OnHeaderGUI}
+    \subitem {ReadmeEditor}, \hyperpage{15}
+  \item {OnInspectorGUI}
+    \subitem {ReadmeEditor}, \hyperpage{15}
+
+  \indexspace
+
+  \item {playerObject}
+    \subitem {CameraSwitchTrigger}, \hyperpage{9}
+
+  \indexspace
+
+  \item {Readme}, \hyperpage{12}
+    \subitem {icon}, \hyperpage{13}
+    \subitem {loadedLayout}, \hyperpage{13}
+    \subitem {sections}, \hyperpage{13}
+    \subitem {title}, \hyperpage{13}
+  \item {Readme.Section}, \hyperpage{16}
+    \subitem {heading}, \hyperpage{17}
+    \subitem {linkText}, \hyperpage{17}
+    \subitem {text}, \hyperpage{17}
+    \subitem {url}, \hyperpage{17}
+  \item {ReadmeEditor}, \hyperpage{14}
+    \subitem {OnHeaderGUI}, \hyperpage{15}
+    \subitem {OnInspectorGUI}, \hyperpage{15}
+  \item {RotateOnXZWithKeys}, \hyperpage{15}
+    \subitem {rotationSpeed}, \hyperpage{16}
+  \item {rotationSpeed}
+    \subitem {RotateOnXZWithKeys}, \hyperpage{16}
+
+  \indexspace
+
+  \item {sections}
+    \subitem {Readme}, \hyperpage{13}
+  \item {ShowTMPTextOnTrigger}, \hyperpage{18}
+  \item {switchKey}
+    \subitem {CameraSwitchTrigger}, \hyperpage{9}
+
+  \indexspace
+
+  \item {text}
+    \subitem {Readme.Section}, \hyperpage{17}
+  \item {title}
+    \subitem {Readme}, \hyperpage{13}
+
+  \indexspace
+
+  \item {url}
+    \subitem {Readme.Section}, \hyperpage{17}
+
+\end{theindex}

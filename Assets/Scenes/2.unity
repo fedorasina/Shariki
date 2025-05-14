@@ -2249,7 +2249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 3
-  playerTag: GameController
+  ballTag: GameController
 --- !u!114 &2064827818
 MonoBehaviour:
   m_ObjectHideFlags: 0

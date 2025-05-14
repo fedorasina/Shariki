@@ -1,0 +1,131 @@
+\doxysection{Класс Camera\+Switch\+Trigger}
+\hypertarget{class_camera_switch_trigger}{}\label{class_camera_switch_trigger}\index{CameraSwitchTrigger@{CameraSwitchTrigger}}
+
+
+Manages switching between different cameras and control systems.  
+
+
+
+
+Граф наследования\+:Camera\+Switch\+Trigger\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{class_camera_switch_trigger__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Граф связей класса Camera\+Switch\+Trigger\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{class_camera_switch_trigger__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_camera_switch_trigger_a24a82287b392781ee789428abc6134cd}{player\+Object}}
+\item 
+Game\+Object \mbox{\hyperlink{class_camera_switch_trigger_adbf09c1a69a35177c4969f6e7bc61cb2}{main\+Camera}}
+\item 
+Game\+Object \mbox{\hyperlink{class_camera_switch_trigger_aba6d08ef63a4c80c67f7960c73feaff0}{alternate\+Camera}}
+\item 
+Mono\+Behaviour \mbox{\hyperlink{class_camera_switch_trigger_affdb94cf35e7c6c268b846e7b17f5f83}{main\+Player\+Controller}}
+\item 
+Mono\+Behaviour \mbox{\hyperlink{class_camera_switch_trigger_af22caa3f985afccd22604eeccb0b7426}{alternate\+Controller}}
+\item 
+Key\+Code \mbox{\hyperlink{class_camera_switch_trigger_a6dab1928b52af6bf339a3883eb330a84}{switch\+Key}} = Key\+Code.\+F
+\item 
+bool \mbox{\hyperlink{class_camera_switch_trigger_ab76ae68c9d186af877256ddf8bdd23a1}{hide\+Player}} = true
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Manages switching between different cameras and control systems. 
+
+This component allows toggling between a main camera/controller and an alternate camera/controller when the player enters a trigger zone and presses a designated key 
+
+См. определение в файле \mbox{\hyperlink{_camera_switch_controller_8cs_source}{Camera\+Switch\+Controller.\+cs}} строка \mbox{\hyperlink{_camera_switch_controller_8cs_source_l00010}{10}}
+
+
+
+\doxysubsection{Данные класса}
+\Hypertarget{class_camera_switch_trigger_aba6d08ef63a4c80c67f7960c73feaff0}\index{CameraSwitchTrigger@{CameraSwitchTrigger}!alternateCamera@{alternateCamera}}
+\index{alternateCamera@{alternateCamera}!CameraSwitchTrigger@{CameraSwitchTrigger}}
+\doxysubsubsection{\texorpdfstring{alternateCamera}{alternateCamera}}
+{\footnotesize\ttfamily \label{class_camera_switch_trigger_aba6d08ef63a4c80c67f7960c73feaff0} 
+Game\+Object Camera\+Switch\+Trigger.\+alternate\+Camera}
+
+
+
+См. определение в файле \mbox{\hyperlink{_camera_switch_controller_8cs_source}{Camera\+Switch\+Controller.\+cs}} строка \mbox{\hyperlink{_camera_switch_controller_8cs_source_l00015}{15}}
+
+\Hypertarget{class_camera_switch_trigger_af22caa3f985afccd22604eeccb0b7426}\index{CameraSwitchTrigger@{CameraSwitchTrigger}!alternateController@{alternateController}}
+\index{alternateController@{alternateController}!CameraSwitchTrigger@{CameraSwitchTrigger}}
+\doxysubsubsection{\texorpdfstring{alternateController}{alternateController}}
+{\footnotesize\ttfamily \label{class_camera_switch_trigger_af22caa3f985afccd22604eeccb0b7426} 
+Mono\+Behaviour Camera\+Switch\+Trigger.\+alternate\+Controller}
+
+
+
+См. определение в файле \mbox{\hyperlink{_camera_switch_controller_8cs_source}{Camera\+Switch\+Controller.\+cs}} строка \mbox{\hyperlink{_camera_switch_controller_8cs_source_l00017}{17}}
+
+\Hypertarget{class_camera_switch_trigger_ab76ae68c9d186af877256ddf8bdd23a1}\index{CameraSwitchTrigger@{CameraSwitchTrigger}!hidePlayer@{hidePlayer}}
+\index{hidePlayer@{hidePlayer}!CameraSwitchTrigger@{CameraSwitchTrigger}}
+\doxysubsubsection{\texorpdfstring{hidePlayer}{hidePlayer}}
+{\footnotesize\ttfamily \label{class_camera_switch_trigger_ab76ae68c9d186af877256ddf8bdd23a1} 
+bool Camera\+Switch\+Trigger.\+hide\+Player = true}
+
+
+
+См. определение в файле \mbox{\hyperlink{_camera_switch_controller_8cs_source}{Camera\+Switch\+Controller.\+cs}} строка \mbox{\hyperlink{_camera_switch_controller_8cs_source_l00021}{21}}
+
+\Hypertarget{class_camera_switch_trigger_adbf09c1a69a35177c4969f6e7bc61cb2}\index{CameraSwitchTrigger@{CameraSwitchTrigger}!mainCamera@{mainCamera}}
+\index{mainCamera@{mainCamera}!CameraSwitchTrigger@{CameraSwitchTrigger}}
+\doxysubsubsection{\texorpdfstring{mainCamera}{mainCamera}}
+{\footnotesize\ttfamily \label{class_camera_switch_trigger_adbf09c1a69a35177c4969f6e7bc61cb2} 
+Game\+Object Camera\+Switch\+Trigger.\+main\+Camera}
+
+
+
+См. определение в файле \mbox{\hyperlink{_camera_switch_controller_8cs_source}{Camera\+Switch\+Controller.\+cs}} строка \mbox{\hyperlink{_camera_switch_controller_8cs_source_l00014}{14}}
+
+\Hypertarget{class_camera_switch_trigger_affdb94cf35e7c6c268b846e7b17f5f83}\index{CameraSwitchTrigger@{CameraSwitchTrigger}!mainPlayerController@{mainPlayerController}}
+\index{mainPlayerController@{mainPlayerController}!CameraSwitchTrigger@{CameraSwitchTrigger}}
+\doxysubsubsection{\texorpdfstring{mainPlayerController}{mainPlayerController}}
+{\footnotesize\ttfamily \label{class_camera_switch_trigger_affdb94cf35e7c6c268b846e7b17f5f83} 
+Mono\+Behaviour Camera\+Switch\+Trigger.\+main\+Player\+Controller}
+
+
+
+См. определение в файле \mbox{\hyperlink{_camera_switch_controller_8cs_source}{Camera\+Switch\+Controller.\+cs}} строка \mbox{\hyperlink{_camera_switch_controller_8cs_source_l00016}{16}}
+
+\Hypertarget{class_camera_switch_trigger_a24a82287b392781ee789428abc6134cd}\index{CameraSwitchTrigger@{CameraSwitchTrigger}!playerObject@{playerObject}}
+\index{playerObject@{playerObject}!CameraSwitchTrigger@{CameraSwitchTrigger}}
+\doxysubsubsection{\texorpdfstring{playerObject}{playerObject}}
+{\footnotesize\ttfamily \label{class_camera_switch_trigger_a24a82287b392781ee789428abc6134cd} 
+Game\+Object Camera\+Switch\+Trigger.\+player\+Object}
+
+
+
+См. определение в файле \mbox{\hyperlink{_camera_switch_controller_8cs_source}{Camera\+Switch\+Controller.\+cs}} строка \mbox{\hyperlink{_camera_switch_controller_8cs_source_l00013}{13}}
+
+\Hypertarget{class_camera_switch_trigger_a6dab1928b52af6bf339a3883eb330a84}\index{CameraSwitchTrigger@{CameraSwitchTrigger}!switchKey@{switchKey}}
+\index{switchKey@{switchKey}!CameraSwitchTrigger@{CameraSwitchTrigger}}
+\doxysubsubsection{\texorpdfstring{switchKey}{switchKey}}
+{\footnotesize\ttfamily \label{class_camera_switch_trigger_a6dab1928b52af6bf339a3883eb330a84} 
+Key\+Code Camera\+Switch\+Trigger.\+switch\+Key = Key\+Code.\+F}
+
+
+
+См. определение в файле \mbox{\hyperlink{_camera_switch_controller_8cs_source}{Camera\+Switch\+Controller.\+cs}} строка \mbox{\hyperlink{_camera_switch_controller_8cs_source_l00020}{20}}
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/Camera\+Switch\+Controller.\+cs\end{DoxyCompactItemize}
