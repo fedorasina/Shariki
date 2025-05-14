@@ -1,0 +1,8 @@
+<map id="PuzzleBall" name="PuzzleBall">
+<area shape="rect" id="Node000001" title=" " alt="" coords="24,172,107,199"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,115,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,47,68,171,62,172,58,47"/>
+<area shape="rect" id="Node000003" href="$class_puzzle_system.html" title=" " alt="" coords="82,81,188,108"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="85,41,124,79,120,83,82,45"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="117,122,77,173,73,170,113,119"/>
+</map>

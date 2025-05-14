@@ -1,0 +1,5 @@
+<map id="Platformers.CoinGameManager.AddCoins" name="Platformers.CoinGameManager.AddCoins">
+<area shape="rect" id="Node000001" title="Adds coins to the player&#39;s collection and updates UI." alt="" coords="5,5,212,48"/>
+<area shape="rect" id="Node000002" href="$class_platformers_1_1_coin_game_manager.html#ad3db68d1fdfb71e5ddf6be163bb122c0" title="Displays a temporary message in the UI." alt="" coords="260,5,466,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,24,244,24,244,29,212,29"/>
+</map>

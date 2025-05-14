@@ -1,0 +1,98 @@
+\doxysection{Shoot\+Prefab.\+cs}
+\hypertarget{_shoot_prefab_8cs_source}{}\label{_shoot_prefab_8cs_source}\index{Assets/Scripts/ShootPrefab.cs@{Assets/Scripts/ShootPrefab.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00004}\mbox{\hyperlink{class_shoot_prefab}{00004}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_shoot_prefab}{ShootPrefab}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00006}00006\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ projectilePrefab;\ \textcolor{comment}{//\ Префаб\ снаряда}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00007}00007\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Transform\ spawnPoint;\ \textcolor{comment}{//\ Точка\ спавна\ снаряда}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00008}00008\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ shootForce\ =\ 20f;\ \textcolor{comment}{//\ Сила\ выстрела}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00009}00009\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ fireRate\ =\ 0.5f;\ \textcolor{comment}{//\ Скорострельность\ (секунды\ между\ выстрелами)}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00010}00010\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ maxProjectiles\ =\ 100;\ \textcolor{comment}{//\ Максимальное\ количество\ снарядов}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00011}00011\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Camera\ mainCamera;\ \textcolor{comment}{//\ Главная\ камера}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00012}00012\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ LayerMask\ raycastLayerMask;\ \textcolor{comment}{//\ Маска\ слоев\ для\ Raycast}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00013}00013\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ rotationSpeed\ =\ 10f;\ \textcolor{comment}{//\ Скорость\ поворота\ оружия\ (градусов/сек)}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ nextFireTime;\ \textcolor{comment}{//\ Время\ следующего\ выстрела}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00016}00016\ \ \ \ \ \textcolor{keyword}{private}\ Queue<GameObject>\ projectilePool\ =\ \textcolor{keyword}{new}\ Queue<GameObject>();\ \textcolor{comment}{//\ Очередь\ для\ отслеживания\ снарядов}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{private}\ Vector3\ screenCenter;\ \textcolor{comment}{//\ Кэшированный\ центр\ экрана}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00019}00019\ \ \ \ \ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00020}00020\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Кэшируем\ центр\ экрана\ при\ старте}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ screenCenter\ =\ \textcolor{keyword}{new}\ Vector3(Screen.width\ /\ 2f,\ Screen.height\ /\ 2f,\ 0);}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Обновление\ прицеливания\ каждый\ кадр\ с\ оптимизацией}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ AimAtScreenCenter();}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Проверка\ нажатия\ левой\ кнопки\ мыши\ и\ времени\ между\ выстрелами}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Input.GetMouseButton(0)\ \&\&\ Time.time\ >=\ nextFireTime)}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ Shoot();}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ nextFireTime\ =\ Time.time\ +\ fireRate;}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{void}\ AimAtScreenCenter()}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mainCamera\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Создаем\ луч\ из\ камеры\ через\ центр\ экрана}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ Ray\ ray\ =\ mainCamera.ScreenPointToRay(screenCenter);}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ Vector3\ targetPoint;}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Проверяем,\ пересекает\ ли\ луч\ что-\/либо\ в\ сцене,\ используя\ маску\ слоев}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Physics.Raycast(ray,\ out\ RaycastHit\ hit,\ 100f,\ raycastLayerMask))}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Если\ луч\ попал\ в\ объект,\ используем\ точку\ попадания}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ targetPoint\ =\ hit.point;}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Если\ луч\ не\ попал,\ используем\ точку\ на\ расстоянии\ 100\ единиц}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ targetPoint\ =\ ray.origin\ +\ ray.direction\ *\ 100f;}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Вычисляем\ направление\ и\ плавно\ поворачиваем\ оружие}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ Vector3\ direction\ =\ (targetPoint\ -\/\ transform.position).normalized;}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ Quaternion\ targetRotation\ =\ Quaternion.LookRotation(direction);}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ transform.rotation\ =\ Quaternion.Slerp(transform.rotation,\ targetRotation,\ rotationSpeed\ *\ Time.deltaTime);}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00064}00064\ \ \ \ \ \textcolor{keywordtype}{void}\ Shoot()}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Проверка\ превышения\ лимита\ снарядов}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (projectilePool.Count\ >=\ maxProjectiles)}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Удаляем\ самый\ старый\ снаряд}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ GameObject\ oldestProjectile\ =\ projectilePool.Dequeue();}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (oldestProjectile\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(oldestProjectile);}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Создание\ нового\ снаряда}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ GameObject\ projectile\ =\ Instantiate(projectilePrefab,\ spawnPoint.position,\ spawnPoint.rotation);}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ projectilePool.Enqueue(projectile);\ \textcolor{comment}{//\ Добавляем\ снаряд\ в\ очередь}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Получение\ компонента\ Rigidbody\ для\ добавления\ силы}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ Rigidbody\ rb\ =\ projectile.GetComponent<Rigidbody>();}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rb\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Применение\ силы\ к\ снаряду\ в\ направлении\ вперед}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ rb.AddForce(spawnPoint.forward\ *\ shootForce,\ ForceMode.Impulse);}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Уничтожение\ снаряда\ через\ 5\ секунд}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ Destroy(projectile,\ 5f);}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00091}00091\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shoot_prefab_8cs_source_l00092}00092\ \}}
+
+\end{DoxyCode}

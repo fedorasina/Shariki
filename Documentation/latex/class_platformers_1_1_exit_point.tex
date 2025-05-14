@@ -1,0 +1,111 @@
+\doxysection{Класс Platformers.\+Exit\+Point}
+\hypertarget{class_platformers_1_1_exit_point}{}\label{class_platformers_1_1_exit_point}\index{Platformers.ExitPoint@{Platformers.ExitPoint}}
+
+
+Represents a level exit point that transitions to the next level.  
+
+
+
+
+Граф наследования\+:Platformers.\+Exit\+Point\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{class_platformers_1_1_exit_point__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Граф связей класса Platformers.\+Exit\+Point\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{class_platformers_1_1_exit_point__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_platformers_1_1_exit_point_ac930e38a00347310a5432dca383488b4}{next\+Level\+Name}}
+\begin{DoxyCompactList}\small\item\em Name of the next scene to load. Leave empty for final level. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_platformers_1_1_exit_point_a6a891d172f878706ea2e42725146898e}{is\+Last\+Level}} = false
+\begin{DoxyCompactList}\small\item\em Whether this is the final level of the game. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_platformers_1_1_exit_point_a6e7cc6e6a0de3b8cad9ee31c6992e3dd}{completion\+Message}} = "{}Level Complete!"{}
+\begin{DoxyCompactList}\small\item\em Message shown when level is completed. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_platformers_1_1_exit_point_a783926a95e1f3831503396ed8beaea4d}{not\+Enough\+Coins\+Message}} = "{}Collect all coins first!"{}
+\begin{DoxyCompactList}\small\item\em Message shown when player hasn\textquotesingle{}t collected enough coins. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Represents a level exit point that transitions to the next level. 
+
+Manages level completion, coin collection requirements, and scene transitions. Provides visual debugging tools and customizable exit behavior. 
+
+См. определение в файле \mbox{\hyperlink{_exit_point_8cs_source}{Exit\+Point.\+cs}} строка \mbox{\hyperlink{_exit_point_8cs_source_l00010}{10}}
+
+
+
+\doxysubsection{Данные класса}
+\Hypertarget{class_platformers_1_1_exit_point_a6e7cc6e6a0de3b8cad9ee31c6992e3dd}\index{Platformers.ExitPoint@{Platformers.ExitPoint}!completionMessage@{completionMessage}}
+\index{completionMessage@{completionMessage}!Platformers.ExitPoint@{Platformers.ExitPoint}}
+\doxysubsubsection{\texorpdfstring{completionMessage}{completionMessage}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_exit_point_a6e7cc6e6a0de3b8cad9ee31c6992e3dd} 
+string Platformers.\+Exit\+Point.\+completion\+Message = "{}Level Complete!"{}}
+
+
+
+Message shown when level is completed. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_exit_point_8cs_source}{Exit\+Point.\+cs}} строка \mbox{\hyperlink{_exit_point_8cs_source_l00018}{18}}
+
+\Hypertarget{class_platformers_1_1_exit_point_a6a891d172f878706ea2e42725146898e}\index{Platformers.ExitPoint@{Platformers.ExitPoint}!isLastLevel@{isLastLevel}}
+\index{isLastLevel@{isLastLevel}!Platformers.ExitPoint@{Platformers.ExitPoint}}
+\doxysubsubsection{\texorpdfstring{isLastLevel}{isLastLevel}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_exit_point_a6a891d172f878706ea2e42725146898e} 
+bool Platformers.\+Exit\+Point.\+is\+Last\+Level = false}
+
+
+
+Whether this is the final level of the game. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_exit_point_8cs_source}{Exit\+Point.\+cs}} строка \mbox{\hyperlink{_exit_point_8cs_source_l00016}{16}}
+
+\Hypertarget{class_platformers_1_1_exit_point_ac930e38a00347310a5432dca383488b4}\index{Platformers.ExitPoint@{Platformers.ExitPoint}!nextLevelName@{nextLevelName}}
+\index{nextLevelName@{nextLevelName}!Platformers.ExitPoint@{Platformers.ExitPoint}}
+\doxysubsubsection{\texorpdfstring{nextLevelName}{nextLevelName}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_exit_point_ac930e38a00347310a5432dca383488b4} 
+string Platformers.\+Exit\+Point.\+next\+Level\+Name}
+
+
+
+Name of the next scene to load. Leave empty for final level. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_exit_point_8cs_source}{Exit\+Point.\+cs}} строка \mbox{\hyperlink{_exit_point_8cs_source_l00014}{14}}
+
+\Hypertarget{class_platformers_1_1_exit_point_a783926a95e1f3831503396ed8beaea4d}\index{Platformers.ExitPoint@{Platformers.ExitPoint}!notEnoughCoinsMessage@{notEnoughCoinsMessage}}
+\index{notEnoughCoinsMessage@{notEnoughCoinsMessage}!Platformers.ExitPoint@{Platformers.ExitPoint}}
+\doxysubsubsection{\texorpdfstring{notEnoughCoinsMessage}{notEnoughCoinsMessage}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_exit_point_a783926a95e1f3831503396ed8beaea4d} 
+string Platformers.\+Exit\+Point.\+not\+Enough\+Coins\+Message = "{}Collect all coins first!"{}}
+
+
+
+Message shown when player hasn\textquotesingle{}t collected enough coins. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_exit_point_8cs_source}{Exit\+Point.\+cs}} строка \mbox{\hyperlink{_exit_point_8cs_source_l00020}{20}}
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Platformers/Exit\+Point.\+cs\end{DoxyCompactItemize}

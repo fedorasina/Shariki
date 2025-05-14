@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cameraswitchtrigger_0',['CameraSwitchTrigger',['../class_camera_switch_trigger.html',1,'']]]
+  ['activatewhenalltaggeddestroyed_0',['ActivateWhenAllTaggedDestroyed',['../class_activate_when_all_tagged_destroyed.html',1,'']]]
 ];

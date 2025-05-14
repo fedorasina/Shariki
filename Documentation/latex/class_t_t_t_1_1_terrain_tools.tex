@@ -1,0 +1,373 @@
+\doxysection{Класс TTT.\+Terrain\+Tools}
+\hypertarget{class_t_t_t_1_1_terrain_tools}{}\label{class_t_t_t_1_1_terrain_tools}\index{TTT.TerrainTools@{TTT.TerrainTools}}
+
+
+Граф наследования\+:TTT.\+Terrain\+Tools\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=167pt]{class_t_t_t_1_1_terrain_tools__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Граф связей класса TTT.\+Terrain\+Tools\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=167pt]{class_t_t_t_1_1_terrain_tools__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_afecd9b3eab154cf315c12c87d867ab14}{Fix\+Texture\+Settings}} (Texture2D texture)
+\item 
+string \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_a127f41896cb269cdc843d77da954759f}{Find\+File}} (string basename)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_a439968ea42e66be92311d1162b3fac5a}{Reverse}} (string text)
+\item 
+static float\mbox{[},\mbox{]} \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_aee5bb439ebdc745de9aafcc1371dbfd6}{Read\+Raw\+Height\+Map}} (string path, int width\+Plus\+One, int heightmap\+Width, int heightmap\+Height)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+Terrain \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_ac59992d5cbe87c9c4d947e6e11ec0a03}{my\+Terrain}}
+\item 
+Texture2D \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_aaf9b2cbc79fb06ecb9602374437d4e8c}{splatA}}
+\item 
+Texture2D \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_a7703228daba3f6b851bf57bd5f9511d8}{splatB}}
+\item 
+Texture2D \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_a0efd813e3223f0df485e4ccea02247e1}{treemap}}
+\item 
+bool \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_ac96faa5b72d96ae4226699cec6646040}{reset\+Trees}} = true
+\item 
+bool \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_a4de96a22812efaed030e78f3b3a35a1d}{additive\+Trees}} = false
+\item 
+float \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_a7f99af3cbd27c3a8b5a099224fa4cf86}{tree\+Density}} = 0.\+4f
+\item 
+float \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_aebb0cfc492893291c6ba8975d062a4dc}{tree\+Threshold}} = 0.\+1f
+\item 
+float \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_a942167548c7b4186a845ead4632239ff}{tree\+Size}} = 1f
+\item 
+float \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_aa7b65954ec640cacb14c7ff625f31980}{size\+Variation}} = 0.\+2f
+\item 
+Texture2D \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_a53100ba398b9a9b1e49961834920da81}{grassmap}}
+\item 
+Texture2D \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_aa615fbb98476f84fe9c659980646f2ed}{bushmap}}
+\item 
+float \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_a864e06755c40dd560c453885df8be346}{grass\+Density}} = 0.\+05f
+\item 
+float \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_a6ea37ff55fe70ac161dcc6fde0362190}{grassclumping}} = 0.\+25f
+\item 
+float \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_a1589aeea211a75a7d8e22493fdf32977}{bush\+Density}} = 0.\+02f
+\item 
+Texture2D \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_a13fdf376072a94edda1f8445fdbc2226}{overlay\+Map}}
+\item 
+float \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_ac2854363c9824da385b71675a3617d15}{overlay\+Threshold}} = 0.\+1f
+\item 
+Texture2D \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_ac6b1edbc6a4c8c6114a62b472f348a31}{overlay\+Texture}}
+\item 
+int \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_aa48098febb2acf0f902ed0c2fb7eb577}{tile\+Size}} = 15
+\item 
+bool \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_a81faeb551730c74d4345654e532df70e}{clear\+Trees}} = false
+\item 
+float \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_a6658904fb064372857c779377b1f3cfc}{clear\+Radius}} = 1.\+0f
+\item 
+bool \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_aa368b6af0e263566de4594a80f06c7b0}{clear\+Grass}} = true
+\item 
+float \mbox{\hyperlink{class_t_t_t_1_1_terrain_tools_a98cbe3c67c9910b00725f81095ee4cc5}{change\+Terrain}} = 0.\+0f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00018}{18}}
+
+
+
+\doxysubsection{Методы}
+\Hypertarget{class_t_t_t_1_1_terrain_tools_a127f41896cb269cdc843d77da954759f}\index{TTT.TerrainTools@{TTT.TerrainTools}!FindFile@{FindFile}}
+\index{FindFile@{FindFile}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{FindFile()}{FindFile()}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_a127f41896cb269cdc843d77da954759f} 
+string TTT.\+Terrain\+Tools.\+Find\+File (\begin{DoxyParamCaption}\item[{string}]{basename}{}\end{DoxyParamCaption})}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00463}{463}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_afecd9b3eab154cf315c12c87d867ab14}\index{TTT.TerrainTools@{TTT.TerrainTools}!FixTextureSettings@{FixTextureSettings}}
+\index{FixTextureSettings@{FixTextureSettings}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{FixTextureSettings()}{FixTextureSettings()}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_afecd9b3eab154cf315c12c87d867ab14} 
+void TTT.\+Terrain\+Tools.\+Fix\+Texture\+Settings (\begin{DoxyParamCaption}\item[{Texture2D}]{texture}{}\end{DoxyParamCaption})}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00432}{432}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_aee5bb439ebdc745de9aafcc1371dbfd6}\index{TTT.TerrainTools@{TTT.TerrainTools}!ReadRawHeightMap@{ReadRawHeightMap}}
+\index{ReadRawHeightMap@{ReadRawHeightMap}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{ReadRawHeightMap()}{ReadRawHeightMap()}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_aee5bb439ebdc745de9aafcc1371dbfd6} 
+static float\mbox{[},\mbox{]} TTT.\+Terrain\+Tools.\+Read\+Raw\+Height\+Map (\begin{DoxyParamCaption}\item[{string}]{path}{, }\item[{int}]{width\+Plus\+One}{, }\item[{int}]{heightmap\+Width}{, }\item[{int}]{heightmap\+Height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l01683}{1683}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_a439968ea42e66be92311d1162b3fac5a}\index{TTT.TerrainTools@{TTT.TerrainTools}!Reverse@{Reverse}}
+\index{Reverse@{Reverse}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{Reverse()}{Reverse()}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_a439968ea42e66be92311d1162b3fac5a} 
+static string TTT.\+Terrain\+Tools.\+Reverse (\begin{DoxyParamCaption}\item[{string}]{text}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00453}{453}}
+
+
+
+\doxysubsection{Данные класса}
+\Hypertarget{class_t_t_t_1_1_terrain_tools_a4de96a22812efaed030e78f3b3a35a1d}\index{TTT.TerrainTools@{TTT.TerrainTools}!additiveTrees@{additiveTrees}}
+\index{additiveTrees@{additiveTrees}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{additiveTrees}{additiveTrees}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_a4de96a22812efaed030e78f3b3a35a1d} 
+bool TTT.\+Terrain\+Tools.\+additive\+Trees = false}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00037}{37}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_a1589aeea211a75a7d8e22493fdf32977}\index{TTT.TerrainTools@{TTT.TerrainTools}!bushDensity@{bushDensity}}
+\index{bushDensity@{bushDensity}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{bushDensity}{bushDensity}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_a1589aeea211a75a7d8e22493fdf32977} 
+float TTT.\+Terrain\+Tools.\+bush\+Density = 0.\+02f}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00047}{47}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_aa615fbb98476f84fe9c659980646f2ed}\index{TTT.TerrainTools@{TTT.TerrainTools}!bushmap@{bushmap}}
+\index{bushmap@{bushmap}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{bushmap}{bushmap}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_aa615fbb98476f84fe9c659980646f2ed} 
+Texture2D TTT.\+Terrain\+Tools.\+bushmap}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00044}{44}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_a98cbe3c67c9910b00725f81095ee4cc5}\index{TTT.TerrainTools@{TTT.TerrainTools}!changeTerrain@{changeTerrain}}
+\index{changeTerrain@{changeTerrain}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{changeTerrain}{changeTerrain}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_a98cbe3c67c9910b00725f81095ee4cc5} 
+float TTT.\+Terrain\+Tools.\+change\+Terrain = 0.\+0f}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00056}{56}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_aa368b6af0e263566de4594a80f06c7b0}\index{TTT.TerrainTools@{TTT.TerrainTools}!clearGrass@{clearGrass}}
+\index{clearGrass@{clearGrass}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{clearGrass}{clearGrass}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_aa368b6af0e263566de4594a80f06c7b0} 
+bool TTT.\+Terrain\+Tools.\+clear\+Grass = true}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00055}{55}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_a6658904fb064372857c779377b1f3cfc}\index{TTT.TerrainTools@{TTT.TerrainTools}!clearRadius@{clearRadius}}
+\index{clearRadius@{clearRadius}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{clearRadius}{clearRadius}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_a6658904fb064372857c779377b1f3cfc} 
+float TTT.\+Terrain\+Tools.\+clear\+Radius = 1.\+0f}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00054}{54}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_a81faeb551730c74d4345654e532df70e}\index{TTT.TerrainTools@{TTT.TerrainTools}!clearTrees@{clearTrees}}
+\index{clearTrees@{clearTrees}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{clearTrees}{clearTrees}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_a81faeb551730c74d4345654e532df70e} 
+bool TTT.\+Terrain\+Tools.\+clear\+Trees = false}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00053}{53}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_a6ea37ff55fe70ac161dcc6fde0362190}\index{TTT.TerrainTools@{TTT.TerrainTools}!grassclumping@{grassclumping}}
+\index{grassclumping@{grassclumping}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{grassclumping}{grassclumping}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_a6ea37ff55fe70ac161dcc6fde0362190} 
+float TTT.\+Terrain\+Tools.\+grassclumping = 0.\+25f}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00046}{46}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_a864e06755c40dd560c453885df8be346}\index{TTT.TerrainTools@{TTT.TerrainTools}!grassDensity@{grassDensity}}
+\index{grassDensity@{grassDensity}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{grassDensity}{grassDensity}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_a864e06755c40dd560c453885df8be346} 
+float TTT.\+Terrain\+Tools.\+grass\+Density = 0.\+05f}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00045}{45}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_a53100ba398b9a9b1e49961834920da81}\index{TTT.TerrainTools@{TTT.TerrainTools}!grassmap@{grassmap}}
+\index{grassmap@{grassmap}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{grassmap}{grassmap}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_a53100ba398b9a9b1e49961834920da81} 
+Texture2D TTT.\+Terrain\+Tools.\+grassmap}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00043}{43}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_ac59992d5cbe87c9c4d947e6e11ec0a03}\index{TTT.TerrainTools@{TTT.TerrainTools}!myTerrain@{myTerrain}}
+\index{myTerrain@{myTerrain}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{myTerrain}{myTerrain}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_ac59992d5cbe87c9c4d947e6e11ec0a03} 
+Terrain TTT.\+Terrain\+Tools.\+my\+Terrain}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00020}{20}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_a13fdf376072a94edda1f8445fdbc2226}\index{TTT.TerrainTools@{TTT.TerrainTools}!overlayMap@{overlayMap}}
+\index{overlayMap@{overlayMap}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{overlayMap}{overlayMap}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_a13fdf376072a94edda1f8445fdbc2226} 
+Texture2D TTT.\+Terrain\+Tools.\+overlay\+Map}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00049}{49}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_ac6b1edbc6a4c8c6114a62b472f348a31}\index{TTT.TerrainTools@{TTT.TerrainTools}!overlayTexture@{overlayTexture}}
+\index{overlayTexture@{overlayTexture}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{overlayTexture}{overlayTexture}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_ac6b1edbc6a4c8c6114a62b472f348a31} 
+Texture2D TTT.\+Terrain\+Tools.\+overlay\+Texture}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00051}{51}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_ac2854363c9824da385b71675a3617d15}\index{TTT.TerrainTools@{TTT.TerrainTools}!overlayThreshold@{overlayThreshold}}
+\index{overlayThreshold@{overlayThreshold}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{overlayThreshold}{overlayThreshold}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_ac2854363c9824da385b71675a3617d15} 
+float TTT.\+Terrain\+Tools.\+overlay\+Threshold = 0.\+1f}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00050}{50}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_ac96faa5b72d96ae4226699cec6646040}\index{TTT.TerrainTools@{TTT.TerrainTools}!resetTrees@{resetTrees}}
+\index{resetTrees@{resetTrees}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{resetTrees}{resetTrees}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_ac96faa5b72d96ae4226699cec6646040} 
+bool TTT.\+Terrain\+Tools.\+reset\+Trees = true}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00036}{36}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_aa7b65954ec640cacb14c7ff625f31980}\index{TTT.TerrainTools@{TTT.TerrainTools}!sizeVariation@{sizeVariation}}
+\index{sizeVariation@{sizeVariation}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{sizeVariation}{sizeVariation}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_aa7b65954ec640cacb14c7ff625f31980} 
+float TTT.\+Terrain\+Tools.\+size\+Variation = 0.\+2f}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00041}{41}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_aaf9b2cbc79fb06ecb9602374437d4e8c}\index{TTT.TerrainTools@{TTT.TerrainTools}!splatA@{splatA}}
+\index{splatA@{splatA}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{splatA}{splatA}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_aaf9b2cbc79fb06ecb9602374437d4e8c} 
+Texture2D TTT.\+Terrain\+Tools.\+splatA}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00032}{32}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_a7703228daba3f6b851bf57bd5f9511d8}\index{TTT.TerrainTools@{TTT.TerrainTools}!splatB@{splatB}}
+\index{splatB@{splatB}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{splatB}{splatB}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_a7703228daba3f6b851bf57bd5f9511d8} 
+Texture2D TTT.\+Terrain\+Tools.\+splatB}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00033}{33}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_aa48098febb2acf0f902ed0c2fb7eb577}\index{TTT.TerrainTools@{TTT.TerrainTools}!tileSize@{tileSize}}
+\index{tileSize@{tileSize}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{tileSize}{tileSize}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_aa48098febb2acf0f902ed0c2fb7eb577} 
+int TTT.\+Terrain\+Tools.\+tile\+Size = 15}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00052}{52}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_a7f99af3cbd27c3a8b5a099224fa4cf86}\index{TTT.TerrainTools@{TTT.TerrainTools}!treeDensity@{treeDensity}}
+\index{treeDensity@{treeDensity}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{treeDensity}{treeDensity}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_a7f99af3cbd27c3a8b5a099224fa4cf86} 
+float TTT.\+Terrain\+Tools.\+tree\+Density = 0.\+4f}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00038}{38}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_a0efd813e3223f0df485e4ccea02247e1}\index{TTT.TerrainTools@{TTT.TerrainTools}!treemap@{treemap}}
+\index{treemap@{treemap}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{treemap}{treemap}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_a0efd813e3223f0df485e4ccea02247e1} 
+Texture2D TTT.\+Terrain\+Tools.\+treemap}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00035}{35}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_a942167548c7b4186a845ead4632239ff}\index{TTT.TerrainTools@{TTT.TerrainTools}!treeSize@{treeSize}}
+\index{treeSize@{treeSize}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{treeSize}{treeSize}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_a942167548c7b4186a845ead4632239ff} 
+float TTT.\+Terrain\+Tools.\+tree\+Size = 1f}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00040}{40}}
+
+\Hypertarget{class_t_t_t_1_1_terrain_tools_aebb0cfc492893291c6ba8975d062a4dc}\index{TTT.TerrainTools@{TTT.TerrainTools}!treeThreshold@{treeThreshold}}
+\index{treeThreshold@{treeThreshold}!TTT.TerrainTools@{TTT.TerrainTools}}
+\doxysubsubsection{\texorpdfstring{treeThreshold}{treeThreshold}}
+{\footnotesize\ttfamily \label{class_t_t_t_1_1_terrain_tools_aebb0cfc492893291c6ba8975d062a4dc} 
+float TTT.\+Terrain\+Tools.\+tree\+Threshold = 0.\+1f}
+
+
+
+См. определение в файле \mbox{\hyperlink{_terrain_tools_8cs_source}{Terrain\+Tools.\+cs}} строка \mbox{\hyperlink{_terrain_tools_8cs_source_l00039}{39}}
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Tom\textquotesingle{}s Terrain Tools/\+Editor/Terrain\+Tools.\+cs\end{DoxyCompactItemize}

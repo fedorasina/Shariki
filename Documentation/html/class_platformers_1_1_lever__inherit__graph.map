@@ -1,0 +1,5 @@
+<map id="Platformers.Lever" name="Platformers.Lever">
+<area shape="rect" id="Node000001" title="Interactive lever that controls moving platforms." alt="" coords="5,80,127,107"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="11,5,121,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,48,69,80,63,80,63,48"/>
+</map>

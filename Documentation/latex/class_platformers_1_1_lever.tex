@@ -1,0 +1,175 @@
+\doxysection{Класс Platformers.\+Lever}
+\hypertarget{class_platformers_1_1_lever}{}\label{class_platformers_1_1_lever}\index{Platformers.Lever@{Platformers.Lever}}
+
+
+Interactive lever that controls moving platforms.  
+
+
+
+
+Граф наследования\+:Platformers.\+Lever\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{class_platformers_1_1_lever__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Граф связей класса Platformers.\+Lever\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{class_platformers_1_1_lever__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+Transform \mbox{\hyperlink{class_platformers_1_1_lever_a591ac7a743464cd79224ad2b61ede653}{lever\+Handle}}
+\begin{DoxyCompactList}\small\item\em Transform representing the physical lever handle. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_platformers_1_1_lever_ad242c8b030831351a9e8c183ee2c73f0}{activation\+Angle}} = 45f
+\begin{DoxyCompactList}\small\item\em Angle the lever rotates when activated. \end{DoxyCompactList}\item 
+Key\+Code \mbox{\hyperlink{class_platformers_1_1_lever_a037eceea83c81783c300fb76e3d092a1}{activation\+Key}} = Key\+Code.\+E
+\begin{DoxyCompactList}\small\item\em Key used to interact with the lever. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_platformers_1_1_lever_ae965ba07f4548a5e4fb20ed6519663a0}{one\+Time\+Use}} = false
+\begin{DoxyCompactList}\small\item\em Whether the lever can only be used once. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_platformers_1_1_lever_a2708c735ae62a8dce8885306ad355a5e}{start\+Activated}} = false
+\begin{DoxyCompactList}\small\item\em Whether the lever starts in activated state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_platformers_1_1_moving_platform}{Moving\+Platform}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_platformers_1_1_lever_a428b2c471daf1bba733ef8a5c6efa6af}{controlled\+Platforms}}
+\begin{DoxyCompactList}\small\item\em Array of platforms controlled by this lever. \end{DoxyCompactList}\item 
+Unity\+Event \mbox{\hyperlink{class_platformers_1_1_lever_a3dcdb141db7c4a159c5e861b7a866046}{on\+Activate}}
+\begin{DoxyCompactList}\small\item\em Event triggered when lever is activated. \end{DoxyCompactList}\item 
+Unity\+Event \mbox{\hyperlink{class_platformers_1_1_lever_a776997f2ab63ab759dc9b8d23499e52f}{on\+Deactivate}}
+\begin{DoxyCompactList}\small\item\em Event triggered when lever is deactivated. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Interactive lever that controls moving platforms. 
+
+Implements a lever mechanism that can be activated by players to control one or more moving platforms. Supports one-\/time use, initial state configuration, and custom events on activation/deactivation. 
+
+См. определение в файле \mbox{\hyperlink{_lever_8cs_source}{Lever.\+cs}} строка \mbox{\hyperlink{_lever_8cs_source_l00010}{10}}
+
+
+
+\doxysubsection{Данные класса}
+\Hypertarget{class_platformers_1_1_lever_ad242c8b030831351a9e8c183ee2c73f0}\index{Platformers.Lever@{Platformers.Lever}!activationAngle@{activationAngle}}
+\index{activationAngle@{activationAngle}!Platformers.Lever@{Platformers.Lever}}
+\doxysubsubsection{\texorpdfstring{activationAngle}{activationAngle}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_lever_ad242c8b030831351a9e8c183ee2c73f0} 
+float Platformers.\+Lever.\+activation\+Angle = 45f}
+
+
+
+Angle the lever rotates when activated. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_lever_8cs_source}{Lever.\+cs}} строка \mbox{\hyperlink{_lever_8cs_source_l00016}{16}}
+
+\Hypertarget{class_platformers_1_1_lever_a037eceea83c81783c300fb76e3d092a1}\index{Platformers.Lever@{Platformers.Lever}!activationKey@{activationKey}}
+\index{activationKey@{activationKey}!Platformers.Lever@{Platformers.Lever}}
+\doxysubsubsection{\texorpdfstring{activationKey}{activationKey}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_lever_a037eceea83c81783c300fb76e3d092a1} 
+Key\+Code Platformers.\+Lever.\+activation\+Key = Key\+Code.\+E}
+
+
+
+Key used to interact with the lever. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_lever_8cs_source}{Lever.\+cs}} строка \mbox{\hyperlink{_lever_8cs_source_l00018}{18}}
+
+\Hypertarget{class_platformers_1_1_lever_a428b2c471daf1bba733ef8a5c6efa6af}\index{Platformers.Lever@{Platformers.Lever}!controlledPlatforms@{controlledPlatforms}}
+\index{controlledPlatforms@{controlledPlatforms}!Platformers.Lever@{Platformers.Lever}}
+\doxysubsubsection{\texorpdfstring{controlledPlatforms}{controlledPlatforms}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_lever_a428b2c471daf1bba733ef8a5c6efa6af} 
+\mbox{\hyperlink{class_platformers_1_1_moving_platform}{Moving\+Platform}} \mbox{[}$\,$\mbox{]} Platformers.\+Lever.\+controlled\+Platforms}
+
+
+
+Array of platforms controlled by this lever. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_lever_8cs_source}{Lever.\+cs}} строка \mbox{\hyperlink{_lever_8cs_source_l00026}{26}}
+
+\Hypertarget{class_platformers_1_1_lever_a591ac7a743464cd79224ad2b61ede653}\index{Platformers.Lever@{Platformers.Lever}!leverHandle@{leverHandle}}
+\index{leverHandle@{leverHandle}!Platformers.Lever@{Platformers.Lever}}
+\doxysubsubsection{\texorpdfstring{leverHandle}{leverHandle}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_lever_a591ac7a743464cd79224ad2b61ede653} 
+Transform Platformers.\+Lever.\+lever\+Handle}
+
+
+
+Transform representing the physical lever handle. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_lever_8cs_source}{Lever.\+cs}} строка \mbox{\hyperlink{_lever_8cs_source_l00014}{14}}
+
+\Hypertarget{class_platformers_1_1_lever_a3dcdb141db7c4a159c5e861b7a866046}\index{Platformers.Lever@{Platformers.Lever}!onActivate@{onActivate}}
+\index{onActivate@{onActivate}!Platformers.Lever@{Platformers.Lever}}
+\doxysubsubsection{\texorpdfstring{onActivate}{onActivate}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_lever_a3dcdb141db7c4a159c5e861b7a866046} 
+Unity\+Event Platformers.\+Lever.\+on\+Activate}
+
+
+
+Event triggered when lever is activated. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_lever_8cs_source}{Lever.\+cs}} строка \mbox{\hyperlink{_lever_8cs_source_l00030}{30}}
+
+\Hypertarget{class_platformers_1_1_lever_a776997f2ab63ab759dc9b8d23499e52f}\index{Platformers.Lever@{Platformers.Lever}!onDeactivate@{onDeactivate}}
+\index{onDeactivate@{onDeactivate}!Platformers.Lever@{Platformers.Lever}}
+\doxysubsubsection{\texorpdfstring{onDeactivate}{onDeactivate}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_lever_a776997f2ab63ab759dc9b8d23499e52f} 
+Unity\+Event Platformers.\+Lever.\+on\+Deactivate}
+
+
+
+Event triggered when lever is deactivated. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_lever_8cs_source}{Lever.\+cs}} строка \mbox{\hyperlink{_lever_8cs_source_l00032}{32}}
+
+\Hypertarget{class_platformers_1_1_lever_ae965ba07f4548a5e4fb20ed6519663a0}\index{Platformers.Lever@{Platformers.Lever}!oneTimeUse@{oneTimeUse}}
+\index{oneTimeUse@{oneTimeUse}!Platformers.Lever@{Platformers.Lever}}
+\doxysubsubsection{\texorpdfstring{oneTimeUse}{oneTimeUse}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_lever_ae965ba07f4548a5e4fb20ed6519663a0} 
+bool Platformers.\+Lever.\+one\+Time\+Use = false}
+
+
+
+Whether the lever can only be used once. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_lever_8cs_source}{Lever.\+cs}} строка \mbox{\hyperlink{_lever_8cs_source_l00020}{20}}
+
+\Hypertarget{class_platformers_1_1_lever_a2708c735ae62a8dce8885306ad355a5e}\index{Platformers.Lever@{Platformers.Lever}!startActivated@{startActivated}}
+\index{startActivated@{startActivated}!Platformers.Lever@{Platformers.Lever}}
+\doxysubsubsection{\texorpdfstring{startActivated}{startActivated}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_lever_a2708c735ae62a8dce8885306ad355a5e} 
+bool Platformers.\+Lever.\+start\+Activated = false}
+
+
+
+Whether the lever starts in activated state. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_lever_8cs_source}{Lever.\+cs}} строка \mbox{\hyperlink{_lever_8cs_source_l00022}{22}}
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Platformers/Lever.\+cs\end{DoxyCompactItemize}

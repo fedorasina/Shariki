@@ -1,0 +1,508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>19CAPtcha84: Класс Platformers.CoinGameManager</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">19CAPtcha84<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">Am I a Robot?</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('class_platformers_1_1_coin_game_manager.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pub-attribs">Открытые атрибуты</a> &#124;
+<a href="#properties">Свойства</a> &#124;
+<a href="class_platformers_1_1_coin_game_manager-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс Platformers.CoinGameManager</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Manages the coin collection system and general game state in the platformer game.  
+ <a href="#details">Подробнее...</a></p>
+<div class="dynheader">
+Граф наследования:Platformers.CoinGameManager:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_platformers_1_1_coin_game_manager__inherit__graph.png" border="0" usemap="#a_platformers_8_coin_game_manager_inherit__map" alt="Inheritance graph"/></div>
+<map name="a_platformers_8_coin_game_manager_inherit__map" id="a_platformers_8_coin_game_manager_inherit__map">
+<area shape="rect" title="Manages the coin collection system and general game state in the platformer game." alt="" coords="5,80,208,107"/>
+<area shape="rect" title=" " alt="" coords="52,5,161,32"/>
+<area shape="poly" title=" " alt="" coords="109,48,109,80,104,80,104,48"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">см. легенду</a>]</span></center></div>
+<div class="dynheader">
+Граф связей класса Platformers.CoinGameManager:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_platformers_1_1_coin_game_manager__coll__graph.png" border="0" usemap="#a_platformers_8_coin_game_manager_coll__map" alt="Collaboration graph"/></div>
+<map name="a_platformers_8_coin_game_manager_coll__map" id="a_platformers_8_coin_game_manager_coll__map">
+<area shape="rect" title="Manages the coin collection system and general game state in the platformer game." alt="" coords="5,80,208,107"/>
+<area shape="rect" title=" " alt="" coords="52,5,161,32"/>
+<area shape="poly" title=" " alt="" coords="109,48,109,80,104,80,104,48"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">см. легенду</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:acfbcadfb7c6c14f842638b2c5d525c34" id="r_acfbcadfb7c6c14f842638b2c5d525c34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acfbcadfb7c6c14f842638b2c5d525c34">AddCoins</a> (int amount)</td></tr>
+<tr class="memdesc:acfbcadfb7c6c14f842638b2c5d525c34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds coins to the player's collection and updates UI.  <br /></td></tr>
+<tr class="separator:acfbcadfb7c6c14f842638b2c5d525c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a3ca3d03ea74b2747fb388117493fd0" id="r_a6a3ca3d03ea74b2747fb388117493fd0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a3ca3d03ea74b2747fb388117493fd0">AreAllCoinsCollected</a> ()</td></tr>
+<tr class="memdesc:a6a3ca3d03ea74b2747fb388117493fd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if all required coins have been collected.  <br /></td></tr>
+<tr class="separator:a6a3ca3d03ea74b2747fb388117493fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53bbf8d857cc5726ccebebc941c12834" id="r_a53bbf8d857cc5726ccebebc941c12834"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53bbf8d857cc5726ccebebc941c12834">SetCheckpoint</a> (Vector3 position)</td></tr>
+<tr class="memdesc:a53bbf8d857cc5726ccebebc941c12834"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a new checkpoint position.  <br /></td></tr>
+<tr class="separator:a53bbf8d857cc5726ccebebc941c12834"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0260668a89546bafc4d9cf0dcdc372a9" id="r_a0260668a89546bafc4d9cf0dcdc372a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0260668a89546bafc4d9cf0dcdc372a9">RespawnPlayer</a> ()</td></tr>
+<tr class="memdesc:a0260668a89546bafc4d9cf0dcdc372a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Respawns the player at the last checkpoint.  <br /></td></tr>
+<tr class="separator:a0260668a89546bafc4d9cf0dcdc372a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3db68d1fdfb71e5ddf6be163bb122c0" id="r_ad3db68d1fdfb71e5ddf6be163bb122c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3db68d1fdfb71e5ddf6be163bb122c0">ShowMessage</a> (string message, float duration=-1)</td></tr>
+<tr class="memdesc:ad3db68d1fdfb71e5ddf6be163bb122c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays a temporary message in the UI.  <br /></td></tr>
+<tr class="separator:ad3db68d1fdfb71e5ddf6be163bb122c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba0a00aacb187f02aad92bd479f25a80" id="r_aba0a00aacb187f02aad92bd479f25a80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba0a00aacb187f02aad92bd479f25a80">RestartLevel</a> ()</td></tr>
+<tr class="memdesc:aba0a00aacb187f02aad92bd479f25a80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restarts the current level.  <br /></td></tr>
+<tr class="separator:aba0a00aacb187f02aad92bd479f25a80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35420486093d12431ad9d05642dfb220" id="r_a35420486093d12431ad9d05642dfb220"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35420486093d12431ad9d05642dfb220">LoadNextLevel</a> ()</td></tr>
+<tr class="memdesc:a35420486093d12431ad9d05642dfb220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the next level if available.  <br /></td></tr>
+<tr class="separator:a35420486093d12431ad9d05642dfb220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:ad68e04ec533f7544578f9597f840866e" id="r_ad68e04ec533f7544578f9597f840866e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad68e04ec533f7544578f9597f840866e">messageDisplayTime</a> = 2f</td></tr>
+<tr class="memdesc:ad68e04ec533f7544578f9597f840866e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Duration in seconds for which temporary messages are displayed.  <br /></td></tr>
+<tr class="separator:ad68e04ec533f7544578f9597f840866e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40017520429d487dee5ee18dae55c7b7" id="r_a40017520429d487dee5ee18dae55c7b7"><td class="memItemLeft" align="right" valign="top">Vector3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40017520429d487dee5ee18dae55c7b7">playerSpawnPoint</a></td></tr>
+<tr class="memdesc:a40017520429d487dee5ee18dae55c7b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initial spawn point for the player.  <br /></td></tr>
+<tr class="separator:a40017520429d487dee5ee18dae55c7b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40a5e7f033e44a1b99313bd2d17b0ed1" id="r_a40a5e7f033e44a1b99313bd2d17b0ed1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40a5e7f033e44a1b99313bd2d17b0ed1">useCheckpoints</a> = true</td></tr>
+<tr class="memdesc:a40a5e7f033e44a1b99313bd2d17b0ed1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the checkpoint system is enabled.  <br /></td></tr>
+<tr class="separator:a40a5e7f033e44a1b99313bd2d17b0ed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4470e5b96401ae7e96b9f5739d562d35" id="r_a4470e5b96401ae7e96b9f5739d562d35"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4470e5b96401ae7e96b9f5739d562d35">requireAllCoinsToExit</a> = true</td></tr>
+<tr class="memdesc:a4470e5b96401ae7e96b9f5739d562d35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether all coins must be collected to exit the level.  <br /></td></tr>
+<tr class="separator:a4470e5b96401ae7e96b9f5739d562d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+Свойства</h2></td></tr>
+<tr class="memitem:aa1db16cfea37e3c17131706cc2335b40" id="r_aa1db16cfea37e3c17131706cc2335b40"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_platformers_1_1_coin_game_manager.html">CoinGameManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1db16cfea37e3c17131706cc2335b40">Instance</a><code> [get]</code></td></tr>
+<tr class="memdesc:aa1db16cfea37e3c17131706cc2335b40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singleton instance of the <a class="el" href="class_platformers_1_1_coin_game_manager.html" title="Manages the coin collection system and general game state in the platformer game.">CoinGameManager</a>.  <br /></td></tr>
+<tr class="separator:aa1db16cfea37e3c17131706cc2335b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Manages the coin collection system and general game state in the platformer game. </p>
+<p>This singleton class handles coin collection, checkpoints, UI updates, and level progression. It persists between scenes and manages the player's progress throughout the game. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_coin_game_manager_8cs_source.html">CoinGameManager.cs</a> строка <a class="el" href="_coin_game_manager_8cs_source.html#l00010">10</a></p>
+</div><h2 class="groupheader">Методы</h2>
+<a id="acfbcadfb7c6c14f842638b2c5d525c34" name="acfbcadfb7c6c14f842638b2c5d525c34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfbcadfb7c6c14f842638b2c5d525c34">&#9670;&#160;</a></span>AddCoins()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Platformers.CoinGameManager.AddCoins </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>amount</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds coins to the player's collection and updates UI. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">amount</td><td>Number of coins to add </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_coin_game_manager_8cs_source.html">CoinGameManager.cs</a> строка <a class="el" href="_coin_game_manager_8cs_source.html#l00154">154</a></p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_platformers_1_1_coin_game_manager_acfbcadfb7c6c14f842638b2c5d525c34_cgraph.png" border="0" usemap="#aclass_platformers_1_1_coin_game_manager_acfbcadfb7c6c14f842638b2c5d525c34_cgraph" alt=""/></div>
+<map name="aclass_platformers_1_1_coin_game_manager_acfbcadfb7c6c14f842638b2c5d525c34_cgraph" id="aclass_platformers_1_1_coin_game_manager_acfbcadfb7c6c14f842638b2c5d525c34_cgraph">
+<area shape="rect" title="Adds coins to the player&#39;s collection and updates UI." alt="" coords="5,5,212,48"/>
+<area shape="rect" href="class_platformers_1_1_coin_game_manager.html#ad3db68d1fdfb71e5ddf6be163bb122c0" title="Displays a temporary message in the UI." alt="" coords="260,5,466,48"/>
+<area shape="poly" title=" " alt="" coords="212,24,244,24,244,29,212,29"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6a3ca3d03ea74b2747fb388117493fd0" name="a6a3ca3d03ea74b2747fb388117493fd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a3ca3d03ea74b2747fb388117493fd0">&#9670;&#160;</a></span>AreAllCoinsCollected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Platformers.CoinGameManager.AreAllCoinsCollected </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if all required coins have been collected. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>True if enough coins are collected to exit the level </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_coin_game_manager_8cs_source.html">CoinGameManager.cs</a> строка <a class="el" href="_coin_game_manager_8cs_source.html#l00163">163</a></p>
+
+</div>
+</div>
+<a id="a35420486093d12431ad9d05642dfb220" name="a35420486093d12431ad9d05642dfb220"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35420486093d12431ad9d05642dfb220">&#9670;&#160;</a></span>LoadNextLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Platformers.CoinGameManager.LoadNextLevel </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Loads the next level if available. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_coin_game_manager_8cs_source.html">CoinGameManager.cs</a> строка <a class="el" href="_coin_game_manager_8cs_source.html#l00249">249</a></p>
+
+</div>
+</div>
+<a id="a0260668a89546bafc4d9cf0dcdc372a9" name="a0260668a89546bafc4d9cf0dcdc372a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0260668a89546bafc4d9cf0dcdc372a9">&#9670;&#160;</a></span>RespawnPlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Platformers.CoinGameManager.RespawnPlayer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Respawns the player at the last checkpoint. </p>
+<p>Handles proper physics state management during respawn </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_coin_game_manager_8cs_source.html">CoinGameManager.cs</a> строка <a class="el" href="_coin_game_manager_8cs_source.html#l00181">181</a></p>
+
+</div>
+</div>
+<a id="aba0a00aacb187f02aad92bd479f25a80" name="aba0a00aacb187f02aad92bd479f25a80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba0a00aacb187f02aad92bd479f25a80">&#9670;&#160;</a></span>RestartLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Platformers.CoinGameManager.RestartLevel </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restarts the current level. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_coin_game_manager_8cs_source.html">CoinGameManager.cs</a> строка <a class="el" href="_coin_game_manager_8cs_source.html#l00243">243</a></p>
+
+</div>
+</div>
+<a id="a53bbf8d857cc5726ccebebc941c12834" name="a53bbf8d857cc5726ccebebc941c12834"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53bbf8d857cc5726ccebebc941c12834">&#9670;&#160;</a></span>SetCheckpoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Platformers.CoinGameManager.SetCheckpoint </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>position</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets a new checkpoint position. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>World position for the new checkpoint </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_coin_game_manager_8cs_source.html">CoinGameManager.cs</a> строка <a class="el" href="_coin_game_manager_8cs_source.html#l00170">170</a></p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_platformers_1_1_coin_game_manager_a53bbf8d857cc5726ccebebc941c12834_cgraph.png" border="0" usemap="#aclass_platformers_1_1_coin_game_manager_a53bbf8d857cc5726ccebebc941c12834_cgraph" alt=""/></div>
+<map name="aclass_platformers_1_1_coin_game_manager_a53bbf8d857cc5726ccebebc941c12834_cgraph" id="aclass_platformers_1_1_coin_game_manager_a53bbf8d857cc5726ccebebc941c12834_cgraph">
+<area shape="rect" title="Sets a new checkpoint position." alt="" coords="5,5,212,48"/>
+<area shape="rect" href="class_platformers_1_1_coin_game_manager.html#ad3db68d1fdfb71e5ddf6be163bb122c0" title="Displays a temporary message in the UI." alt="" coords="260,5,466,48"/>
+<area shape="poly" title=" " alt="" coords="212,24,244,24,244,29,212,29"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad3db68d1fdfb71e5ddf6be163bb122c0" name="ad3db68d1fdfb71e5ddf6be163bb122c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3db68d1fdfb71e5ddf6be163bb122c0">&#9670;&#160;</a></span>ShowMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Platformers.CoinGameManager.ShowMessage </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>message</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>duration</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Displays a temporary message in the UI. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>The message to display </td></tr>
+    <tr><td class="paramname">duration</td><td>Optional duration override. If negative, uses default duration </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_coin_game_manager_8cs_source.html">CoinGameManager.cs</a> строка <a class="el" href="_coin_game_manager_8cs_source.html#l00214">214</a></p>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_platformers_1_1_coin_game_manager_ad3db68d1fdfb71e5ddf6be163bb122c0_icgraph.png" border="0" usemap="#aclass_platformers_1_1_coin_game_manager_ad3db68d1fdfb71e5ddf6be163bb122c0_icgraph" alt=""/></div>
+<map name="aclass_platformers_1_1_coin_game_manager_ad3db68d1fdfb71e5ddf6be163bb122c0_icgraph" id="aclass_platformers_1_1_coin_game_manager_ad3db68d1fdfb71e5ddf6be163bb122c0_icgraph">
+<area shape="rect" title="Displays a temporary message in the UI." alt="" coords="260,39,466,81"/>
+<area shape="rect" href="class_platformers_1_1_coin_game_manager.html#acfbcadfb7c6c14f842638b2c5d525c34" title="Adds coins to the player&#39;s collection and updates UI." alt="" coords="5,5,212,48"/>
+<area shape="poly" title=" " alt="" coords="244,47,212,43,212,38,244,42"/>
+<area shape="rect" href="class_platformers_1_1_coin_game_manager.html#a53bbf8d857cc5726ccebebc941c12834" title="Sets a new checkpoint position." alt="" coords="5,72,212,115"/>
+<area shape="poly" title=" " alt="" coords="244,78,212,82,212,77,244,73"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Данные класса</h2>
+<a id="ad68e04ec533f7544578f9597f840866e" name="ad68e04ec533f7544578f9597f840866e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad68e04ec533f7544578f9597f840866e">&#9670;&#160;</a></span>messageDisplayTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Platformers.CoinGameManager.messageDisplayTime = 2f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Duration in seconds for which temporary messages are displayed. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_coin_game_manager_8cs_source.html">CoinGameManager.cs</a> строка <a class="el" href="_coin_game_manager_8cs_source.html#l00018">18</a></p>
+
+</div>
+</div>
+<a id="a40017520429d487dee5ee18dae55c7b7" name="a40017520429d487dee5ee18dae55c7b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40017520429d487dee5ee18dae55c7b7">&#9670;&#160;</a></span>playerSpawnPoint</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3 Platformers.CoinGameManager.playerSpawnPoint</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initial spawn point for the player. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_coin_game_manager_8cs_source.html">CoinGameManager.cs</a> строка <a class="el" href="_coin_game_manager_8cs_source.html#l00022">22</a></p>
+
+</div>
+</div>
+<a id="a4470e5b96401ae7e96b9f5739d562d35" name="a4470e5b96401ae7e96b9f5739d562d35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4470e5b96401ae7e96b9f5739d562d35">&#9670;&#160;</a></span>requireAllCoinsToExit</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Platformers.CoinGameManager.requireAllCoinsToExit = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whether all coins must be collected to exit the level. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_coin_game_manager_8cs_source.html">CoinGameManager.cs</a> строка <a class="el" href="_coin_game_manager_8cs_source.html#l00026">26</a></p>
+
+</div>
+</div>
+<a id="a40a5e7f033e44a1b99313bd2d17b0ed1" name="a40a5e7f033e44a1b99313bd2d17b0ed1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40a5e7f033e44a1b99313bd2d17b0ed1">&#9670;&#160;</a></span>useCheckpoints</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Platformers.CoinGameManager.useCheckpoints = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whether the checkpoint system is enabled. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_coin_game_manager_8cs_source.html">CoinGameManager.cs</a> строка <a class="el" href="_coin_game_manager_8cs_source.html#l00024">24</a></p>
+
+</div>
+</div>
+<h2 class="groupheader">Полный список свойств</h2>
+<a id="aa1db16cfea37e3c17131706cc2335b40" name="aa1db16cfea37e3c17131706cc2335b40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1db16cfea37e3c17131706cc2335b40">&#9670;&#160;</a></span>Instance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_platformers_1_1_coin_game_manager.html">CoinGameManager</a> Platformers.CoinGameManager.Instance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel get">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Singleton instance of the <a class="el" href="class_platformers_1_1_coin_game_manager.html" title="Manages the coin collection system and general game state in the platformer game.">CoinGameManager</a>. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>The single instance of <a class="el" href="class_platformers_1_1_coin_game_manager.html" title="Manages the coin collection system and general game state in the platformer game.">CoinGameManager</a> </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_coin_game_manager_8cs_source.html">CoinGameManager.cs</a> строка <a class="el" href="_coin_game_manager_8cs_source.html#l00038">38</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов класса находятся в файле:<ul>
+<li>Assets/Scripts/Platformers/<a class="el" href="_coin_game_manager_8cs_source.html">CoinGameManager.cs</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespace_platformers.html">Platformers</a></li><li class="navelem"><a class="el" href="class_platformers_1_1_coin_game_manager.html">CoinGameManager</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

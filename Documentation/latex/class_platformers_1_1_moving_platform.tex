@@ -1,0 +1,165 @@
+\doxysection{Класс Platformers.\+Moving\+Platform}
+\hypertarget{class_platformers_1_1_moving_platform}{}\label{class_platformers_1_1_moving_platform}\index{Platformers.MovingPlatform@{Platformers.MovingPlatform}}
+
+
+Implements a platform that moves between two points.  
+
+
+
+
+Граф наследования\+:Platformers.\+Moving\+Platform\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{class_platformers_1_1_moving_platform__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Граф связей класса Platformers.\+Moving\+Platform\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{class_platformers_1_1_moving_platform__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_platformers_1_1_moving_platform_a9af2b3bee873e253b909745ea8d63538}{Activate\+Platform}} ()
+\begin{DoxyCompactList}\small\item\em Activates platform movement towards target point. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_platformers_1_1_moving_platform_ac9d67b7c829c80692e38603a8e16808c}{Deactivate\+Platform}} ()
+\begin{DoxyCompactList}\small\item\em Deactivates platform movement and returns to start if ping\+Pong is true. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+Transform \mbox{\hyperlink{class_platformers_1_1_moving_platform_ac2dfeb057787bd7acdcdb74ade786698}{target\+Point}}
+\begin{DoxyCompactList}\small\item\em Target position the platform moves to. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_platformers_1_1_moving_platform_a3d08e27ad052ad59ee766e9a666f1814}{speed}} = 2f
+\begin{DoxyCompactList}\small\item\em Movement speed in units per second. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_platformers_1_1_moving_platform_ad3c264366203035fb8b92ce0e14fc15c}{move\+On\+Start}} = false
+\begin{DoxyCompactList}\small\item\em Whether the platform starts moving immediately. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_platformers_1_1_moving_platform_a48276dd2c017609e294e09fc75d61f78}{ping\+Pong}} = true
+\begin{DoxyCompactList}\small\item\em Whether the platform should continuously move back and forth. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_platformers_1_1_moving_platform_a9f44daa51676efae2531e124c53f5dec}{attach\+Player}} = true
+\begin{DoxyCompactList}\small\item\em Whether players should stick to the platform while moving. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Implements a platform that moves between two points. 
+
+Creates a platform that can move between a start and target point, with options for continuous movement and player attachment. Provides visual debugging tools and supports both standard meshes and Unity plane objects. 
+
+См. определение в файле \mbox{\hyperlink{_moving_platform_8cs_source}{Moving\+Platform.\+cs}} строка \mbox{\hyperlink{_moving_platform_8cs_source_l00009}{9}}
+
+
+
+\doxysubsection{Методы}
+\Hypertarget{class_platformers_1_1_moving_platform_a9af2b3bee873e253b909745ea8d63538}\index{Platformers.MovingPlatform@{Platformers.MovingPlatform}!ActivatePlatform@{ActivatePlatform}}
+\index{ActivatePlatform@{ActivatePlatform}!Platformers.MovingPlatform@{Platformers.MovingPlatform}}
+\doxysubsubsection{\texorpdfstring{ActivatePlatform()}{ActivatePlatform()}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_moving_platform_a9af2b3bee873e253b909745ea8d63538} 
+void Platformers.\+Moving\+Platform.\+Activate\+Platform (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Activates platform movement towards target point. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_moving_platform_8cs_source}{Moving\+Platform.\+cs}} строка \mbox{\hyperlink{_moving_platform_8cs_source_l00095}{95}}
+
+\Hypertarget{class_platformers_1_1_moving_platform_ac9d67b7c829c80692e38603a8e16808c}\index{Platformers.MovingPlatform@{Platformers.MovingPlatform}!DeactivatePlatform@{DeactivatePlatform}}
+\index{DeactivatePlatform@{DeactivatePlatform}!Platformers.MovingPlatform@{Platformers.MovingPlatform}}
+\doxysubsubsection{\texorpdfstring{DeactivatePlatform()}{DeactivatePlatform()}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_moving_platform_ac9d67b7c829c80692e38603a8e16808c} 
+void Platformers.\+Moving\+Platform.\+Deactivate\+Platform (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Deactivates platform movement and returns to start if ping\+Pong is true. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_moving_platform_8cs_source}{Moving\+Platform.\+cs}} строка \mbox{\hyperlink{_moving_platform_8cs_source_l00105}{105}}
+
+
+
+\doxysubsection{Данные класса}
+\Hypertarget{class_platformers_1_1_moving_platform_a9f44daa51676efae2531e124c53f5dec}\index{Platformers.MovingPlatform@{Platformers.MovingPlatform}!attachPlayer@{attachPlayer}}
+\index{attachPlayer@{attachPlayer}!Platformers.MovingPlatform@{Platformers.MovingPlatform}}
+\doxysubsubsection{\texorpdfstring{attachPlayer}{attachPlayer}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_moving_platform_a9f44daa51676efae2531e124c53f5dec} 
+bool Platformers.\+Moving\+Platform.\+attach\+Player = true}
+
+
+
+Whether players should stick to the platform while moving. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_moving_platform_8cs_source}{Moving\+Platform.\+cs}} строка \mbox{\hyperlink{_moving_platform_8cs_source_l00023}{23}}
+
+\Hypertarget{class_platformers_1_1_moving_platform_ad3c264366203035fb8b92ce0e14fc15c}\index{Platformers.MovingPlatform@{Platformers.MovingPlatform}!moveOnStart@{moveOnStart}}
+\index{moveOnStart@{moveOnStart}!Platformers.MovingPlatform@{Platformers.MovingPlatform}}
+\doxysubsubsection{\texorpdfstring{moveOnStart}{moveOnStart}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_moving_platform_ad3c264366203035fb8b92ce0e14fc15c} 
+bool Platformers.\+Moving\+Platform.\+move\+On\+Start = false}
+
+
+
+Whether the platform starts moving immediately. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_moving_platform_8cs_source}{Moving\+Platform.\+cs}} строка \mbox{\hyperlink{_moving_platform_8cs_source_l00017}{17}}
+
+\Hypertarget{class_platformers_1_1_moving_platform_a48276dd2c017609e294e09fc75d61f78}\index{Platformers.MovingPlatform@{Platformers.MovingPlatform}!pingPong@{pingPong}}
+\index{pingPong@{pingPong}!Platformers.MovingPlatform@{Platformers.MovingPlatform}}
+\doxysubsubsection{\texorpdfstring{pingPong}{pingPong}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_moving_platform_a48276dd2c017609e294e09fc75d61f78} 
+bool Platformers.\+Moving\+Platform.\+ping\+Pong = true}
+
+
+
+Whether the platform should continuously move back and forth. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_moving_platform_8cs_source}{Moving\+Platform.\+cs}} строка \mbox{\hyperlink{_moving_platform_8cs_source_l00019}{19}}
+
+\Hypertarget{class_platformers_1_1_moving_platform_a3d08e27ad052ad59ee766e9a666f1814}\index{Platformers.MovingPlatform@{Platformers.MovingPlatform}!speed@{speed}}
+\index{speed@{speed}!Platformers.MovingPlatform@{Platformers.MovingPlatform}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_moving_platform_a3d08e27ad052ad59ee766e9a666f1814} 
+float Platformers.\+Moving\+Platform.\+speed = 2f}
+
+
+
+Movement speed in units per second. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_moving_platform_8cs_source}{Moving\+Platform.\+cs}} строка \mbox{\hyperlink{_moving_platform_8cs_source_l00015}{15}}
+
+\Hypertarget{class_platformers_1_1_moving_platform_ac2dfeb057787bd7acdcdb74ade786698}\index{Platformers.MovingPlatform@{Platformers.MovingPlatform}!targetPoint@{targetPoint}}
+\index{targetPoint@{targetPoint}!Platformers.MovingPlatform@{Platformers.MovingPlatform}}
+\doxysubsubsection{\texorpdfstring{targetPoint}{targetPoint}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_moving_platform_ac2dfeb057787bd7acdcdb74ade786698} 
+Transform Platformers.\+Moving\+Platform.\+target\+Point}
+
+
+
+Target position the platform moves to. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_moving_platform_8cs_source}{Moving\+Platform.\+cs}} строка \mbox{\hyperlink{_moving_platform_8cs_source_l00013}{13}}
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Platformers/Moving\+Platform.\+cs\end{DoxyCompactItemize}

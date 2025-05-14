@@ -1,0 +1,95 @@
+\doxysection{Coin.\+cs}
+\hypertarget{_coin_8cs_source}{}\label{_coin_8cs_source}\index{Assets/Scripts/Platformers/Coin.cs@{Assets/Scripts/Platformers/Coin.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_platformers}{Platformers}}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00004}00004\ \{}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00008}\mbox{\hyperlink{class_platformers_1_1_coin}{00008}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_platformers_1_1_coin}{Coin}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Coin\ Settings"{}})]}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00012}\mbox{\hyperlink{class_platformers_1_1_coin_ac01540fd8094f2973234b023b5f0f070}{00012}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_platformers_1_1_coin_ac01540fd8094f2973234b023b5f0f070}{value}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00014}\mbox{\hyperlink{class_platformers_1_1_coin_a23aa62e660c68f2b275ceea37da412b2}{00014}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_platformers_1_1_coin_a23aa62e660c68f2b275ceea37da412b2}{rotationSpeed}}\ =\ 100f;}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00016}\mbox{\hyperlink{class_platformers_1_1_coin_a2303b165262931552ad10cb0d972a789}{00016}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_platformers_1_1_coin_a2303b165262931552ad10cb0d972a789}{bobSpeed}}\ =\ 1f;}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00018}\mbox{\hyperlink{class_platformers_1_1_coin_a360bec6cf3c0e5be3df9c4964bce157c}{00018}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_platformers_1_1_coin_a360bec6cf3c0e5be3df9c4964bce157c}{bobHeight}}\ =\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00020}\mbox{\hyperlink{class_platformers_1_1_coin_ac2483548a6024c0c7d6a9d46c57f6b27}{00020}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_platformers_1_1_coin_ac2483548a6024c0c7d6a9d46c57f6b27}{destroyOnCollect}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ Vector3\ startPosition;}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ bobTime;}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ startPosition\ =\ transform.position;}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ bobTime\ =\ Random.Range(0f,\ 2f\ *\ Mathf.PI);\ \textcolor{comment}{//\ Random\ start\ phase}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ensure\ the\ object\ has\ a\ collider\ and\ it's\ set\ as\ a\ trigger}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ Collider\ col\ =\ GetComponent<Collider>();}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (col\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ col.isTrigger\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogWarning(\textcolor{stringliteral}{"{}Coin\ object\ should\ have\ a\ Collider\ component\ set\ as\ trigger!"{}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Rotate\ the\ coin}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ transform.Rotate(Vector3.up,\ \mbox{\hyperlink{class_platformers_1_1_coin_a23aa62e660c68f2b275ceea37da412b2}{rotationSpeed}}\ *\ Time.deltaTime);}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bob\ up\ and\ down}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ bobTime\ +=\ \mbox{\hyperlink{class_platformers_1_1_coin_a2303b165262931552ad10cb0d972a789}{bobSpeed}}\ *\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ newY\ =\ startPosition.y\ +\ Mathf.Sin(bobTime)\ *\ \mbox{\hyperlink{class_platformers_1_1_coin_a360bec6cf3c0e5be3df9c4964bce157c}{bobHeight}};}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ transform.position\ =\ \textcolor{keyword}{new}\ Vector3(transform.position.x,\ newY,\ transform.position.z);}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnTriggerEnter(Collider\ other)}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.CompareTag(\textcolor{stringliteral}{"{}Player"{}}))}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Try\ to\ find\ CoinGameManager\ to\ add\ score}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CoinGameManager\ CoinGameManager\ =\ CoinGameManager.Instance;}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CoinGameManager\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CoinGameManager.AddCoins(\mbox{\hyperlink{class_platformers_1_1_coin_ac01540fd8094f2973234b023b5f0f070}{value}});}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogWarning(\textcolor{stringliteral}{"{}CoinGameManager\ not\ found!\ Coin\ collection\ won't\ be\ tracked."{}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_platformers_1_1_coin_ac2483548a6024c0c7d6a9d46c57f6b27}{destroyOnCollect}})}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ You\ might\ want\ to\ add\ particle\ effects\ or\ sound\ here\ before\ destroying}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(gameObject);}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ not\ destroying,\ maybe\ disable\ renderer\ and\ collider}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnDrawGizmosSelected()}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ bob\ range\ in\ the\ editor}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.color\ =\ Color.yellow;}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ bottom\ =\ transform.position\ -\/\ Vector3.up\ *\ \mbox{\hyperlink{class_platformers_1_1_coin_a360bec6cf3c0e5be3df9c4964bce157c}{bobHeight}};}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ top\ =\ transform.position\ +\ Vector3.up\ *\ \mbox{\hyperlink{class_platformers_1_1_coin_a360bec6cf3c0e5be3df9c4964bce157c}{bobHeight}};}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawLine(bottom,\ top);}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawWireSphere(bottom,\ 0.1f);}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawWireSphere(top,\ 0.1f);}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ coin\ value}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00099}00099\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#if\ UNITY\_EDITOR}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ UnityEditor.Handles.Label(transform.position\ +\ Vector3.up\ *\ (\mbox{\hyperlink{class_platformers_1_1_coin_a360bec6cf3c0e5be3df9c4964bce157c}{bobHeight}}\ +\ 0.3f),\ \$\textcolor{stringliteral}{"{}Value:\ \{value\}"{}});}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00101}00101\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00103}00103\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_8cs_source_l00104}00104\ \}}
+
+\end{DoxyCode}

@@ -1,13 +1,11 @@
 <map id="Иерархия классов. Графический вид." name="Иерархия классов. Графический вид.">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,107,115,133"/>
-<area shape="rect" id="Node000001" href="$class_camera_switch_trigger.html" title="Manages switching between different cameras and control systems." alt="" coords="171,5,316,32"/>
-<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="86,94,121,67,161,42,189,30,191,35,164,46,124,72,89,99"/>
-<area shape="rect" id="Node000002" href="$class_f_p_s_controller.html" title="First Person Shooter character controller." alt="" coords="192,56,295,83"/>
-<area shape="poly" id="edge3_Node000000_Node000002" title=" " alt="" coords="125,99,192,81,193,86,127,104"/>
-<area shape="rect" id="Node000003" href="$class_load_scene_on_trigger.html" title="Loads a new scene when triggered." alt="" coords="172,107,315,133"/>
-<area shape="poly" id="edge4_Node000000_Node000003" title=" " alt="" coords="130,117,172,117,172,123,130,123"/>
-<area shape="rect" id="Node000004" href="$class_rotate_on_x_z_with_keys.html" title="Enables keyboard&#45;controlled rotation of an object." alt="" coords="170,157,317,184"/>
-<area shape="poly" id="edge5_Node000000_Node000004" title=" " alt="" coords="127,136,193,154,192,159,125,141"/>
-<area shape="rect" id="Node000005" href="$class_show_t_m_p_text_on_trigger.html" title="Controls the visibility of TextMeshPro text based on player position and view angle." alt="" coords="163,208,324,235"/>
-<area shape="poly" id="edge6_Node000000_Node000005" title=" " alt="" coords="89,141,124,168,164,194,191,205,189,210,161,198,121,173,86,146"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,81,107,108"/>
+<area shape="rect" id="Node000001" href="$class_t_t_t_1_1_incremental_splatmapping.html" title=" " alt="" coords="157,5,349,32"/>
+<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="92,71,154,42,189,30,191,35,156,46,95,76"/>
+<area shape="rect" id="Node000002" href="$class_t_t_t_1_1_t_t_tools2_d.html" title=" " alt="" coords="199,56,307,83"/>
+<area shape="poly" id="edge3_Node000000_Node000002" title=" " alt="" coords="122,84,198,74,199,79,122,89"/>
+<area shape="rect" id="Node000003" href="$class_t_t_t_1_1_terrain_tools.html" title=" " alt="" coords="195,107,311,133"/>
+<area shape="poly" id="edge4_Node000000_Node000003" title=" " alt="" coords="122,100,195,110,194,115,121,106"/>
+<area shape="rect" id="Node000004" href="$class_t_t_t___tools_1_1_splat_map_generator.html" title=" " alt="" coords="155,157,351,184"/>
+<area shape="poly" id="edge5_Node000000_Node000004" title=" " alt="" coords="95,114,156,143,191,154,189,159,154,148,92,118"/>
 </map>

@@ -25,13 +25,18 @@
 var NAVTREE =
 [
   [ "19CAPtcha84", "index.html", [
+    [ "Пакеты", "namespaces.html", [
+      [ "Список пакетов", "namespaces.html", "namespaces_dup" ]
+    ] ],
     [ "Классы", "annotated.html", [
       [ "Классы", "annotated.html", "annotated_dup" ],
       [ "Алфавитный указатель классов", "classes.html", null ],
       [ "Иерархия классов", "hierarchy.html", "hierarchy" ],
       [ "Члены классов", "functions.html", [
         [ "Указатель", "functions.html", null ],
-        [ "Функции", "functions_func.html", null ]
+        [ "Функции", "functions_func.html", null ],
+        [ "Переменные", "functions_vars.html", null ],
+        [ "Свойства", "functions_prop.html", null ]
       ] ]
     ] ],
     [ "Файлы", "files.html", [
@@ -42,7 +47,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_camera_switch_controller_8cs_source.html"
+"_activate_when_all_tagged_destroyed_8cs_source.html"
 ];
 
 var SYNCONMSG = 'нажмите на выключить для синхронизации панелей';

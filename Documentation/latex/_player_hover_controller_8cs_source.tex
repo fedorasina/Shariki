@@ -1,0 +1,45 @@
+\doxysection{Player\+Hover\+Controller.\+cs}
+\hypertarget{_player_hover_controller_8cs_source}{}\label{_player_hover_controller_8cs_source}\index{Assets/Tom\textquotesingle{}s Terrain Tools/Example Data/Scripts/PlayerHoverController.cs@{Assets/Tom\textquotesingle{}s Terrain Tools/Example Data/Scripts/PlayerHoverController.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00004}\mbox{\hyperlink{namespace_t_t_demo_scripts}{00004}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_t_t_demo_scripts}{TTDemoScripts}}}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00006}\mbox{\hyperlink{class_t_t_demo_scripts_1_1_player_hover_controller}{00006}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_t_t_demo_scripts_1_1_player_hover_controller}{PlayerHoverController}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00007}00007\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00008}00008\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ forwardSpeed\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00009}00009\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ strafeSpeed\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ runMultiplier\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ KeyCode\ runKey\ =\ KeyCode.LeftShift;}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ LayerMask\ groundLayer;}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ RaycastHit\ hit;}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ hoverHeight\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Awake()}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ y\ =\ Input.GetAxis(\textcolor{stringliteral}{"{}Vertical"{}})\ *\ forwardSpeed\ *\ (Input.GetKey(runKey)?runMultiplier:1)\ *Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x\ =\ Input.GetAxis(\textcolor{stringliteral}{"{}Horizontal"{}})\ *\ strafeSpeed\ *\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hover}}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Physics.Raycast(transform.position\ +\ Vector3.up\ *\ 9999,\ Vector3.down,\ out\ hit,\ Mathf.Infinity,\ groundLayer))}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hoverHeight\ =\ hit.point.y\ +\ 1.8f;}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ transform.Translate(\textcolor{keyword}{new}\ Vector3(x,\ hoverHeight-\/transform.position.y+1.8f,\ y));}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_player_hover_controller_8cs_source_l00039}00039\ \}}
+
+\end{DoxyCode}

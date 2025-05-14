@@ -1,0 +1,298 @@
+\doxysection{Класс Platformers.\+Coin\+Game\+Manager}
+\hypertarget{class_platformers_1_1_coin_game_manager}{}\label{class_platformers_1_1_coin_game_manager}\index{Platformers.CoinGameManager@{Platformers.CoinGameManager}}
+
+
+Manages the coin collection system and general game state in the platformer game.  
+
+
+
+
+Граф наследования\+:Platformers.\+Coin\+Game\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{class_platformers_1_1_coin_game_manager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Граф связей класса Platformers.\+Coin\+Game\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{class_platformers_1_1_coin_game_manager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_acfbcadfb7c6c14f842638b2c5d525c34}{Add\+Coins}} (int amount)
+\begin{DoxyCompactList}\small\item\em Adds coins to the player\textquotesingle{}s collection and updates UI. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a6a3ca3d03ea74b2747fb388117493fd0}{Are\+All\+Coins\+Collected}} ()
+\begin{DoxyCompactList}\small\item\em Checks if all required coins have been collected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a53bbf8d857cc5726ccebebc941c12834}{Set\+Checkpoint}} (Vector3 position)
+\begin{DoxyCompactList}\small\item\em Sets a new checkpoint position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a0260668a89546bafc4d9cf0dcdc372a9}{Respawn\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Respawns the player at the last checkpoint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_ad3db68d1fdfb71e5ddf6be163bb122c0}{Show\+Message}} (string message, float duration=-\/1)
+\begin{DoxyCompactList}\small\item\em Displays a temporary message in the UI. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_aba0a00aacb187f02aad92bd479f25a80}{Restart\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Restarts the current level. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a35420486093d12431ad9d05642dfb220}{Load\+Next\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Loads the next level if available. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_ad68e04ec533f7544578f9597f840866e}{message\+Display\+Time}} = 2f
+\begin{DoxyCompactList}\small\item\em Duration in seconds for which temporary messages are displayed. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a40017520429d487dee5ee18dae55c7b7}{player\+Spawn\+Point}}
+\begin{DoxyCompactList}\small\item\em Initial spawn point for the player. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a40a5e7f033e44a1b99313bd2d17b0ed1}{use\+Checkpoints}} = true
+\begin{DoxyCompactList}\small\item\em Whether the checkpoint system is enabled. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a4470e5b96401ae7e96b9f5739d562d35}{require\+All\+Coins\+To\+Exit}} = true
+\begin{DoxyCompactList}\small\item\em Whether all coins must be collected to exit the level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Свойства}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_platformers_1_1_coin_game_manager}{Coin\+Game\+Manager}} \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_aa1db16cfea37e3c17131706cc2335b40}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Singleton instance of the \doxylink{class_platformers_1_1_coin_game_manager}{Coin\+Game\+Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Manages the coin collection system and general game state in the platformer game. 
+
+This singleton class handles coin collection, checkpoints, UI updates, and level progression. It persists between scenes and manages the player\textquotesingle{}s progress throughout the game. 
+
+См. определение в файле \mbox{\hyperlink{_coin_game_manager_8cs_source}{Coin\+Game\+Manager.\+cs}} строка \mbox{\hyperlink{_coin_game_manager_8cs_source_l00010}{10}}
+
+
+
+\doxysubsection{Методы}
+\Hypertarget{class_platformers_1_1_coin_game_manager_acfbcadfb7c6c14f842638b2c5d525c34}\index{Platformers.CoinGameManager@{Platformers.CoinGameManager}!AddCoins@{AddCoins}}
+\index{AddCoins@{AddCoins}!Platformers.CoinGameManager@{Platformers.CoinGameManager}}
+\doxysubsubsection{\texorpdfstring{AddCoins()}{AddCoins()}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_coin_game_manager_acfbcadfb7c6c14f842638b2c5d525c34} 
+void Platformers.\+Coin\+Game\+Manager.\+Add\+Coins (\begin{DoxyParamCaption}\item[{int}]{amount}{}\end{DoxyParamCaption})}
+
+
+
+Adds coins to the player\textquotesingle{}s collection and updates UI. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em amount} & Number of coins to add \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле \mbox{\hyperlink{_coin_game_manager_8cs_source}{Coin\+Game\+Manager.\+cs}} строка \mbox{\hyperlink{_coin_game_manager_8cs_source_l00154}{154}}
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_platformers_1_1_coin_game_manager_acfbcadfb7c6c14f842638b2c5d525c34_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_platformers_1_1_coin_game_manager_a6a3ca3d03ea74b2747fb388117493fd0}\index{Platformers.CoinGameManager@{Platformers.CoinGameManager}!AreAllCoinsCollected@{AreAllCoinsCollected}}
+\index{AreAllCoinsCollected@{AreAllCoinsCollected}!Platformers.CoinGameManager@{Platformers.CoinGameManager}}
+\doxysubsubsection{\texorpdfstring{AreAllCoinsCollected()}{AreAllCoinsCollected()}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_coin_game_manager_a6a3ca3d03ea74b2747fb388117493fd0} 
+bool Platformers.\+Coin\+Game\+Manager.\+Are\+All\+Coins\+Collected (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Checks if all required coins have been collected. 
+
+\begin{DoxyReturn}{Возвращает}
+True if enough coins are collected to exit the level 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{_coin_game_manager_8cs_source}{Coin\+Game\+Manager.\+cs}} строка \mbox{\hyperlink{_coin_game_manager_8cs_source_l00163}{163}}
+
+\Hypertarget{class_platformers_1_1_coin_game_manager_a35420486093d12431ad9d05642dfb220}\index{Platformers.CoinGameManager@{Platformers.CoinGameManager}!LoadNextLevel@{LoadNextLevel}}
+\index{LoadNextLevel@{LoadNextLevel}!Platformers.CoinGameManager@{Platformers.CoinGameManager}}
+\doxysubsubsection{\texorpdfstring{LoadNextLevel()}{LoadNextLevel()}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_coin_game_manager_a35420486093d12431ad9d05642dfb220} 
+void Platformers.\+Coin\+Game\+Manager.\+Load\+Next\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Loads the next level if available. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_coin_game_manager_8cs_source}{Coin\+Game\+Manager.\+cs}} строка \mbox{\hyperlink{_coin_game_manager_8cs_source_l00249}{249}}
+
+\Hypertarget{class_platformers_1_1_coin_game_manager_a0260668a89546bafc4d9cf0dcdc372a9}\index{Platformers.CoinGameManager@{Platformers.CoinGameManager}!RespawnPlayer@{RespawnPlayer}}
+\index{RespawnPlayer@{RespawnPlayer}!Platformers.CoinGameManager@{Platformers.CoinGameManager}}
+\doxysubsubsection{\texorpdfstring{RespawnPlayer()}{RespawnPlayer()}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_coin_game_manager_a0260668a89546bafc4d9cf0dcdc372a9} 
+void Platformers.\+Coin\+Game\+Manager.\+Respawn\+Player (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Respawns the player at the last checkpoint. 
+
+Handles proper physics state management during respawn 
+
+См. определение в файле \mbox{\hyperlink{_coin_game_manager_8cs_source}{Coin\+Game\+Manager.\+cs}} строка \mbox{\hyperlink{_coin_game_manager_8cs_source_l00181}{181}}
+
+\Hypertarget{class_platformers_1_1_coin_game_manager_aba0a00aacb187f02aad92bd479f25a80}\index{Platformers.CoinGameManager@{Platformers.CoinGameManager}!RestartLevel@{RestartLevel}}
+\index{RestartLevel@{RestartLevel}!Platformers.CoinGameManager@{Platformers.CoinGameManager}}
+\doxysubsubsection{\texorpdfstring{RestartLevel()}{RestartLevel()}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_coin_game_manager_aba0a00aacb187f02aad92bd479f25a80} 
+void Platformers.\+Coin\+Game\+Manager.\+Restart\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restarts the current level. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_coin_game_manager_8cs_source}{Coin\+Game\+Manager.\+cs}} строка \mbox{\hyperlink{_coin_game_manager_8cs_source_l00243}{243}}
+
+\Hypertarget{class_platformers_1_1_coin_game_manager_a53bbf8d857cc5726ccebebc941c12834}\index{Platformers.CoinGameManager@{Platformers.CoinGameManager}!SetCheckpoint@{SetCheckpoint}}
+\index{SetCheckpoint@{SetCheckpoint}!Platformers.CoinGameManager@{Platformers.CoinGameManager}}
+\doxysubsubsection{\texorpdfstring{SetCheckpoint()}{SetCheckpoint()}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_coin_game_manager_a53bbf8d857cc5726ccebebc941c12834} 
+void Platformers.\+Coin\+Game\+Manager.\+Set\+Checkpoint (\begin{DoxyParamCaption}\item[{Vector3}]{position}{}\end{DoxyParamCaption})}
+
+
+
+Sets a new checkpoint position. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em position} & World position for the new checkpoint \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле \mbox{\hyperlink{_coin_game_manager_8cs_source}{Coin\+Game\+Manager.\+cs}} строка \mbox{\hyperlink{_coin_game_manager_8cs_source_l00170}{170}}
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_platformers_1_1_coin_game_manager_a53bbf8d857cc5726ccebebc941c12834_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_platformers_1_1_coin_game_manager_ad3db68d1fdfb71e5ddf6be163bb122c0}\index{Platformers.CoinGameManager@{Platformers.CoinGameManager}!ShowMessage@{ShowMessage}}
+\index{ShowMessage@{ShowMessage}!Platformers.CoinGameManager@{Platformers.CoinGameManager}}
+\doxysubsubsection{\texorpdfstring{ShowMessage()}{ShowMessage()}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_coin_game_manager_ad3db68d1fdfb71e5ddf6be163bb122c0} 
+void Platformers.\+Coin\+Game\+Manager.\+Show\+Message (\begin{DoxyParamCaption}\item[{string}]{message}{, }\item[{float}]{duration}{ = {\ttfamily -\/1}}\end{DoxyParamCaption})}
+
+
+
+Displays a temporary message in the UI. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em message} & The message to display \\
+\hline
+{\em duration} & Optional duration override. If negative, uses default duration \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле \mbox{\hyperlink{_coin_game_manager_8cs_source}{Coin\+Game\+Manager.\+cs}} строка \mbox{\hyperlink{_coin_game_manager_8cs_source_l00214}{214}}
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_platformers_1_1_coin_game_manager_ad3db68d1fdfb71e5ddf6be163bb122c0_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Данные класса}
+\Hypertarget{class_platformers_1_1_coin_game_manager_ad68e04ec533f7544578f9597f840866e}\index{Platformers.CoinGameManager@{Platformers.CoinGameManager}!messageDisplayTime@{messageDisplayTime}}
+\index{messageDisplayTime@{messageDisplayTime}!Platformers.CoinGameManager@{Platformers.CoinGameManager}}
+\doxysubsubsection{\texorpdfstring{messageDisplayTime}{messageDisplayTime}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_coin_game_manager_ad68e04ec533f7544578f9597f840866e} 
+float Platformers.\+Coin\+Game\+Manager.\+message\+Display\+Time = 2f}
+
+
+
+Duration in seconds for which temporary messages are displayed. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_coin_game_manager_8cs_source}{Coin\+Game\+Manager.\+cs}} строка \mbox{\hyperlink{_coin_game_manager_8cs_source_l00018}{18}}
+
+\Hypertarget{class_platformers_1_1_coin_game_manager_a40017520429d487dee5ee18dae55c7b7}\index{Platformers.CoinGameManager@{Platformers.CoinGameManager}!playerSpawnPoint@{playerSpawnPoint}}
+\index{playerSpawnPoint@{playerSpawnPoint}!Platformers.CoinGameManager@{Platformers.CoinGameManager}}
+\doxysubsubsection{\texorpdfstring{playerSpawnPoint}{playerSpawnPoint}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_coin_game_manager_a40017520429d487dee5ee18dae55c7b7} 
+Vector3 Platformers.\+Coin\+Game\+Manager.\+player\+Spawn\+Point}
+
+
+
+Initial spawn point for the player. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_coin_game_manager_8cs_source}{Coin\+Game\+Manager.\+cs}} строка \mbox{\hyperlink{_coin_game_manager_8cs_source_l00022}{22}}
+
+\Hypertarget{class_platformers_1_1_coin_game_manager_a4470e5b96401ae7e96b9f5739d562d35}\index{Platformers.CoinGameManager@{Platformers.CoinGameManager}!requireAllCoinsToExit@{requireAllCoinsToExit}}
+\index{requireAllCoinsToExit@{requireAllCoinsToExit}!Platformers.CoinGameManager@{Platformers.CoinGameManager}}
+\doxysubsubsection{\texorpdfstring{requireAllCoinsToExit}{requireAllCoinsToExit}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_coin_game_manager_a4470e5b96401ae7e96b9f5739d562d35} 
+bool Platformers.\+Coin\+Game\+Manager.\+require\+All\+Coins\+To\+Exit = true}
+
+
+
+Whether all coins must be collected to exit the level. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_coin_game_manager_8cs_source}{Coin\+Game\+Manager.\+cs}} строка \mbox{\hyperlink{_coin_game_manager_8cs_source_l00026}{26}}
+
+\Hypertarget{class_platformers_1_1_coin_game_manager_a40a5e7f033e44a1b99313bd2d17b0ed1}\index{Platformers.CoinGameManager@{Platformers.CoinGameManager}!useCheckpoints@{useCheckpoints}}
+\index{useCheckpoints@{useCheckpoints}!Platformers.CoinGameManager@{Platformers.CoinGameManager}}
+\doxysubsubsection{\texorpdfstring{useCheckpoints}{useCheckpoints}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_coin_game_manager_a40a5e7f033e44a1b99313bd2d17b0ed1} 
+bool Platformers.\+Coin\+Game\+Manager.\+use\+Checkpoints = true}
+
+
+
+Whether the checkpoint system is enabled. 
+
+
+
+См. определение в файле \mbox{\hyperlink{_coin_game_manager_8cs_source}{Coin\+Game\+Manager.\+cs}} строка \mbox{\hyperlink{_coin_game_manager_8cs_source_l00024}{24}}
+
+
+
+\doxysubsection{Полный список свойств}
+\Hypertarget{class_platformers_1_1_coin_game_manager_aa1db16cfea37e3c17131706cc2335b40}\index{Platformers.CoinGameManager@{Platformers.CoinGameManager}!Instance@{Instance}}
+\index{Instance@{Instance}!Platformers.CoinGameManager@{Platformers.CoinGameManager}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_platformers_1_1_coin_game_manager_aa1db16cfea37e3c17131706cc2335b40} 
+\mbox{\hyperlink{class_platformers_1_1_coin_game_manager}{Coin\+Game\+Manager}} Platformers.\+Coin\+Game\+Manager.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
+
+
+
+Singleton instance of the \doxylink{class_platformers_1_1_coin_game_manager}{Coin\+Game\+Manager}. 
+
+\begin{DoxyReturn}{Возвращает}
+The single instance of \doxylink{class_platformers_1_1_coin_game_manager}{Coin\+Game\+Manager} 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{_coin_game_manager_8cs_source}{Coin\+Game\+Manager.\+cs}} строка \mbox{\hyperlink{_coin_game_manager_8cs_source_l00038}{38}}
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\+Platformers/Coin\+Game\+Manager.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,355 @@
+\doxysection{Incremental\+Splatmapping.\+cs}
+\hypertarget{_incremental_splatmapping_8cs_source}{}\label{_incremental_splatmapping_8cs_source}\index{Assets/Tom\textquotesingle{}s Terrain Tools/Editor/IncrementalSplatmapping.cs@{Assets/Tom\textquotesingle{}s Terrain Tools/Editor/IncrementalSplatmapping.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEditor;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.IO;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00006}00006\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00007}00007\ \textcolor{comment}{\ \ \ \ Tom's\ Terrain\ Tools\ for\ Unity\ 3D}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00008}00008\ \textcolor{comment}{\ \ \ \ Incremental\ Splatmapping}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00009}00009\ \textcolor{comment}{\ \ \ \ version\ 1.0\ -\/\ February\ 2015}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00010}00010\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00011}00011\ \textcolor{comment}{\ \ \ \ (C)2015\ by\ Tom\ Vogt\ <tom@lemuria.org>}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00012}00012\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00013}00013\ \textcolor{comment}{\ \ \ \ http://lemuria.org/Unity/TTT/}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00015}00015\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00016}00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_t_t_t}{TTT}}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00017}00017\ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00019}\mbox{\hyperlink{class_t_t_t_1_1_incremental_splatmapping}{00019}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_t_t_t_1_1_incremental_splatmapping}{IncrementalSplatmapping}}\ :\ EditorWindow}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00020}00020\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Terrain\ MyTerrain;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Texture2D\ Splatmap;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Texture2D\ TextureRed;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Texture2D\ TextureGreen;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Texture2D\ TextureBlue;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ TileSizeRed\ =\ 40;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ TileSizeGreen\ =\ 40;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ TileSizeBlue\ =\ 40;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ bias\ =\ 1.0f;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ Replacing\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ internal\ variables}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ Vector2\ scrollPosition\ =\ \textcolor{keyword}{new}\ Vector2(0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ [MenuItem(\textcolor{stringliteral}{"{}Window/Terrain\ Tools/Incremental\ Splatmapping"{}},\ \textcolor{keyword}{false},\ 100)]}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Init()}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_t_t_1_1_incremental_splatmapping}{IncrementalSplatmapping}}\ window\ =\ (\mbox{\hyperlink{class_t_t_t_1_1_incremental_splatmapping}{IncrementalSplatmapping}})EditorWindow.GetWindow(typeof(\mbox{\hyperlink{class_t_t_t_1_1_incremental_splatmapping}{IncrementalSplatmapping}}));}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ window.minSize\ =\ \textcolor{keyword}{new}\ Vector2(400,\ 550);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ window.Show();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ OnInspectorUpdate()}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ Repaint();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ OnGUI()}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ EditorGUILayout.BeginVertical(GUI.skin.box,\ GUILayout.ExpandWidth(\textcolor{keyword}{true}),\ GUILayout.ExpandHeight(\textcolor{keyword}{true}));}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ scrollPosition\ =\ EditorGUILayout.BeginScrollView(scrollPosition,\ GUILayout.ExpandWidth(\textcolor{keyword}{true}),\ GUILayout.ExpandHeight(\textcolor{keyword}{true}));}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.Label(\textcolor{stringliteral}{"{}Incremental\ Splatmapping"{}},\ EditorStyles.boldLabel);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ EditorGUILayout.Separator();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ bold\ titles}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ GUIStyle\ myFoldoutStyle\ =\ \textcolor{keyword}{new}\ GUIStyle(EditorStyles.foldout);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ myFoldoutStyle.fontStyle\ =\ FontStyle.Bold;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ EditorGUILayout.Separator();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.BeginHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.Label(\textcolor{stringliteral}{"{}Terrain"{}});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ MyTerrain\ =\ (Terrain)EditorGUILayout.ObjectField(\textcolor{stringliteral}{"{}"{}},\ MyTerrain,\ typeof(Terrain),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.EndHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ EditorGUILayout.Separator();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.BeginHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ EditorGUILayout.PrefixLabel(\textcolor{stringliteral}{"{}Splatmap"{}});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.FlexibleSpace();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ Splatmap\ =\ (Texture2D)EditorGUILayout.ObjectField(\textcolor{stringliteral}{"{}"{}},\ Splatmap,\ typeof(Texture2D),\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.EndHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ EditorGUILayout.Separator();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.BeginHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ EditorGUILayout.PrefixLabel(\textcolor{stringliteral}{"{}Texture\ Red"{}});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.FlexibleSpace();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ TextureRed\ =\ (Texture2D)EditorGUILayout.ObjectField(\textcolor{stringliteral}{"{}"{}},\ TextureRed,\ typeof(Texture2D),\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.EndHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.BeginHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.Label(\textcolor{stringliteral}{"{}Tile\ Size\ Red"{}});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.FlexibleSpace();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ TileSizeRed\ =\ EditorGUILayout.IntSlider(TileSizeRed,\ 4,\ 512);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.EndHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ EditorGUILayout.Separator();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.BeginHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ EditorGUILayout.PrefixLabel(\textcolor{stringliteral}{"{}Texture\ Green"{}});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.FlexibleSpace();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ TextureGreen\ =\ (Texture2D)EditorGUILayout.ObjectField(\textcolor{stringliteral}{"{}"{}},\ TextureGreen,\ typeof(Texture2D),\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.EndHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.BeginHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.Label(\textcolor{stringliteral}{"{}Tile\ Size\ Green"{}});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.FlexibleSpace();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ TileSizeGreen\ =\ EditorGUILayout.IntSlider(TileSizeGreen,\ 4,\ 512);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.EndHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ EditorGUILayout.Separator();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.BeginHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ EditorGUILayout.PrefixLabel(\textcolor{stringliteral}{"{}Texture\ Blue"{}});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.FlexibleSpace();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ TextureBlue\ =\ (Texture2D)EditorGUILayout.ObjectField(\textcolor{stringliteral}{"{}"{}},\ TextureBlue,\ typeof(Texture2D),\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.EndHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.BeginHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.Label(\textcolor{stringliteral}{"{}Tile\ Size\ Blue"{}});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.FlexibleSpace();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ TileSizeBlue\ =\ EditorGUILayout.IntSlider(TileSizeBlue,\ 4,\ 512);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.EndHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ EditorGUILayout.Separator();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.BeginHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.Label(\textcolor{stringliteral}{"{}Strength\ of\ this\ layer"{}});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.FlexibleSpace();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ bias\ =\ EditorGUILayout.Slider(bias,\ 0.1f,\ 10.0f);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.EndHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ EditorGUILayout.Separator();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.BeginHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.Label(\textcolor{stringliteral}{"{}replace\ old\ textures"{}});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.FlexibleSpace();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ Replacing\ =\ EditorGUILayout.Toggle(\textcolor{stringliteral}{"{}"{}},\ Replacing);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.EndHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ EditorGUILayout.Separator();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.BeginHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.FlexibleSpace();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (GUILayout.Button(\textcolor{stringliteral}{"{}Add\ Splat\ Texture"{}},\ GUILayout.Width(200),\ GUILayout.Height(32)))}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CheckSplatmap())}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AddSplatTexture();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.FlexibleSpace();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ GUILayout.EndHorizontal();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ EditorGUILayout.EndScrollView();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ EditorGUILayout.EndVertical();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ FixFormat(Texture2D\ texture)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ path\ =\ AssetDatabase.GetAssetPath(texture);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ TextureImporter\ textureImporter\ =\ AssetImporter.GetAtPath(path)\ as\ TextureImporter;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (texture.format\ !=\ TextureFormat.RGB24\ ||\ !textureImporter.isReadable)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ textureImporter.mipmapEnabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ textureImporter.isReadable\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//textureImporter.textureFormat\ =\ TextureImporterFormat.RGB24;\ //\ deprecated}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//textureImporter.textureCompression\ =\ TextureImporterCompression.CompressedHQ;}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO\ https://forum.unity.com/threads/textureimporter-\/textureformat-\/is-\/obsolete-\/how-\/to-\/set-\/textures-\/format-\/to-\/rgba32.1489510/\#post-\/9286696}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AssetDatabase.ImportAsset(path,\ ImportAssetOptions.ForceUpdate);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}fixed\ texture\ format\ for\ "{}}\ +\ path);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ Reverse(\textcolor{keywordtype}{string}\ text)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (text\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ this\ was\ posted\ by\ petebob\ as\ well\ }}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}[]\ array\ =\ text.ToCharArray();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ System.Array.Reverse(array);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ string(array);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ FindFile(\textcolor{keywordtype}{string}\ basename)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}[]\ extensions\ =\ \{\ \textcolor{stringliteral}{"{}tif"{}},\ \textcolor{stringliteral}{"{}tiff"{}},\ \textcolor{stringliteral}{"{}png"{}},\ \textcolor{stringliteral}{"{}jpg"{}},\ \textcolor{stringliteral}{"{}jpeg"{}}\ \};}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\textcolor{keywordtype}{string}\ ext\ \textcolor{keywordflow}{in}\ extensions)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ filename\ =\ basename\ +\ \textcolor{stringliteral}{"{}."{}}\ +\ ext;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (File.Exists(filename))}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ filename;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ CheckSplatmap()}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Splatmap\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ FixFormat(Splatmap);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Splatmap.height\ !=\ Splatmap.width)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EditorUtility.DisplayDialog(\textcolor{stringliteral}{"{}Wrong\ size"{}},\ \textcolor{stringliteral}{"{}Splatmap\ must\ be\ square\ (width\ and\ height\ must\ be\ the\ same)"{}},\ \textcolor{stringliteral}{"{}Cancel"{}});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Mathf.ClosestPowerOfTwo(Splatmap.width)\ !=\ Splatmap.width)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EditorUtility.DisplayDialog(\textcolor{stringliteral}{"{}Wrong\ size"{}},\ \textcolor{stringliteral}{"{}Splatmap\ width\ and\ height\ must\ be\ a\ power\ of\ two"{}},\ \textcolor{stringliteral}{"{}Cancel"{}});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ AddSplatTexture()}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!MyTerrain)\ MyTerrain\ =\ Terrain.activeTerrain;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ TerrainData\ terrain\ =\ MyTerrain.terrainData;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ splaMaptWidth\ =\ Splatmap.width;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (splaMaptWidth\ !=\ terrain.alphamapWidth)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}New\ splatmap\ is\ not\ same\ resolution\ as\ the\ current\ terrain\ splatmap\ ("{}}\ +\ splaMaptWidth\ +\ \textcolor{stringliteral}{"{}\ !=\ "{}}\ +\ terrain.alphamapWidth\ +\ \textcolor{stringliteral}{"{})"{}});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ Undo.RecordObject(terrain,\ \textcolor{stringliteral}{"{}Add\ Splattexture"{}});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ Color[]\ SplatmapColors\ =\ Splatmap.GetPixels();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ layer\ =\ MyTerrain.terrainData.alphamapLayers;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ add\_layers\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ red\_layer\ =\ layer;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ green\_layer\ =\ layer\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ blue\_layer\ =\ layer\ +\ 2;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (TextureRed)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AddTexture(TextureRed,\ TileSizeRed);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ add\_layers++;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (TextureGreen)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AddTexture(TextureGreen,\ TileSizeGreen);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ green\_layer\ =\ layer\ +\ add\_layers;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ add\_layers++;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (TextureBlue)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AddTexture(TextureBlue,\ TileSizeBlue);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ blue\_layer\ =\ layer\ +\ add\_layers;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ add\_layers++;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}[,,]\ splatmapData\ =\ terrain.GetAlphamaps(0,\ 0,\ splaMaptWidth,\ splaMaptWidth);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y\ =\ 0;\ y\ <\ splaMaptWidth;\ y++)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (y\ \%\ 10\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EditorUtility.DisplayProgressBar(\textcolor{stringliteral}{"{}add\ splat"{}},\ \textcolor{stringliteral}{"{}updating\ terrain"{}},\ Mathf.InverseLerp(0.0f,\ (\textcolor{keywordtype}{float})splaMaptWidth,\ (\textcolor{keywordtype}{float})y));}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ x\ =\ 0;\ x\ <\ splaMaptWidth;\ x++)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ red\ =\ SplatmapColors[x\ *\ splaMaptWidth\ +\ y].r\ *\ bias;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ green\ =\ SplatmapColors[x\ *\ splaMaptWidth\ +\ y].g\ *\ bias;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ blue\ =\ SplatmapColors[x\ *\ splaMaptWidth\ +\ y].b\ *\ bias;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ value\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (TextureRed)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (red\ >\ 0.0f)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ splatmapData[x,\ y,\ red\_layer]\ =\ red;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\ +=\ red;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ splatmapData[x,\ y,\ red\_layer]\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (TextureGreen)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (green\ >\ 0.0f)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ splatmapData[x,\ y,\ green\_layer]\ =\ green;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\ +=\ green;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ splatmapData[x,\ y,\ green\_layer]\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00292}00292\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (TextureBlue)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (blue\ >\ 0.0f)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ splatmapData[x,\ y,\ blue\_layer]\ =\ blue;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\ +=\ blue;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ splatmapData[x,\ y,\ blue\_layer]\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ normalize}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ total\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ l\ =\ 0;\ l\ <\ layer\ +\ add\_layers;\ l++)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Replacing\ \&\&\ value\ >=\ 1.0f\ \&\&\ l\ <\ layer)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ splatmapData[x,\ y,\ l]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ total\ +=\ splatmapData[x,\ y,\ l];}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (total\ !=\ 1.0f)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ l\ =\ 0;\ l\ <\ layer\ +\ add\_layers;\ l++)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ splatmapData[x,\ y,\ l]\ *=\ 1.0f\ /\ total;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ terrain.SetAlphamaps(0,\ 0,\ splatmapData);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ EditorUtility.SetDirty(MyTerrain);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Splatmap\ texture\ applied"{}});}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ EditorUtility.ClearProgressBar();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00331}00331\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00333}00333\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ AddTexture(Texture2D\ Texture,\ \textcolor{keywordtype}{int}\ TileSize)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00334}00334\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ TerrainLayer[]\ oldLayers\ =\ MyTerrain.terrainData.terrainLayers;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ TerrainLayer[]\ newLayers\ =\ \textcolor{keyword}{new}\ TerrainLayer[oldLayers.Length\ +\ 1];}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ x\ =\ 0;\ x\ <\ oldLayers.Length;\ x++)}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ newLayers[x]\ =\ oldLayers[x];}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ newLayers[oldLayers.Length]\ =\ \textcolor{keyword}{new}\ TerrainLayer();}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ newLayers[oldLayers.Length].diffuseTexture\ =\ Texture;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ newLayers[oldLayers.Length].tileSize\ =\ \textcolor{keyword}{new}\ Vector2(TileSize,\ TileSize);}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ MyTerrain.terrainData.terrainLayers\ =\ newLayers;}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00345}00345\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00346}00346\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00347}00347\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{_incremental_splatmapping_8cs_source_l00349}00349\ \}}
+
+\end{DoxyCode}

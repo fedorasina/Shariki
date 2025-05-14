@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['readme_0',['Readme',['../class_readme.html',1,'']]],
-  ['readmeeditor_1',['ReadmeEditor',['../class_readme_editor.html',1,'']]],
-  ['rotateonxzwithkeys_2',['RotateOnXZWithKeys',['../class_rotate_on_x_z_with_keys.html',1,'']]]
+  ['exitpoint_0',['ExitPoint',['../class_platformers_1_1_exit_point.html',1,'Platformers']]]
 ];

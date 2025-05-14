@@ -1,0 +1,8 @@
+<map id="Platformers.Lever" name="Platformers.Lever">
+<area shape="rect" id="Node000001" title="Interactive lever that controls moving platforms." alt="" coords="5,172,127,199"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="6,5,115,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,47,68,171,63,172,59,47"/>
+<area shape="rect" id="Node000003" href="$class_platformers_1_1_moving_platform.html" title="Implements a platform that moves between two points." alt="" coords="82,81,261,108"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="93,39,154,79,151,83,91,43"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,120,83,173,79,169,143,116"/>
+</map>

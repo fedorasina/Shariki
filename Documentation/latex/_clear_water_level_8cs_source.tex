@@ -1,0 +1,101 @@
+\doxysection{Clear\+Water\+Level.\+cs}
+\hypertarget{_clear_water_level_8cs_source}{}\label{_clear_water_level_8cs_source}\index{Assets/Tom\textquotesingle{}s Terrain Tools/Editor/ClearWaterLevel.cs@{Assets/Tom\textquotesingle{}s Terrain Tools/Editor/ClearWaterLevel.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEditor;}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00005}00005\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_t_t_t}{TTT}}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00008}\mbox{\hyperlink{class_t_t_t_1_1_clear_water_level}{00008}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_t_t_t_1_1_clear_water_level}{ClearWaterLevel}}\ :\ ScriptableWizard\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Terrain\ terrain;}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Transform\ waterPlane;}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ [MenuItem\ (\textcolor{stringliteral}{"{}Window/Terrain\ Tools/Clear\ below\ water\ Level"{}},\textcolor{keyword}{false},109)]}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ CreateWizard\ ()\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ ScriptableWizard.DisplayWizard<\mbox{\hyperlink{class_t_t_t_1_1_clear_water_level}{ClearWaterLevel}}>(\textcolor{stringliteral}{"{}Clear\ now"{}},\ \textcolor{stringliteral}{"{}Apply"{}});}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ OnWizardCreate\ ()\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(terrain==\textcolor{keyword}{null}\ ||\ waterPlane==\textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ Undo.RecordObject(terrain.terrainData,\ \textcolor{stringliteral}{"{}Clear\ below\ water\ level"{}});\ \textcolor{comment}{//\ warning,\ very\ slow!}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ remove\ trees}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ ArrayList\ NewTrees\ =\ \textcolor{keyword}{new}\ ArrayList(terrain.terrainData.treeInstances);}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ NewTrees.Count-\/1;\ i\ >=\ 0;\ i-\/-\/)\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TreeInstance\ MyTree\ =\ (TreeInstance)NewTrees[i];}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (MyTree.position.y<waterPlane.position.y/terrain.terrainData.size.y)}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NewTrees.RemoveAt(i);}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ terrain.terrainData.treeInstances\ =\ (TreeInstance[])NewTrees.ToArray(typeof(TreeInstance));}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ remove\ grass}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ detailRes\ =\ terrain.terrainData.detailWidth;}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}[]\ detailLayers\ =\ terrain.terrainData.GetSupportedLayers(0,\ 0,\ detailRes,\ detailRes);}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ LayerCount\ =\ detailLayers.Length;}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ detailWidth\ =\ terrain.terrainData.detailWidth;}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ detailHeight\ =\ terrain.terrainData.detailHeight;}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ l\ =\ 0;\ l<LayerCount;\ l++)\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}[,]\ grass\ =\ terrain.terrainData.GetDetailLayer(0,\ 0,\ detailRes,\ detailRes,\ l);}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y\ =\ 0;\ y\ <\ detailRes;\ y++)\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ x\ =\ 0;\ x\ <\ detailRes;\ x++)\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ localHeight\ =\ terrain.terrainData.GetInterpolatedHeight((\textcolor{keywordtype}{float})y/(\textcolor{keywordtype}{float})detailHeight,(\textcolor{keywordtype}{float})x/(\textcolor{keywordtype}{float})detailWidth);}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ currentPosHeight\ =\ (localHeight-\/waterPlane.position.y)/(terrain.terrainData.size.y-\/waterPlane.position.y);}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ below\ waterplane\ Y}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentPosHeight<0)}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ grass[x,y]=0;}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}else\{\ //\ }}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ //\ NOTE:\ keeps\ original,\ ONLY\ for\ first\ run,\ because\ if\ its\ set\ to\ 0,\ cannot\ restore\ it..}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ grass[x,y]=2;\ //\ for\ test\ only}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ terrain.terrainData.SetDetailLayer(0,\ 0,\ l,\ grass);}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ set\ texture\ for\ underwater?}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ set\ texture\ for\ waterlevel\ (beach?)}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ OnWizardUpdate\ ()\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(terrain==\textcolor{keyword}{null}\ ||\ waterPlane==\textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ errorString\ =\ \textcolor{stringliteral}{"{}No\ terrain\ or\ waterplane\ assigned"{}};}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ errorString\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00089}00089\ \textcolor{comment}{//\ \ \ \ \ \ void\ OnWizardOtherButton\ ()\ }}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00090}00090\ \textcolor{comment}{//\ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00091}00091\ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00094}00094\ \}}
+\DoxyCodeLine{\Hypertarget{_clear_water_level_8cs_source_l00095}00095\ }
+
+\end{DoxyCode}

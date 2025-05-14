@@ -1,0 +1,245 @@
+\doxysection{Coin\+Game\+Manager.\+cs}
+\hypertarget{_coin_game_manager_8cs_source}{}\label{_coin_game_manager_8cs_source}\index{Assets/Scripts/Platformers/CoinGameManager.cs@{Assets/Scripts/Platformers/CoinGameManager.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine.SceneManagement;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }TMPro;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00005}00005\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_platformers}{Platformers}}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00010}\mbox{\hyperlink{class_platformers_1_1_coin_game_manager}{00010}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_platformers_1_1_coin_game_manager}{CoinGameManager}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ [Header(\textcolor{stringliteral}{"{}UI\ References"{}})]}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ coinTextName\ =\ \textcolor{stringliteral}{"{}CoinText"{}};}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ messageTextName\ =\ \textcolor{stringliteral}{"{}MessageText"{}};}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00018}\mbox{\hyperlink{class_platformers_1_1_coin_game_manager_ad68e04ec533f7544578f9597f840866e}{00018}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_ad68e04ec533f7544578f9597f840866e}{messageDisplayTime}}\ =\ 2f;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Game\ Settings"{}})]}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00022}\mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a40017520429d487dee5ee18dae55c7b7}{00022}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a40017520429d487dee5ee18dae55c7b7}{playerSpawnPoint}};}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00024}\mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a40a5e7f033e44a1b99313bd2d17b0ed1}{00024}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a40a5e7f033e44a1b99313bd2d17b0ed1}{useCheckpoints}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00026}\mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a4470e5b96401ae7e96b9f5739d562d35}{00026}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a4470e5b96401ae7e96b9f5739d562d35}{requireAllCoinsToExit}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ TextMeshProUGUI\ coinText;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ TextMeshProUGUI\ messageText;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ coins\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ totalCoinsInLevel\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ Vector3\ lastCheckpoint;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ messageTimer;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager}{CoinGameManager}}\ instance;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00038}\mbox{\hyperlink{class_platformers_1_1_coin_game_manager_aa1db16cfea37e3c17131706cc2335b40}{00038}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager}{CoinGameManager}}\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_aa1db16cfea37e3c17131706cc2335b40}{Instance}}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (instance\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ instance\ =\ FindAnyObjectByType<CoinGameManager>();}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (instance\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GameObject\ go\ =\ \textcolor{keyword}{new}\ GameObject(\textcolor{stringliteral}{"{}CoinGameManager"{}});}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ instance\ =\ go.AddComponent<\mbox{\hyperlink{class_platformers_1_1_coin_game_manager}{CoinGameManager}}>();}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ instance;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Awake()}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (instance\ !=\ \textcolor{keyword}{null}\ \&\&\ instance\ !=\ \textcolor{keyword}{this})}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(gameObject);}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ instance\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ DontDestroyOnLoad(gameObject);}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ spawn\ point}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ lastCheckpoint\ =\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a40017520429d487dee5ee18dae55c7b7}{playerSpawnPoint}};}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Subscribe\ to\ the\ scene\ loaded\ event}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ SceneManager.sceneLoaded\ +=\ OnSceneLoaded;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ the\ coin\ count}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ CountCoinsInLevel();}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ FindUIElements();}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ UpdateUI();}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnDestroy()}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ SceneManager.sceneLoaded\ -\/=\ OnSceneLoaded;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ FindUIElements()}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ UI\ elements\ by\ name}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ GameObject\ coinTextObj\ =\ GameObject.Find(coinTextName);}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ GameObject\ messageTextObj\ =\ GameObject.Find(messageTextName);}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (coinTextObj\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ coinText\ =\ coinTextObj.GetComponent<TextMeshProUGUI>();}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogWarning(\$\textcolor{stringliteral}{"{}Could\ not\ find\ UI\ element\ named\ \{coinTextName\}"{}});}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (messageTextObj\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ messageText\ =\ messageTextObj.GetComponent<TextMeshProUGUI>();}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (messageText\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ messageText.gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogWarning(\$\textcolor{stringliteral}{"{}Could\ not\ find\ UI\ element\ named\ \{messageTextName\}"{}});}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnSceneLoaded(Scene\ scene,\ LoadSceneMode\ mode)}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reset\ counters\ when\ a\ new\ scene\ is\ loaded}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ coins\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ CountCoinsInLevel();}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ new\ UI\ elements\ in\ the\ loaded\ scene}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ FindUIElements();}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ UpdateUI();}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Scene\ loaded"{}});}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ CountCoinsInLevel();}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ FindUIElements();}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ UpdateUI();}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ CountCoinsInLevel()}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ Coin[]\ coinsInLevel\ =\ FindObjectsByType<Coin>(FindObjectsSortMode.None);}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ totalCoinsInLevel\ =\ coinsInLevel.Length;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\$\textcolor{stringliteral}{"{}Found\ \{totalCoinsInLevel\}\ coins\ in\ level"{}});}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ temporary\ messages}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (messageTimer\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ messageTimer\ -\/=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (messageTimer\ <=\ 0\ \&\&\ messageText\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ messageText.gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00154}\mbox{\hyperlink{class_platformers_1_1_coin_game_manager_acfbcadfb7c6c14f842638b2c5d525c34}{00154}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_acfbcadfb7c6c14f842638b2c5d525c34}{AddCoins}}(\textcolor{keywordtype}{int}\ amount)}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ coins\ +=\ amount;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ UpdateUI();}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_ad3db68d1fdfb71e5ddf6be163bb122c0}{ShowMessage}}(\$\textcolor{stringliteral}{"{}+\{amount\}\ Coins!\ (\{coins\}/\{totalCoinsInLevel\})"{}});}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00163}\mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a6a3ca3d03ea74b2747fb388117493fd0}{00163}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a6a3ca3d03ea74b2747fb388117493fd0}{AreAllCoinsCollected}}()}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !\mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a4470e5b96401ae7e96b9f5739d562d35}{requireAllCoinsToExit}}\ ||\ coins\ >=\ totalCoinsInLevel;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00170}\mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a53bbf8d857cc5726ccebebc941c12834}{00170}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a53bbf8d857cc5726ccebebc941c12834}{SetCheckpoint}}(Vector3\ position)}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a40a5e7f033e44a1b99313bd2d17b0ed1}{useCheckpoints}})}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lastCheckpoint\ =\ position;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_ad3db68d1fdfb71e5ddf6be163bb122c0}{ShowMessage}}(\textcolor{stringliteral}{"{}Checkpoint\ reached!"{}});}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00181}\mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a0260668a89546bafc4d9cf0dcdc372a9}{00181}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a0260668a89546bafc4d9cf0dcdc372a9}{RespawnPlayer}}()}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ GameObject\ player\ =\ GameObject.FindGameObjectWithTag(\textcolor{stringliteral}{"{}Player"{}});}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (player\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Rigidbody\ rb\ =\ player.GetComponent<Rigidbody>();}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rb\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Disable\ physics\ temporarily}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rb.isKinematic\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Teleport\ to\ checkpoint}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ player.transform.position\ =\ lastCheckpoint;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reset\ velocity\ and\ rotation}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rb.linearVelocity\ =\ Vector3.zero;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rb.angularVelocity\ =\ Vector3.zero;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Re-\/enable\ physics}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rb.isKinematic\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Fallback\ if\ no\ Rigidbody\ found}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ player.transform.position\ =\ lastCheckpoint;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogWarning(\textcolor{stringliteral}{"{}Player\ doesn't\ have\ a\ Rigidbody\ component!"{}},\ player);}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00214}\mbox{\hyperlink{class_platformers_1_1_coin_game_manager_ad3db68d1fdfb71e5ddf6be163bb122c0}{00214}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_ad3db68d1fdfb71e5ddf6be163bb122c0}{ShowMessage}}(\textcolor{keywordtype}{string}\ message,\ \textcolor{keywordtype}{float}\ duration\ =\ -\/1)}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (messageText\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ messageText.text\ =\ message;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ messageText.gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ messageTimer\ =\ duration\ <\ 0\ ?\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_ad68e04ec533f7544578f9597f840866e}{messageDisplayTime}}\ :\ duration;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogWarning(\textcolor{stringliteral}{"{}Message\ text\ is\ not\ assigned!"{}});}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ UpdateUI()}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (coinText\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ coinText.text\ =\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a4470e5b96401ae7e96b9f5739d562d35}{requireAllCoinsToExit}}\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ \$\textcolor{stringliteral}{"{}Coins:\ \{coins\}/\{totalCoinsInLevel\}"{}}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \$\textcolor{stringliteral}{"{}Coins:\ \{coins\}"{}};}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogWarning(\textcolor{stringliteral}{"{}Coin\ text\ is\ not\ assigned!"{}});}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00243}\mbox{\hyperlink{class_platformers_1_1_coin_game_manager_aba0a00aacb187f02aad92bd479f25a80}{00243}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_aba0a00aacb187f02aad92bd479f25a80}{RestartLevel}}()}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00249}\mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a35420486093d12431ad9d05642dfb220}{00249}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_platformers_1_1_coin_game_manager_a35420486093d12431ad9d05642dfb220}{LoadNextLevel}}()}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nextSceneIndex\ =\ SceneManager.GetActiveScene().buildIndex\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nextSceneIndex\ <\ SceneManager.sceneCountInBuildSettings)}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SceneManager.LoadScene(nextSceneIndex);}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}No\ more\ levels\ to\ load!"{}});}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ You\ might\ want\ to\ load\ a\ "{}Game\ Complete"{}\ scene\ or\ show\ a\ message}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00262}00262\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_coin_game_manager_8cs_source_l00263}00263\ \}}
+
+\end{DoxyCode}

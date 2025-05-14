@@ -1,0 +1,124 @@
+\doxysection{Exit\+Point.\+cs}
+\hypertarget{_exit_point_8cs_source}{}\label{_exit_point_8cs_source}\index{Assets/Scripts/Platformers/ExitPoint.cs@{Assets/Scripts/Platformers/ExitPoint.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine.SceneManagement;}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00004}00004\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_platformers}{Platformers}}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00009}00009\ \ \ \ \ [RequireComponent(typeof(BoxCollider))]}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00010}\mbox{\hyperlink{class_platformers_1_1_exit_point}{00010}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_platformers_1_1_exit_point}{ExitPoint}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Exit\ Settings"{}})]}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00014}\mbox{\hyperlink{class_platformers_1_1_exit_point_ac930e38a00347310a5432dca383488b4}{00014}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_platformers_1_1_exit_point_ac930e38a00347310a5432dca383488b4}{nextLevelName}};\ \textcolor{comment}{//\ Имя\ следующей\ сцены.\ Оставьте\ пустым\ для\ последнего\ уровня.}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00016}\mbox{\hyperlink{class_platformers_1_1_exit_point_a6a891d172f878706ea2e42725146898e}{00016}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_platformers_1_1_exit_point_a6a891d172f878706ea2e42725146898e}{isLastLevel}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00018}\mbox{\hyperlink{class_platformers_1_1_exit_point_a6e7cc6e6a0de3b8cad9ee31c6992e3dd}{00018}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_platformers_1_1_exit_point_a6e7cc6e6a0de3b8cad9ee31c6992e3dd}{completionMessage}}\ =\ \textcolor{stringliteral}{"{}Level\ Complete!"{}};}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00020}\mbox{\hyperlink{class_platformers_1_1_exit_point_a783926a95e1f3831503396ed8beaea4d}{00020}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_platformers_1_1_exit_point_a783926a95e1f3831503396ed8beaea4d}{notEnoughCoinsMessage}}\ =\ \textcolor{stringliteral}{"{}Collect\ all\ coins\ first!"{}};}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ canExit\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ showingMessage\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ messageDelay\ =\ 1f;}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ lastMessageTime;}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Awake()}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Убедимся,\ что\ коллайдер\ является\ триггером}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ BoxCollider\ boxCollider\ =\ GetComponent<BoxCollider>();}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (boxCollider\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boxCollider.isTrigger\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ExitPoint\ requires\ a\ BoxCollider\ component."{}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnTriggerEnter(Collider\ other)}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.CompareTag(\textcolor{stringliteral}{"{}Player"{}}))}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ canExit\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CheckAndHandleExit();}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnTriggerExit(Collider\ other)}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.CompareTag(\textcolor{stringliteral}{"{}Player"{}}))}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ canExit\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ showingMessage\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ CheckAndHandleExit()}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!canExit)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CoinGameManager.Instance\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CoinGameManager.Instance.AreAllCoinsCollected())}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HandleExit();}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!showingMessage\ \&\&\ Time.time\ -\/\ lastMessageTime\ >\ messageDelay)}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ showingMessage\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lastMessageTime\ =\ Time.time;}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CoinGameManager.Instance.ShowMessage(\mbox{\hyperlink{class_platformers_1_1_exit_point_a783926a95e1f3831503396ed8beaea4d}{notEnoughCoinsMessage}});}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CoinGameManager\ not\ found\ in\ scene.\ Cannot\ handle\ exit\ logic."{}});}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ HandleExit()}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CoinGameManager.Instance\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_platformers_1_1_exit_point_a6a891d172f878706ea2e42725146898e}{isLastLevel}}\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(\mbox{\hyperlink{class_platformers_1_1_exit_point_ac930e38a00347310a5432dca383488b4}{nextLevelName}}))}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CoinGameManager.Instance.ShowMessage(\mbox{\hyperlink{class_platformers_1_1_exit_point_a6e7cc6e6a0de3b8cad9ee31c6992e3dd}{completionMessage}},\ 5f);}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Player\ reached\ the\ final\ exit\ of\ the\ game/demo."{}});}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (SceneUtility.GetBuildIndexByScenePath(\textcolor{stringliteral}{"{}Assets/Scenes/Platformers/"{}}\ +\ \mbox{\hyperlink{class_platformers_1_1_exit_point_ac930e38a00347310a5432dca383488b4}{nextLevelName}}\ +\ \textcolor{stringliteral}{"{}.unity"{}})\ >=\ 0\ ||\ }
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SceneUtility.GetBuildIndexByScenePath(\mbox{\hyperlink{class_platformers_1_1_exit_point_ac930e38a00347310a5432dca383488b4}{nextLevelName}})\ >=\ 0)}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SceneManager.LoadScene(\mbox{\hyperlink{class_platformers_1_1_exit_point_ac930e38a00347310a5432dca383488b4}{nextLevelName}});}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\$\textcolor{stringliteral}{"{}Scene\ '\{nextLevelName\}'\ not\ found\ in\ Build\ Settings\ or\ path\ is\ incorrect."{}});}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CoinGameManager.Instance.ShowMessage(\$\textcolor{stringliteral}{"{}Error:\ Scene\ '\{nextLevelName\}'\ not\ found."{}},\ 5f);}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnDrawGizmos()}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Visualization\ of\ the\ exit\ point\ in\ the\ editor}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.color\ =\ Color.green;}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawWireSphere(transform.position,\ 0.5f);}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Show\ direction\ to\ the\ next\ level\ with\ an\ arrow}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawRay(transform.position,\ Vector3.up\ *\ 2f);}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ a\ small\ crown\ above\ the\ exit\ point}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ crownSize\ =\ 0.3f;}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ crownBase\ =\ transform.position\ +\ Vector3.up\ *\ 2f;}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawLine(crownBase\ +\ Vector3.left\ *\ crownSize,\ crownBase\ +\ Vector3.up\ *\ crownSize);}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawLine(crownBase\ +\ Vector3.up\ *\ crownSize,\ crownBase\ +\ Vector3.right\ *\ crownSize);}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawLine(crownBase\ +\ Vector3.right\ *\ crownSize,\ crownBase);}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawLine(crownBase,\ crownBase\ +\ Vector3.left\ *\ crownSize);}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00135}00135\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_exit_point_8cs_source_l00136}00136\ \}\ }
+
+\end{DoxyCode}

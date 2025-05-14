@@ -1,0 +1,122 @@
+\doxysection{Checkpoint.\+cs}
+\hypertarget{_checkpoint_8cs_source}{}\label{_checkpoint_8cs_source}\index{Assets/Scripts/Platformers/Checkpoint.cs@{Assets/Scripts/Platformers/Checkpoint.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00003}\mbox{\hyperlink{namespace_platformers}{00003}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_platformers}{Platformers}}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00004}00004\ \{}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00008}00008\ \ \ \ \ [RequireComponent(typeof(BoxCollider))]}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00009}\mbox{\hyperlink{class_platformers_1_1_checkpoint}{00009}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_platformers_1_1_checkpoint}{Checkpoint}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Checkpoint\ Settings"{}})]}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00013}\mbox{\hyperlink{class_platformers_1_1_checkpoint_af2a92b17743c7ddf8f5d85fec1e7cb97}{00013}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_platformers_1_1_checkpoint_af2a92b17743c7ddf8f5d85fec1e7cb97}{isActive}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00015}\mbox{\hyperlink{class_platformers_1_1_checkpoint_a59cf9a15eee32e5808c8ecd25d39b3b0}{00015}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_platformers_1_1_checkpoint_a59cf9a15eee32e5808c8ecd25d39b3b0}{deactivateAfterUse}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00017}\mbox{\hyperlink{class_platformers_1_1_checkpoint_ad4424e7f5d7b5bf59a1647fa572711cd}{00017}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_platformers_1_1_checkpoint_ad4424e7f5d7b5bf59a1647fa572711cd}{activationDelay}}\ =\ 0.5f;\ \textcolor{comment}{//\ Prevent\ multiple\ rapid\ activations}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Visual\ Settings"{}})]}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00021}\mbox{\hyperlink{class_platformers_1_1_checkpoint_a27825df076af2be30e2c6f2dace2dad0}{00021}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Color\ \mbox{\hyperlink{class_platformers_1_1_checkpoint_a27825df076af2be30e2c6f2dace2dad0}{activeColor}}\ =\ \textcolor{keyword}{new}\ Color(0.3f,\ 1f,\ 0.3f,\ 0.5f);\ \textcolor{comment}{//\ Semi-\/transparent\ green}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00023}\mbox{\hyperlink{class_platformers_1_1_checkpoint_a0ff1928a5e2b7c3266c7302351daad50}{00023}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Color\ \mbox{\hyperlink{class_platformers_1_1_checkpoint_a0ff1928a5e2b7c3266c7302351daad50}{inactiveColor}}\ =\ \textcolor{keyword}{new}\ Color(0.7f,\ 0.7f,\ 0.7f,\ 0.5f);\ \textcolor{comment}{//\ Semi-\/transparent\ gray}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00025}\mbox{\hyperlink{class_platformers_1_1_checkpoint_a531196be05845119a00b1ce0eac89ad5}{00025}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ \mbox{\hyperlink{class_platformers_1_1_checkpoint_a531196be05845119a00b1ce0eac89ad5}{checkpointSize}}\ =\ \textcolor{keyword}{new}\ Vector3(3f,\ 0.1f,\ 3f);\ \textcolor{comment}{//\ Size\ of\ the\ checkpoint\ area}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ canActivate\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ lastActivationTime;}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ensure\ we\ have\ a\ trigger\ collider}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ BoxCollider\ boxCollider\ =\ GetComponent<BoxCollider>();}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (boxCollider\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boxCollider.isTrigger\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ the\ collider\ size\ to\ match\ our\ visual\ size}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boxCollider.size\ =\ \mbox{\hyperlink{class_platformers_1_1_checkpoint_a531196be05845119a00b1ce0eac89ad5}{checkpointSize}};}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}Checkpoint\ requires\ a\ BoxCollider\ component!"{}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnTriggerEnter(Collider\ other)}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_platformers_1_1_checkpoint_af2a92b17743c7ddf8f5d85fec1e7cb97}{isActive}}\ ||\ !canActivate)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.CompareTag(\textcolor{stringliteral}{"{}Player"{}}))}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Time.time\ -\/\ lastActivationTime\ >=\ \mbox{\hyperlink{class_platformers_1_1_checkpoint_ad4424e7f5d7b5bf59a1647fa572711cd}{activationDelay}})}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SetCheckpoint();}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lastActivationTime\ =\ Time.time;}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_platformers_1_1_checkpoint_a59cf9a15eee32e5808c8ecd25d39b3b0}{deactivateAfterUse}})}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_platformers_1_1_checkpoint_af2a92b17743c7ddf8f5d85fec1e7cb97}{isActive}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ SetCheckpoint()}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CoinGameManager.Instance\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ position\ slightly\ above\ the\ checkpoint\ to\ prevent\ ground\ clipping}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ spawnPosition\ =\ transform.position\ +\ Vector3.up\ *\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CoinGameManager.Instance.SetCheckpoint(spawnPosition);}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ player\ has\ a\ Rigidbody,\ we\ might\ want\ to\ reset\ their\ velocity\ when\ respawning}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GameObject\ player\ =\ GameObject.FindGameObjectWithTag(\textcolor{stringliteral}{"{}Player"{}});}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (player\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Rigidbody\ rb\ =\ player.GetComponent<Rigidbody>();}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rb\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rb.linearVelocity\ =\ Vector3.zero;}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogWarning(\textcolor{stringliteral}{"{}CoinGameManager\ not\ found!\ Checkpoint\ won't\ be\ saved."{}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ OnDrawGizmos()}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ checkpoint\ area}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.color\ =\ \mbox{\hyperlink{class_platformers_1_1_checkpoint_af2a92b17743c7ddf8f5d85fec1e7cb97}{isActive}}\ ?\ \mbox{\hyperlink{class_platformers_1_1_checkpoint_a27825df076af2be30e2c6f2dace2dad0}{activeColor}}\ :\ \mbox{\hyperlink{class_platformers_1_1_checkpoint_a0ff1928a5e2b7c3266c7302351daad50}{inactiveColor}};}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.matrix\ =\ transform.localToWorldMatrix;}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawCube(Vector3.zero,\ \mbox{\hyperlink{class_platformers_1_1_checkpoint_a531196be05845119a00b1ce0eac89ad5}{checkpointSize}});}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ arrows\ pointing\ upward\ to\ make\ it\ more\ visible}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ center\ =\ transform.position;}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ arrowSize\ =\ 1f;}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ arrowOffset\ =\ Vector3.up\ *\ (checkpointSize.y\ +\ 0.5f);}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.color\ =\ \mbox{\hyperlink{class_platformers_1_1_checkpoint_af2a92b17743c7ddf8f5d85fec1e7cb97}{isActive}}\ ?\ Color.green\ :\ Color.gray;}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ main\ arrow}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawRay(center,\ arrowOffset);}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ arrow\ head}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ arrowTop\ =\ center\ +\ arrowOffset;}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ right\ =\ transform.right\ *\ (arrowSize\ *\ 0.3f);}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ forward\ =\ transform.forward\ *\ (arrowSize\ *\ 0.3f);}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawLine(arrowTop,\ arrowTop\ -\/\ arrowOffset\ *\ 0.3f\ +\ right);}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawLine(arrowTop,\ arrowTop\ -\/\ arrowOffset\ *\ 0.3f\ -\/\ right);}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawLine(arrowTop,\ arrowTop\ -\/\ arrowOffset\ *\ 0.3f\ +\ forward);}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ Gizmos.DrawLine(arrowTop,\ arrowTop\ -\/\ arrowOffset\ *\ 0.3f\ -\/\ forward);}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ text\ label}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00127}00127\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#if\ UNITY\_EDITOR}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ UnityEditor.Handles.Label(arrowTop\ +\ Vector3.up\ *\ 0.5f,\ }
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_platformers_1_1_checkpoint_af2a92b17743c7ddf8f5d85fec1e7cb97}{isActive}}\ ?\ \textcolor{stringliteral}{"{}Active\ Checkpoint"{}}\ :\ \textcolor{stringliteral}{"{}Inactive\ Checkpoint"{}});}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00130}00130\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00132}00132\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_checkpoint_8cs_source_l00133}00133\ \}}
+
+\end{DoxyCode}

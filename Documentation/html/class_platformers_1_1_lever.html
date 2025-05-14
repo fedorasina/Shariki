@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>19CAPtcha84: Класс Platformers.Lever</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">19CAPtcha84<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">Am I a Robot?</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('class_platformers_1_1_lever.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Открытые атрибуты</a> &#124;
+<a href="class_platformers_1_1_lever-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс Platformers.Lever</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Interactive lever that controls moving platforms.  
+ <a href="#details">Подробнее...</a></p>
+<div class="dynheader">
+Граф наследования:Platformers.Lever:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_platformers_1_1_lever__inherit__graph.png" border="0" usemap="#a_platformers_8_lever_inherit__map" alt="Inheritance graph"/></div>
+<map name="a_platformers_8_lever_inherit__map" id="a_platformers_8_lever_inherit__map">
+<area shape="rect" title="Interactive lever that controls moving platforms." alt="" coords="5,80,127,107"/>
+<area shape="rect" title=" " alt="" coords="11,5,121,32"/>
+<area shape="poly" title=" " alt="" coords="69,48,69,80,63,80,63,48"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">см. легенду</a>]</span></center></div>
+<div class="dynheader">
+Граф связей класса Platformers.Lever:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_platformers_1_1_lever__coll__graph.png" border="0" usemap="#a_platformers_8_lever_coll__map" alt="Collaboration graph"/></div>
+<map name="a_platformers_8_lever_coll__map" id="a_platformers_8_lever_coll__map">
+<area shape="rect" title="Interactive lever that controls moving platforms." alt="" coords="5,172,127,199"/>
+<area shape="rect" title=" " alt="" coords="6,5,115,32"/>
+<area shape="poly" title=" " alt="" coords="64,47,68,171,63,172,59,47"/>
+<area shape="rect" href="class_platformers_1_1_moving_platform.html" title="Implements a platform that moves between two points." alt="" coords="82,81,261,108"/>
+<area shape="poly" title=" " alt="" coords="93,39,154,79,151,83,91,43"/>
+<area shape="poly" title=" " alt="" coords="146,120,83,173,79,169,143,116"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">см. легенду</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a591ac7a743464cd79224ad2b61ede653" id="r_a591ac7a743464cd79224ad2b61ede653"><td class="memItemLeft" align="right" valign="top">Transform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a591ac7a743464cd79224ad2b61ede653">leverHandle</a></td></tr>
+<tr class="memdesc:a591ac7a743464cd79224ad2b61ede653"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transform representing the physical lever handle.  <br /></td></tr>
+<tr class="separator:a591ac7a743464cd79224ad2b61ede653"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad242c8b030831351a9e8c183ee2c73f0" id="r_ad242c8b030831351a9e8c183ee2c73f0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad242c8b030831351a9e8c183ee2c73f0">activationAngle</a> = 45f</td></tr>
+<tr class="memdesc:ad242c8b030831351a9e8c183ee2c73f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Angle the lever rotates when activated.  <br /></td></tr>
+<tr class="separator:ad242c8b030831351a9e8c183ee2c73f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a037eceea83c81783c300fb76e3d092a1" id="r_a037eceea83c81783c300fb76e3d092a1"><td class="memItemLeft" align="right" valign="top">KeyCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a037eceea83c81783c300fb76e3d092a1">activationKey</a> = KeyCode.E</td></tr>
+<tr class="memdesc:a037eceea83c81783c300fb76e3d092a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Key used to interact with the lever.  <br /></td></tr>
+<tr class="separator:a037eceea83c81783c300fb76e3d092a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae965ba07f4548a5e4fb20ed6519663a0" id="r_ae965ba07f4548a5e4fb20ed6519663a0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae965ba07f4548a5e4fb20ed6519663a0">oneTimeUse</a> = false</td></tr>
+<tr class="memdesc:ae965ba07f4548a5e4fb20ed6519663a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the lever can only be used once.  <br /></td></tr>
+<tr class="separator:ae965ba07f4548a5e4fb20ed6519663a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2708c735ae62a8dce8885306ad355a5e" id="r_a2708c735ae62a8dce8885306ad355a5e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2708c735ae62a8dce8885306ad355a5e">startActivated</a> = false</td></tr>
+<tr class="memdesc:a2708c735ae62a8dce8885306ad355a5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the lever starts in activated state.  <br /></td></tr>
+<tr class="separator:a2708c735ae62a8dce8885306ad355a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a428b2c471daf1bba733ef8a5c6efa6af" id="r_a428b2c471daf1bba733ef8a5c6efa6af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_platformers_1_1_moving_platform.html">MovingPlatform</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a428b2c471daf1bba733ef8a5c6efa6af">controlledPlatforms</a></td></tr>
+<tr class="memdesc:a428b2c471daf1bba733ef8a5c6efa6af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of platforms controlled by this lever.  <br /></td></tr>
+<tr class="separator:a428b2c471daf1bba733ef8a5c6efa6af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dcdb141db7c4a159c5e861b7a866046" id="r_a3dcdb141db7c4a159c5e861b7a866046"><td class="memItemLeft" align="right" valign="top">UnityEvent&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3dcdb141db7c4a159c5e861b7a866046">onActivate</a></td></tr>
+<tr class="memdesc:a3dcdb141db7c4a159c5e861b7a866046"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event triggered when lever is activated.  <br /></td></tr>
+<tr class="separator:a3dcdb141db7c4a159c5e861b7a866046"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a776997f2ab63ab759dc9b8d23499e52f" id="r_a776997f2ab63ab759dc9b8d23499e52f"><td class="memItemLeft" align="right" valign="top">UnityEvent&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a776997f2ab63ab759dc9b8d23499e52f">onDeactivate</a></td></tr>
+<tr class="memdesc:a776997f2ab63ab759dc9b8d23499e52f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event triggered when lever is deactivated.  <br /></td></tr>
+<tr class="separator:a776997f2ab63ab759dc9b8d23499e52f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Interactive lever that controls moving platforms. </p>
+<p>Implements a lever mechanism that can be activated by players to control one or more moving platforms. Supports one-time use, initial state configuration, and custom events on activation/deactivation. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_lever_8cs_source.html">Lever.cs</a> строка <a class="el" href="_lever_8cs_source.html#l00010">10</a></p>
+</div><h2 class="groupheader">Данные класса</h2>
+<a id="ad242c8b030831351a9e8c183ee2c73f0" name="ad242c8b030831351a9e8c183ee2c73f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad242c8b030831351a9e8c183ee2c73f0">&#9670;&#160;</a></span>activationAngle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Platformers.Lever.activationAngle = 45f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Angle the lever rotates when activated. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_lever_8cs_source.html">Lever.cs</a> строка <a class="el" href="_lever_8cs_source.html#l00016">16</a></p>
+
+</div>
+</div>
+<a id="a037eceea83c81783c300fb76e3d092a1" name="a037eceea83c81783c300fb76e3d092a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a037eceea83c81783c300fb76e3d092a1">&#9670;&#160;</a></span>activationKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">KeyCode Platformers.Lever.activationKey = KeyCode.E</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Key used to interact with the lever. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_lever_8cs_source.html">Lever.cs</a> строка <a class="el" href="_lever_8cs_source.html#l00018">18</a></p>
+
+</div>
+</div>
+<a id="a428b2c471daf1bba733ef8a5c6efa6af" name="a428b2c471daf1bba733ef8a5c6efa6af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a428b2c471daf1bba733ef8a5c6efa6af">&#9670;&#160;</a></span>controlledPlatforms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_platformers_1_1_moving_platform.html">MovingPlatform</a> [] Platformers.Lever.controlledPlatforms</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Array of platforms controlled by this lever. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_lever_8cs_source.html">Lever.cs</a> строка <a class="el" href="_lever_8cs_source.html#l00026">26</a></p>
+
+</div>
+</div>
+<a id="a591ac7a743464cd79224ad2b61ede653" name="a591ac7a743464cd79224ad2b61ede653"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a591ac7a743464cd79224ad2b61ede653">&#9670;&#160;</a></span>leverHandle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Transform Platformers.Lever.leverHandle</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transform representing the physical lever handle. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_lever_8cs_source.html">Lever.cs</a> строка <a class="el" href="_lever_8cs_source.html#l00014">14</a></p>
+
+</div>
+</div>
+<a id="a3dcdb141db7c4a159c5e861b7a866046" name="a3dcdb141db7c4a159c5e861b7a866046"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dcdb141db7c4a159c5e861b7a866046">&#9670;&#160;</a></span>onActivate</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UnityEvent Platformers.Lever.onActivate</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Event triggered when lever is activated. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_lever_8cs_source.html">Lever.cs</a> строка <a class="el" href="_lever_8cs_source.html#l00030">30</a></p>
+
+</div>
+</div>
+<a id="a776997f2ab63ab759dc9b8d23499e52f" name="a776997f2ab63ab759dc9b8d23499e52f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a776997f2ab63ab759dc9b8d23499e52f">&#9670;&#160;</a></span>onDeactivate</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UnityEvent Platformers.Lever.onDeactivate</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Event triggered when lever is deactivated. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_lever_8cs_source.html">Lever.cs</a> строка <a class="el" href="_lever_8cs_source.html#l00032">32</a></p>
+
+</div>
+</div>
+<a id="ae965ba07f4548a5e4fb20ed6519663a0" name="ae965ba07f4548a5e4fb20ed6519663a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae965ba07f4548a5e4fb20ed6519663a0">&#9670;&#160;</a></span>oneTimeUse</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Platformers.Lever.oneTimeUse = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whether the lever can only be used once. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_lever_8cs_source.html">Lever.cs</a> строка <a class="el" href="_lever_8cs_source.html#l00020">20</a></p>
+
+</div>
+</div>
+<a id="a2708c735ae62a8dce8885306ad355a5e" name="a2708c735ae62a8dce8885306ad355a5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2708c735ae62a8dce8885306ad355a5e">&#9670;&#160;</a></span>startActivated</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Platformers.Lever.startActivated = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whether the lever starts in activated state. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_lever_8cs_source.html">Lever.cs</a> строка <a class="el" href="_lever_8cs_source.html#l00022">22</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов класса находятся в файле:<ul>
+<li>Assets/Scripts/Platformers/<a class="el" href="_lever_8cs_source.html">Lever.cs</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespace_platformers.html">Platformers</a></li><li class="navelem"><a class="el" href="class_platformers_1_1_lever.html">Lever</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>19CAPtcha84: Исходный файл Assets/Scripts/Platformers/ExitPoint.cs</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">19CAPtcha84<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">Am I a Robot?</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('_exit_point_8cs_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ExitPoint.cs</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span>UnityEngine;</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using </span>UnityEngine.SceneManagement;</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_platformers.html">Platformers</a></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    [RequireComponent(typeof(BoxCollider))]</div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_platformers_1_1_exit_point.html">   10</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_platformers_1_1_exit_point.html">ExitPoint</a> : MonoBehaviour</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        [Header(<span class="stringliteral">&quot;Exit Settings&quot;</span>)]</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_platformers_1_1_exit_point.html#ac930e38a00347310a5432dca383488b4">   14</a></span>        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code hl_variable" href="class_platformers_1_1_exit_point.html#ac930e38a00347310a5432dca383488b4">nextLevelName</a>; <span class="comment">// Имя следующей сцены. Оставьте пустым для последнего уровня.</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="class_platformers_1_1_exit_point.html#a6a891d172f878706ea2e42725146898e">   16</a></span>        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="class_platformers_1_1_exit_point.html#a6a891d172f878706ea2e42725146898e">isLastLevel</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_platformers_1_1_exit_point.html#a6e7cc6e6a0de3b8cad9ee31c6992e3dd">   18</a></span>        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code hl_variable" href="class_platformers_1_1_exit_point.html#a6e7cc6e6a0de3b8cad9ee31c6992e3dd">completionMessage</a> = <span class="stringliteral">&quot;Level Complete!&quot;</span>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="class_platformers_1_1_exit_point.html#a783926a95e1f3831503396ed8beaea4d">   20</a></span>        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code hl_variable" href="class_platformers_1_1_exit_point.html#a783926a95e1f3831503396ed8beaea4d">notEnoughCoinsMessage</a> = <span class="stringliteral">&quot;Collect all coins first!&quot;</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keyword">private</span> <span class="keywordtype">bool</span> canExit = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keyword">private</span> <span class="keywordtype">bool</span> showingMessage = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keyword">private</span> <span class="keywordtype">float</span> messageDelay = 1f;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">private</span> <span class="keywordtype">float</span> lastMessageTime;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keyword">private</span> <span class="keywordtype">void</span> Awake()</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <span class="comment">// Убедимся, что коллайдер является триггером</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            BoxCollider boxCollider = GetComponent&lt;BoxCollider&gt;();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keywordflow">if</span> (boxCollider != <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                boxCollider.isTrigger = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                Debug.LogError(<span class="stringliteral">&quot;ExitPoint requires a BoxCollider component.&quot;</span>, <span class="keyword">this</span>);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keyword">private</span> <span class="keywordtype">void</span> OnTriggerEnter(Collider other)</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keywordflow">if</span> (other.CompareTag(<span class="stringliteral">&quot;Player&quot;</span>))</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                canExit = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                CheckAndHandleExit();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keyword">private</span> <span class="keywordtype">void</span> OnTriggerExit(Collider other)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="keywordflow">if</span> (other.CompareTag(<span class="stringliteral">&quot;Player&quot;</span>))</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                canExit = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                showingMessage = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keyword">private</span> <span class="keywordtype">void</span> CheckAndHandleExit()</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <span class="keywordflow">if</span> (!canExit) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="keywordflow">if</span> (CoinGameManager.Instance != <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                <span class="keywordflow">if</span> (CoinGameManager.Instance.AreAllCoinsCollected())</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                    HandleExit();</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!showingMessage &amp;&amp; Time.time - lastMessageTime &gt; messageDelay)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                    showingMessage = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                    lastMessageTime = Time.time;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                    CoinGameManager.Instance.ShowMessage(<a class="code hl_variable" href="class_platformers_1_1_exit_point.html#a783926a95e1f3831503396ed8beaea4d">notEnoughCoinsMessage</a>);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                Debug.LogError(<span class="stringliteral">&quot;CoinGameManager not found in scene. Cannot handle exit logic.&quot;</span>);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keyword">private</span> <span class="keywordtype">void</span> HandleExit()</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            <span class="keywordflow">if</span> (CoinGameManager.Instance != <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_platformers_1_1_exit_point.html#a6a891d172f878706ea2e42725146898e">isLastLevel</a> || <span class="keywordtype">string</span>.IsNullOrEmpty(<a class="code hl_variable" href="class_platformers_1_1_exit_point.html#ac930e38a00347310a5432dca383488b4">nextLevelName</a>))</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                {</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                    CoinGameManager.Instance.ShowMessage(<a class="code hl_variable" href="class_platformers_1_1_exit_point.html#a6e7cc6e6a0de3b8cad9ee31c6992e3dd">completionMessage</a>, 5f);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                    Debug.Log(<span class="stringliteral">&quot;Player reached the final exit of the game/demo.&quot;</span>);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                }</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                {</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                    <span class="keywordflow">if</span> (SceneUtility.GetBuildIndexByScenePath(<span class="stringliteral">&quot;Assets/Scenes/Platformers/&quot;</span> + <a class="code hl_variable" href="class_platformers_1_1_exit_point.html#ac930e38a00347310a5432dca383488b4">nextLevelName</a> + <span class="stringliteral">&quot;.unity&quot;</span>) &gt;= 0 || </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                        SceneUtility.GetBuildIndexByScenePath(<a class="code hl_variable" href="class_platformers_1_1_exit_point.html#ac930e38a00347310a5432dca383488b4">nextLevelName</a>) &gt;= 0)</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                    {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                        SceneManager.LoadScene(<a class="code hl_variable" href="class_platformers_1_1_exit_point.html#ac930e38a00347310a5432dca383488b4">nextLevelName</a>);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                    }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                    {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                        Debug.LogError($<span class="stringliteral">&quot;Scene &#39;{nextLevelName}&#39; not found in Build Settings or path is incorrect.&quot;</span>);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                        CoinGameManager.Instance.ShowMessage($<span class="stringliteral">&quot;Error: Scene &#39;{nextLevelName}&#39; not found.&quot;</span>, 5f);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                    }</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            }</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        }</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keyword">private</span> <span class="keywordtype">void</span> OnDrawGizmos()</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            <span class="comment">// Visualization of the exit point in the editor</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>            Gizmos.color = Color.green;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            Gizmos.DrawWireSphere(transform.position, 0.5f);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            <span class="comment">// Show direction to the next level with an arrow</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            Gizmos.DrawRay(transform.position, Vector3.up * 2f);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            <span class="comment">// Draw a small crown above the exit point</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            <span class="keywordtype">float</span> crownSize = 0.3f;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            Vector3 crownBase = transform.position + Vector3.up * 2f;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            Gizmos.DrawLine(crownBase + Vector3.left * crownSize, crownBase + Vector3.up * crownSize);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            Gizmos.DrawLine(crownBase + Vector3.up * crownSize, crownBase + Vector3.right * crownSize);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            Gizmos.DrawLine(crownBase + Vector3.right * crownSize, crownBase);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            Gizmos.DrawLine(crownBase, crownBase + Vector3.left * crownSize);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        }</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    }</div>
+</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>} </div>
+<div class="ttc" id="aclass_platformers_1_1_exit_point_html"><div class="ttname"><a href="class_platformers_1_1_exit_point.html">Platformers.ExitPoint</a></div><div class="ttdoc">Represents a level exit point that transitions to the next level.</div><div class="ttdef"><b>Определения</b> <a href="#l00010">ExitPoint.cs:11</a></div></div>
+<div class="ttc" id="aclass_platformers_1_1_exit_point_html_a6a891d172f878706ea2e42725146898e"><div class="ttname"><a href="class_platformers_1_1_exit_point.html#a6a891d172f878706ea2e42725146898e">Platformers.ExitPoint.isLastLevel</a></div><div class="ttdeci">bool isLastLevel</div><div class="ttdoc">Whether this is the final level of the game.</div><div class="ttdef"><b>Определения</b> <a href="#l00016">ExitPoint.cs:16</a></div></div>
+<div class="ttc" id="aclass_platformers_1_1_exit_point_html_a6e7cc6e6a0de3b8cad9ee31c6992e3dd"><div class="ttname"><a href="class_platformers_1_1_exit_point.html#a6e7cc6e6a0de3b8cad9ee31c6992e3dd">Platformers.ExitPoint.completionMessage</a></div><div class="ttdeci">string completionMessage</div><div class="ttdoc">Message shown when level is completed.</div><div class="ttdef"><b>Определения</b> <a href="#l00018">ExitPoint.cs:18</a></div></div>
+<div class="ttc" id="aclass_platformers_1_1_exit_point_html_a783926a95e1f3831503396ed8beaea4d"><div class="ttname"><a href="class_platformers_1_1_exit_point.html#a783926a95e1f3831503396ed8beaea4d">Platformers.ExitPoint.notEnoughCoinsMessage</a></div><div class="ttdeci">string notEnoughCoinsMessage</div><div class="ttdoc">Message shown when player hasn&#39;t collected enough coins.</div><div class="ttdef"><b>Определения</b> <a href="#l00020">ExitPoint.cs:20</a></div></div>
+<div class="ttc" id="aclass_platformers_1_1_exit_point_html_ac930e38a00347310a5432dca383488b4"><div class="ttname"><a href="class_platformers_1_1_exit_point.html#ac930e38a00347310a5432dca383488b4">Platformers.ExitPoint.nextLevelName</a></div><div class="ttdeci">string nextLevelName</div><div class="ttdoc">Name of the next scene to load. Leave empty for final level.</div><div class="ttdef"><b>Определения</b> <a href="#l00014">ExitPoint.cs:14</a></div></div>
+<div class="ttc" id="anamespace_platformers_html"><div class="ttname"><a href="namespace_platformers.html">Platformers</a></div><div class="ttdef"><b>Определения</b> <a href="_checkpoint_8cs_source.html#l00003">Checkpoint.cs:4</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_d69630062efe05e462f871511cd1566e.html">Platformers</a></li><li class="navelem"><b>ExitPoint.cs</b></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

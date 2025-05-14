@@ -1,0 +1,691 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>19CAPtcha84: Класс TTT.TerrainTools</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">19CAPtcha84<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">Am I a Robot?</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('class_t_t_t_1_1_terrain_tools.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pub-static-methods">Открытые статические члены</a> &#124;
+<a href="#pub-attribs">Открытые атрибуты</a> &#124;
+<a href="class_t_t_t_1_1_terrain_tools-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс TTT.TerrainTools</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+Граф наследования:TTT.TerrainTools:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_t_t_t_1_1_terrain_tools__inherit__graph.png" border="0" usemap="#a_t_t_t_8_terrain_tools_inherit__map" alt="Inheritance graph"/></div>
+<map name="a_t_t_t_8_terrain_tools_inherit__map" id="a_t_t_t_8_terrain_tools_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,80,122,107"/>
+<area shape="rect" title=" " alt="" coords="13,5,114,32"/>
+<area shape="poly" title=" " alt="" coords="66,48,66,80,61,80,61,48"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">см. легенду</a>]</span></center></div>
+<div class="dynheader">
+Граф связей класса TTT.TerrainTools:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_t_t_t_1_1_terrain_tools__coll__graph.png" border="0" usemap="#a_t_t_t_8_terrain_tools_coll__map" alt="Collaboration graph"/></div>
+<map name="a_t_t_t_8_terrain_tools_coll__map" id="a_t_t_t_8_terrain_tools_coll__map">
+<area shape="rect" title=" " alt="" coords="5,80,122,107"/>
+<area shape="rect" title=" " alt="" coords="13,5,114,32"/>
+<area shape="poly" title=" " alt="" coords="66,48,66,80,61,80,61,48"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">см. легенду</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:afecd9b3eab154cf315c12c87d867ab14" id="r_afecd9b3eab154cf315c12c87d867ab14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afecd9b3eab154cf315c12c87d867ab14">FixTextureSettings</a> (Texture2D texture)</td></tr>
+<tr class="separator:afecd9b3eab154cf315c12c87d867ab14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a127f41896cb269cdc843d77da954759f" id="r_a127f41896cb269cdc843d77da954759f"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a127f41896cb269cdc843d77da954759f">FindFile</a> (string basename)</td></tr>
+<tr class="separator:a127f41896cb269cdc843d77da954759f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Открытые статические члены</h2></td></tr>
+<tr class="memitem:a439968ea42e66be92311d1162b3fac5a" id="r_a439968ea42e66be92311d1162b3fac5a"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a439968ea42e66be92311d1162b3fac5a">Reverse</a> (string text)</td></tr>
+<tr class="separator:a439968ea42e66be92311d1162b3fac5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee5bb439ebdc745de9aafcc1371dbfd6" id="r_aee5bb439ebdc745de9aafcc1371dbfd6"><td class="memItemLeft" align="right" valign="top">static float[,]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee5bb439ebdc745de9aafcc1371dbfd6">ReadRawHeightMap</a> (string path, int widthPlusOne, int heightmapWidth, int heightmapHeight)</td></tr>
+<tr class="separator:aee5bb439ebdc745de9aafcc1371dbfd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:ac59992d5cbe87c9c4d947e6e11ec0a03" id="r_ac59992d5cbe87c9c4d947e6e11ec0a03"><td class="memItemLeft" align="right" valign="top">Terrain&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac59992d5cbe87c9c4d947e6e11ec0a03">myTerrain</a></td></tr>
+<tr class="separator:ac59992d5cbe87c9c4d947e6e11ec0a03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf9b2cbc79fb06ecb9602374437d4e8c" id="r_aaf9b2cbc79fb06ecb9602374437d4e8c"><td class="memItemLeft" align="right" valign="top">Texture2D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf9b2cbc79fb06ecb9602374437d4e8c">splatA</a></td></tr>
+<tr class="separator:aaf9b2cbc79fb06ecb9602374437d4e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7703228daba3f6b851bf57bd5f9511d8" id="r_a7703228daba3f6b851bf57bd5f9511d8"><td class="memItemLeft" align="right" valign="top">Texture2D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7703228daba3f6b851bf57bd5f9511d8">splatB</a></td></tr>
+<tr class="separator:a7703228daba3f6b851bf57bd5f9511d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0efd813e3223f0df485e4ccea02247e1" id="r_a0efd813e3223f0df485e4ccea02247e1"><td class="memItemLeft" align="right" valign="top">Texture2D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0efd813e3223f0df485e4ccea02247e1">treemap</a></td></tr>
+<tr class="separator:a0efd813e3223f0df485e4ccea02247e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac96faa5b72d96ae4226699cec6646040" id="r_ac96faa5b72d96ae4226699cec6646040"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac96faa5b72d96ae4226699cec6646040">resetTrees</a> = true</td></tr>
+<tr class="separator:ac96faa5b72d96ae4226699cec6646040"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4de96a22812efaed030e78f3b3a35a1d" id="r_a4de96a22812efaed030e78f3b3a35a1d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4de96a22812efaed030e78f3b3a35a1d">additiveTrees</a> = false</td></tr>
+<tr class="separator:a4de96a22812efaed030e78f3b3a35a1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f99af3cbd27c3a8b5a099224fa4cf86" id="r_a7f99af3cbd27c3a8b5a099224fa4cf86"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f99af3cbd27c3a8b5a099224fa4cf86">treeDensity</a> = 0.4f</td></tr>
+<tr class="separator:a7f99af3cbd27c3a8b5a099224fa4cf86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebb0cfc492893291c6ba8975d062a4dc" id="r_aebb0cfc492893291c6ba8975d062a4dc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aebb0cfc492893291c6ba8975d062a4dc">treeThreshold</a> = 0.1f</td></tr>
+<tr class="separator:aebb0cfc492893291c6ba8975d062a4dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a942167548c7b4186a845ead4632239ff" id="r_a942167548c7b4186a845ead4632239ff"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a942167548c7b4186a845ead4632239ff">treeSize</a> = 1f</td></tr>
+<tr class="separator:a942167548c7b4186a845ead4632239ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7b65954ec640cacb14c7ff625f31980" id="r_aa7b65954ec640cacb14c7ff625f31980"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7b65954ec640cacb14c7ff625f31980">sizeVariation</a> = 0.2f</td></tr>
+<tr class="separator:aa7b65954ec640cacb14c7ff625f31980"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53100ba398b9a9b1e49961834920da81" id="r_a53100ba398b9a9b1e49961834920da81"><td class="memItemLeft" align="right" valign="top">Texture2D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53100ba398b9a9b1e49961834920da81">grassmap</a></td></tr>
+<tr class="separator:a53100ba398b9a9b1e49961834920da81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa615fbb98476f84fe9c659980646f2ed" id="r_aa615fbb98476f84fe9c659980646f2ed"><td class="memItemLeft" align="right" valign="top">Texture2D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa615fbb98476f84fe9c659980646f2ed">bushmap</a></td></tr>
+<tr class="separator:aa615fbb98476f84fe9c659980646f2ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a864e06755c40dd560c453885df8be346" id="r_a864e06755c40dd560c453885df8be346"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a864e06755c40dd560c453885df8be346">grassDensity</a> = 0.05f</td></tr>
+<tr class="separator:a864e06755c40dd560c453885df8be346"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ea37ff55fe70ac161dcc6fde0362190" id="r_a6ea37ff55fe70ac161dcc6fde0362190"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ea37ff55fe70ac161dcc6fde0362190">grassclumping</a> = 0.25f</td></tr>
+<tr class="separator:a6ea37ff55fe70ac161dcc6fde0362190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1589aeea211a75a7d8e22493fdf32977" id="r_a1589aeea211a75a7d8e22493fdf32977"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1589aeea211a75a7d8e22493fdf32977">bushDensity</a> = 0.02f</td></tr>
+<tr class="separator:a1589aeea211a75a7d8e22493fdf32977"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13fdf376072a94edda1f8445fdbc2226" id="r_a13fdf376072a94edda1f8445fdbc2226"><td class="memItemLeft" align="right" valign="top">Texture2D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13fdf376072a94edda1f8445fdbc2226">overlayMap</a></td></tr>
+<tr class="separator:a13fdf376072a94edda1f8445fdbc2226"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2854363c9824da385b71675a3617d15" id="r_ac2854363c9824da385b71675a3617d15"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2854363c9824da385b71675a3617d15">overlayThreshold</a> = 0.1f</td></tr>
+<tr class="separator:ac2854363c9824da385b71675a3617d15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6b1edbc6a4c8c6114a62b472f348a31" id="r_ac6b1edbc6a4c8c6114a62b472f348a31"><td class="memItemLeft" align="right" valign="top">Texture2D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6b1edbc6a4c8c6114a62b472f348a31">overlayTexture</a></td></tr>
+<tr class="separator:ac6b1edbc6a4c8c6114a62b472f348a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa48098febb2acf0f902ed0c2fb7eb577" id="r_aa48098febb2acf0f902ed0c2fb7eb577"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa48098febb2acf0f902ed0c2fb7eb577">tileSize</a> = 15</td></tr>
+<tr class="separator:aa48098febb2acf0f902ed0c2fb7eb577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81faeb551730c74d4345654e532df70e" id="r_a81faeb551730c74d4345654e532df70e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81faeb551730c74d4345654e532df70e">clearTrees</a> = false</td></tr>
+<tr class="separator:a81faeb551730c74d4345654e532df70e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6658904fb064372857c779377b1f3cfc" id="r_a6658904fb064372857c779377b1f3cfc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6658904fb064372857c779377b1f3cfc">clearRadius</a> = 1.0f</td></tr>
+<tr class="separator:a6658904fb064372857c779377b1f3cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa368b6af0e263566de4594a80f06c7b0" id="r_aa368b6af0e263566de4594a80f06c7b0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa368b6af0e263566de4594a80f06c7b0">clearGrass</a> = true</td></tr>
+<tr class="separator:aa368b6af0e263566de4594a80f06c7b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98cbe3c67c9910b00725f81095ee4cc5" id="r_a98cbe3c67c9910b00725f81095ee4cc5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98cbe3c67c9910b00725f81095ee4cc5">changeTerrain</a> = 0.0f</td></tr>
+<tr class="separator:a98cbe3c67c9910b00725f81095ee4cc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock">
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00018">18</a></p>
+</div><h2 class="groupheader">Методы</h2>
+<a id="a127f41896cb269cdc843d77da954759f" name="a127f41896cb269cdc843d77da954759f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a127f41896cb269cdc843d77da954759f">&#9670;&#160;</a></span>FindFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string TTT.TerrainTools.FindFile </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>basename</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00463">463</a></p>
+
+</div>
+</div>
+<a id="afecd9b3eab154cf315c12c87d867ab14" name="afecd9b3eab154cf315c12c87d867ab14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afecd9b3eab154cf315c12c87d867ab14">&#9670;&#160;</a></span>FixTextureSettings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TTT.TerrainTools.FixTextureSettings </td>
+          <td>(</td>
+          <td class="paramtype">Texture2D</td>          <td class="paramname"><span class="paramname"><em>texture</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00432">432</a></p>
+
+</div>
+</div>
+<a id="aee5bb439ebdc745de9aafcc1371dbfd6" name="aee5bb439ebdc745de9aafcc1371dbfd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee5bb439ebdc745de9aafcc1371dbfd6">&#9670;&#160;</a></span>ReadRawHeightMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static float[,] TTT.TerrainTools.ReadRawHeightMap </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>widthPlusOne</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>heightmapWidth</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>heightmapHeight</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l01683">1683</a></p>
+
+</div>
+</div>
+<a id="a439968ea42e66be92311d1162b3fac5a" name="a439968ea42e66be92311d1162b3fac5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a439968ea42e66be92311d1162b3fac5a">&#9670;&#160;</a></span>Reverse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string TTT.TerrainTools.Reverse </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>text</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00453">453</a></p>
+
+</div>
+</div>
+<h2 class="groupheader">Данные класса</h2>
+<a id="a4de96a22812efaed030e78f3b3a35a1d" name="a4de96a22812efaed030e78f3b3a35a1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4de96a22812efaed030e78f3b3a35a1d">&#9670;&#160;</a></span>additiveTrees</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TTT.TerrainTools.additiveTrees = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00037">37</a></p>
+
+</div>
+</div>
+<a id="a1589aeea211a75a7d8e22493fdf32977" name="a1589aeea211a75a7d8e22493fdf32977"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1589aeea211a75a7d8e22493fdf32977">&#9670;&#160;</a></span>bushDensity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float TTT.TerrainTools.bushDensity = 0.02f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00047">47</a></p>
+
+</div>
+</div>
+<a id="aa615fbb98476f84fe9c659980646f2ed" name="aa615fbb98476f84fe9c659980646f2ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa615fbb98476f84fe9c659980646f2ed">&#9670;&#160;</a></span>bushmap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Texture2D TTT.TerrainTools.bushmap</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00044">44</a></p>
+
+</div>
+</div>
+<a id="a98cbe3c67c9910b00725f81095ee4cc5" name="a98cbe3c67c9910b00725f81095ee4cc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98cbe3c67c9910b00725f81095ee4cc5">&#9670;&#160;</a></span>changeTerrain</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float TTT.TerrainTools.changeTerrain = 0.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00056">56</a></p>
+
+</div>
+</div>
+<a id="aa368b6af0e263566de4594a80f06c7b0" name="aa368b6af0e263566de4594a80f06c7b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa368b6af0e263566de4594a80f06c7b0">&#9670;&#160;</a></span>clearGrass</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TTT.TerrainTools.clearGrass = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00055">55</a></p>
+
+</div>
+</div>
+<a id="a6658904fb064372857c779377b1f3cfc" name="a6658904fb064372857c779377b1f3cfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6658904fb064372857c779377b1f3cfc">&#9670;&#160;</a></span>clearRadius</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float TTT.TerrainTools.clearRadius = 1.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00054">54</a></p>
+
+</div>
+</div>
+<a id="a81faeb551730c74d4345654e532df70e" name="a81faeb551730c74d4345654e532df70e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81faeb551730c74d4345654e532df70e">&#9670;&#160;</a></span>clearTrees</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TTT.TerrainTools.clearTrees = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00053">53</a></p>
+
+</div>
+</div>
+<a id="a6ea37ff55fe70ac161dcc6fde0362190" name="a6ea37ff55fe70ac161dcc6fde0362190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ea37ff55fe70ac161dcc6fde0362190">&#9670;&#160;</a></span>grassclumping</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float TTT.TerrainTools.grassclumping = 0.25f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00046">46</a></p>
+
+</div>
+</div>
+<a id="a864e06755c40dd560c453885df8be346" name="a864e06755c40dd560c453885df8be346"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a864e06755c40dd560c453885df8be346">&#9670;&#160;</a></span>grassDensity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float TTT.TerrainTools.grassDensity = 0.05f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00045">45</a></p>
+
+</div>
+</div>
+<a id="a53100ba398b9a9b1e49961834920da81" name="a53100ba398b9a9b1e49961834920da81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53100ba398b9a9b1e49961834920da81">&#9670;&#160;</a></span>grassmap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Texture2D TTT.TerrainTools.grassmap</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00043">43</a></p>
+
+</div>
+</div>
+<a id="ac59992d5cbe87c9c4d947e6e11ec0a03" name="ac59992d5cbe87c9c4d947e6e11ec0a03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac59992d5cbe87c9c4d947e6e11ec0a03">&#9670;&#160;</a></span>myTerrain</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Terrain TTT.TerrainTools.myTerrain</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00020">20</a></p>
+
+</div>
+</div>
+<a id="a13fdf376072a94edda1f8445fdbc2226" name="a13fdf376072a94edda1f8445fdbc2226"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13fdf376072a94edda1f8445fdbc2226">&#9670;&#160;</a></span>overlayMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Texture2D TTT.TerrainTools.overlayMap</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00049">49</a></p>
+
+</div>
+</div>
+<a id="ac6b1edbc6a4c8c6114a62b472f348a31" name="ac6b1edbc6a4c8c6114a62b472f348a31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6b1edbc6a4c8c6114a62b472f348a31">&#9670;&#160;</a></span>overlayTexture</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Texture2D TTT.TerrainTools.overlayTexture</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00051">51</a></p>
+
+</div>
+</div>
+<a id="ac2854363c9824da385b71675a3617d15" name="ac2854363c9824da385b71675a3617d15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2854363c9824da385b71675a3617d15">&#9670;&#160;</a></span>overlayThreshold</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float TTT.TerrainTools.overlayThreshold = 0.1f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00050">50</a></p>
+
+</div>
+</div>
+<a id="ac96faa5b72d96ae4226699cec6646040" name="ac96faa5b72d96ae4226699cec6646040"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac96faa5b72d96ae4226699cec6646040">&#9670;&#160;</a></span>resetTrees</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TTT.TerrainTools.resetTrees = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00036">36</a></p>
+
+</div>
+</div>
+<a id="aa7b65954ec640cacb14c7ff625f31980" name="aa7b65954ec640cacb14c7ff625f31980"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7b65954ec640cacb14c7ff625f31980">&#9670;&#160;</a></span>sizeVariation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float TTT.TerrainTools.sizeVariation = 0.2f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00041">41</a></p>
+
+</div>
+</div>
+<a id="aaf9b2cbc79fb06ecb9602374437d4e8c" name="aaf9b2cbc79fb06ecb9602374437d4e8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf9b2cbc79fb06ecb9602374437d4e8c">&#9670;&#160;</a></span>splatA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Texture2D TTT.TerrainTools.splatA</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00032">32</a></p>
+
+</div>
+</div>
+<a id="a7703228daba3f6b851bf57bd5f9511d8" name="a7703228daba3f6b851bf57bd5f9511d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7703228daba3f6b851bf57bd5f9511d8">&#9670;&#160;</a></span>splatB</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Texture2D TTT.TerrainTools.splatB</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00033">33</a></p>
+
+</div>
+</div>
+<a id="aa48098febb2acf0f902ed0c2fb7eb577" name="aa48098febb2acf0f902ed0c2fb7eb577"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa48098febb2acf0f902ed0c2fb7eb577">&#9670;&#160;</a></span>tileSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TTT.TerrainTools.tileSize = 15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00052">52</a></p>
+
+</div>
+</div>
+<a id="a7f99af3cbd27c3a8b5a099224fa4cf86" name="a7f99af3cbd27c3a8b5a099224fa4cf86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f99af3cbd27c3a8b5a099224fa4cf86">&#9670;&#160;</a></span>treeDensity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float TTT.TerrainTools.treeDensity = 0.4f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00038">38</a></p>
+
+</div>
+</div>
+<a id="a0efd813e3223f0df485e4ccea02247e1" name="a0efd813e3223f0df485e4ccea02247e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0efd813e3223f0df485e4ccea02247e1">&#9670;&#160;</a></span>treemap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Texture2D TTT.TerrainTools.treemap</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00035">35</a></p>
+
+</div>
+</div>
+<a id="a942167548c7b4186a845ead4632239ff" name="a942167548c7b4186a845ead4632239ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a942167548c7b4186a845ead4632239ff">&#9670;&#160;</a></span>treeSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float TTT.TerrainTools.treeSize = 1f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00040">40</a></p>
+
+</div>
+</div>
+<a id="aebb0cfc492893291c6ba8975d062a4dc" name="aebb0cfc492893291c6ba8975d062a4dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebb0cfc492893291c6ba8975d062a4dc">&#9670;&#160;</a></span>treeThreshold</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float TTT.TerrainTools.treeThreshold = 0.1f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">См. определение в файле <a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a> строка <a class="el" href="_terrain_tools_8cs_source.html#l00039">39</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов класса находятся в файле:<ul>
+<li>Assets/Tom's Terrain Tools/Editor/<a class="el" href="_terrain_tools_8cs_source.html">TerrainTools.cs</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespace_t_t_t.html">TTT</a></li><li class="navelem"><a class="el" href="class_t_t_t_1_1_terrain_tools.html">TerrainTools</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>
